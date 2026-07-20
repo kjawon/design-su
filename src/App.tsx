@@ -4,6 +4,7 @@ import {
   Footer,
   HeroSection,
   InformationSections,
+  RecentContractsSection,
 } from "@/components/portal-sections"
 
 export function App() {
@@ -12,6 +13,7 @@ export function App() {
       <Header />
       <main>
         <HeroSection />
+        <RecentContractsSection />
         <InformationSections />
       </main>
       <Footer />

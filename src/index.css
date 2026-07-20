@@ -123,7 +123,7 @@ html {
   --ai-secondary: var(--sky-primary);
   --ai-light: var(--purple-light);
   --ai-soft: var(--purple-light);
-  --accent-red: var(--red-primary);
+  --accent-red: var(--purple-primary);
   --page-background: var(--bg-page);
   --section-background: var(--bg-section);
   --card-background: var(--card-bg);
@@ -174,22 +174,22 @@ html {
   --border: var(--border-default);
   --input: var(--border-default);
   --ring: var(--brand-primary-hover);
-  --brand-search-gradient: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-primary) 40%, var(--red-primary) 100%);
+  --brand-search-gradient: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-primary) 42%, var(--sky-primary) 72%, var(--purple-primary) 100%);
   --brand-chatbot-gradient: linear-gradient(135deg, var(--blue-primary) 0%, var(--purple-primary) 100%);
-  --ai-action-gradient: linear-gradient(90deg, var(--red-primary) 0%, var(--purple-primary) 100%);
-  --resource-law-gradient: linear-gradient(135deg, var(--red-strong) 0%, var(--red-primary) 100%);
+  --ai-action-gradient: linear-gradient(90deg, var(--blue-primary) 0%, var(--purple-primary) 100%);
+  --resource-law-gradient: linear-gradient(135deg, var(--purple-dark) 0%, var(--purple-primary) 100%);
   --resource-form-gradient: linear-gradient(135deg, #66ACEB 0%, #8BC8F3 100%);
   --ai-border: #D9C9F7;
   --shadow-contract-hover: 0 8px 24px rgba(44, 115, 201, 0.12);
   --shadow-chatbot: 0 10px 30px rgba(155, 138, 230, 0.20);
-  --shadow-chatbot-hover: 0 14px 36px rgba(229, 106, 120, 0.25);
+  --shadow-chatbot-hover: 0 14px 36px rgba(155, 138, 230, 0.28);
   --search-focus-ring: 0 0 0 3px rgba(126, 195, 242, 0.45);
   --contract-construction-bg: var(--blue-light);
   --contract-construction-text: var(--blue-primary);
   --contract-service-bg: var(--purple-light);
   --contract-service-text: var(--purple-dark);
-  --contract-goods-bg: var(--red-light);
-  --contract-goods-text: var(--red-strong);
+  --contract-goods-bg: var(--sky-light);
+  --contract-goods-text: var(--blue-dark);
   --radius: 0.625rem;
   --sidebar: var(--background-card);
   --sidebar-foreground: var(--text-primary);
@@ -210,22 +210,25 @@ html {
 }
 
 .service-shortcut {
-  background: color-mix(in srgb, var(--card-bg) 88%, transparent);
+  background: var(--card-bg);
+  border-color: var(--border-default);
   color: var(--text-main);
 }
 
 .service-shortcut:hover {
-  background: var(--card-bg);
+  background: var(--sky-light);
+  border-color: var(--sky-primary);
 }
 
 .service-shortcut[aria-current="page"] {
-  box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--red-primary) 65%, transparent);
+  border-color: var(--purple-primary);
+  box-shadow: inset 0 0 0 1px var(--purple-primary), 0 8px 20px rgba(155, 138, 230, 0.14);
 }
 
 .service-shortcut:nth-child(1) .service-icon { background: var(--sky-light); color: var(--blue-primary); }
-.service-shortcut:nth-child(2) .service-icon { background: var(--red-light); color: var(--red-strong); }
+.service-shortcut:nth-child(2) .service-icon { background: var(--blue-light); color: var(--blue-dark); }
 .service-shortcut:nth-child(3) .service-icon { background: var(--purple-light); color: var(--purple-dark); }
-.service-shortcut:nth-child(4) .service-icon { background: #FDECEF; color: #D85A6C; }
+.service-shortcut:nth-child(4) .service-icon { background: var(--sky-light); color: #5A9FDC; }
 .service-shortcut:nth-child(5) .service-icon { background: #EEF3F8; color: #4F6D8F; }
 
 .contract-card:hover {

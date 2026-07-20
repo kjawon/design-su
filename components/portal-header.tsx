@@ -18,7 +18,7 @@ export function Header() {
         </a>
         <nav aria-label="주요 메뉴" className="hidden items-center gap-7 md:flex">
           {navItems.map((item, index) => (
-            <a key={item} href={`#${index === 0 ? "recent" : "services"}`} className={index === 0 ? "border-b-2 border-red-primary py-5 text-sm font-bold text-blue-dark" : "py-5 text-sm text-text-secondary transition-colors hover:text-red-strong"}>{item}</a>
+            <a key={item} href={`#${index === 0 ? "recent" : "services"}`} className={index === 0 ? "border-b-2 border-purple-primary py-5 text-sm font-bold text-blue-dark" : "py-5 text-sm text-text-secondary transition-colors hover:text-blue-primary"}>{item}</a>
           ))}
         </nav>
         <Button variant="secondary" size="sm" className="hidden bg-sky-light text-blue-dark hover:bg-blue-light md:inline-flex">로그인</Button>
@@ -28,7 +28,7 @@ export function Header() {
       </div>
       {open && (
         <nav aria-label="모바일 메뉴" className="flex flex-col gap-1 border-t bg-card p-4 md:hidden">
-          {navItems.map((item) => <a key={item} href="#services" onClick={() => setOpen(false)} className="rounded-lg px-3 py-3 text-sm font-medium text-text-secondary hover:bg-red-light hover:text-red-strong">{item}</a>)}
+          {navItems.map((item) => <a key={item} href="#services" onClick={() => setOpen(false)} className="rounded-lg px-3 py-3 text-sm font-medium text-text-secondary hover:bg-purple-light hover:text-purple-primary">{item}</a>)}
           <Button variant="secondary" className="mt-2">로그인</Button>
         </nav>
       )}

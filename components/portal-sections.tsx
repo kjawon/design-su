@@ -47,7 +47,7 @@ export function HeroSection() {
   return (
     <section id="services" className="bg-background">
       <div className="mx-auto max-w-7xl px-5 pb-5 pt-6 lg:px-8 lg:pb-6">
-        <div className="grid items-stretch gap-4 lg:grid-cols-[minmax(0,1.4fr)_minmax(18rem,0.6fr)]">
+        <div className="grid items-stretch gap-4">
           <div className="brand-search flex rounded-2xl px-5 py-4 text-primary-foreground md:px-7">
             <div className="flex w-full flex-col justify-center gap-3">
               <h1 className="text-xl font-extrabold tracking-tight md:text-2xl">성남시 계약정보, 한 번에 찾아보세요</h1>
@@ -61,21 +61,21 @@ export function HeroSection() {
                 <Input aria-label="계약 검색" placeholder="검색어를 입력해주세요." className="h-9 min-w-0 border-0 bg-transparent text-foreground shadow-none focus-visible:ring-0" />
                 <Button type="submit" size="icon-lg" aria-label="검색" className="size-10 shrink-0 rounded-full bg-blue-primary hover:bg-blue-dark"><Search className="size-5" /></Button>
               </form>
+            </div>
+          </div>
 
-              <nav aria-label="계약 서비스 바로가기" className="grid grid-cols-3 gap-2.5 sm:grid-cols-5">
+          <nav aria-label="계약 서비스 바로가기" className="grid grid-cols-2 gap-3 rounded-2xl bg-card py-3 sm:grid-cols-5">
                 {services.map(({ title, description, icon: Icon }, index) => (
-                  <a key={title} href="#" aria-current={index === 1 ? "page" : undefined} title={description} className="service-shortcut group flex min-w-0 flex-col items-center gap-1.5 rounded-xl px-2 py-1.5 text-center transition-all hover:-translate-y-0.5">
-                    <span className="service-icon flex size-11 items-center justify-center rounded-full transition-transform group-hover:scale-105">
-                      <Icon className="size-5.5" strokeWidth={1.8} />
+                  <a key={title} href="#" aria-current={index === 1 ? "page" : undefined} title={description} className="service-shortcut group flex min-w-0 flex-col items-center gap-2 rounded-2xl border px-3 py-3 text-center transition-all hover:-translate-y-0.5">
+                    <span className="service-icon flex size-14 items-center justify-center rounded-full transition-transform group-hover:scale-105">
+                      <Icon className="size-7" strokeWidth={1.8} />
                     </span>
                     <strong className="whitespace-nowrap text-xs font-bold text-text-primary">{title}</strong>
                   </a>
                 ))}
-              </nav>
-            </div>
-          </div>
+          </nav>
 
-          <aside className="flex min-h-0 flex-col rounded-2xl border border-border bg-section p-2.5" aria-label="최근 계약 내역" onMouseEnter={() => setRecentPaused(true)} onMouseLeave={() => setRecentPaused(false)}>
+          <aside className="hidden" aria-hidden="true" aria-label="최근 계약 내역" onMouseEnter={() => setRecentPaused(true)} onMouseLeave={() => setRecentPaused(false)}>
             <div className="mb-1 flex items-center justify-between gap-3">
               <div>
                 <h2 className="text-lg font-bold text-text-primary">최근 계약 내역</h2>
@@ -122,7 +122,7 @@ export function RecentContractsSection() {
     : visible.length === 2
       ? "min-w-full sm:min-w-1/2"
       : visible.length >= 5
-        ? "min-w-full sm:min-w-1/2 lg:min-w-1/3 xl:min-w-1/4"
+        ? "min-w-full sm:min-w-1/2 lg:min-w-1/3 xl:min-w-1/5"
         : "min-w-full sm:min-w-1/2 lg:min-w-1/3"
 
   const selectFilter = (item: string) => {
@@ -246,7 +246,7 @@ export function InformationSections() {
         <div className="flex flex-col">
           <div className="mb-5 flex items-center justify-between">
             <h2 className="text-xl font-bold">공지사항</h2>
-            <a href="#" className="text-xs font-semibold text-red-primary hover:text-red-strong">전체보기 +</a>
+            <a href="#" className="text-xs font-semibold text-purple-primary hover:text-purple-dark">전체보기 +</a>
           </div>
           <ul className="flex flex-1 flex-col">
             {notices.map(([title, date]) => (
