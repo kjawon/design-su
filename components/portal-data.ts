@@ -1,7 +1,7 @@
 import {
   Banknote,
+  Bot,
   Building2,
-  ChartNoAxesColumnIncreasing,
   FileCheck2,
   FileText,
   Gavel,
@@ -24,7 +24,7 @@ export const services = [
   { title: "수의계약현황", description: "수의계약 체결 내역을 상세 공개하여 공정한 계약 문화를 조성합니다.", icon: Handshake },
   { title: "대금지급현황", description: "계약에 따른 대금 지급 여부를 일자별로 신속하게 조회할 수 있습니다.", icon: Banknote },
   { title: "계약업체현황", description: "성남시와 협력하고 있는 업체들의 기본 정보 및 계약 실적을 제공합니다.", icon: Building2 },
-  { title: "계약통계", description: "연도별, 사업별 계약 규모를 데이터 시각화 자료를 통해 한눈에 파악하세요.", icon: ChartNoAxesColumnIncreasing },
+  { title: "AI 계약 도우미", description: "자연어로 원하는 계약정보를 빠르게 검색하세요.", icon: Bot },
 ]
 
 export const quickLinks = [

@@ -30,20 +30,19 @@ export function HeroSection() {
 
   return (
     <section className="bg-primary text-primary-foreground">
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 md:grid-cols-[1.25fr_0.75fr] md:items-center lg:px-8 lg:py-16">
+      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 md:grid-cols-[1.35fr_0.65fr] md:items-center lg:px-8 lg:py-14">
         <div className="flex flex-col items-start gap-5">
           <Badge className="border-primary-foreground/20 bg-primary-foreground/10 text-primary-foreground">AI 인텔리전스 서비스</Badge>
           <h1 className="text-balance text-3xl font-extrabold leading-tight tracking-tight md:text-4xl">성남시의 모든 계약을<br />지능적으로 검색하세요</h1>
-          <form className="flex w-full max-w-2xl gap-2" onSubmit={(event) => event.preventDefault()}>
-            <div className="relative flex-1"><Search className="absolute left-4 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" aria-hidden="true" /><Input aria-label="계약 검색" placeholder="예) 최근 3개월 동안 1억 원 이상인 정보화 사업 계약을 찾아줘" className="h-12 border-primary-foreground bg-background pl-11 text-foreground" /></div>
-            <Button type="submit" variant="secondary" className="h-12 px-6">검색</Button>
+          <form className="flex w-full max-w-2xl items-center rounded-lg bg-background p-1.5 shadow-sm" onSubmit={(event) => event.preventDefault()}>
+            <div className="relative flex-1"><Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-primary" aria-hidden="true" /><Input aria-label="계약 검색" placeholder="예) 최근 3개월 동안 1억 원 이상인 정보화 사업 계약을 찾아줘" className="h-10 border-0 bg-transparent pl-10 text-foreground shadow-none focus-visible:ring-0" /></div>
+            <Button type="submit" className="h-9 px-6">검색</Button>
           </form>
           <div className="flex flex-wrap items-center gap-2 text-xs"><span className="font-semibold">추천 검색어:</span>{["지능형 교통체계", "탄천 정비사업", "노후 CCTV 교체"].map((term) => <button key={term} className="rounded-full border border-primary-foreground/20 bg-primary-foreground/10 px-3 py-1.5 transition-colors hover:bg-primary-foreground/20">{term}</button>)}</div>
         </div>
         <div className="rounded-xl border border-primary-foreground/20 bg-primary-foreground/10 p-5">
           <div className="mb-4 flex items-center justify-between"><h2 className="font-bold">오늘 계약정보</h2><div className="flex gap-2"><Button variant="ghost" size="icon-sm" aria-label="이전 계약" onClick={() => move(-1)} className="text-primary-foreground hover:bg-primary-foreground/10"><ChevronLeft /></Button><Button variant="ghost" size="icon-sm" aria-label="다음 계약" onClick={() => move(1)} className="text-primary-foreground hover:bg-primary-foreground/10"><ChevronRight /></Button></div></div>
           <ContractCard contract={contracts[index]} featured />
-          <div className="mt-4 flex justify-center gap-1.5" aria-label="슬라이드 위치">{contracts.map((contract, dot) => <button key={contract.title} onClick={() => setIndex(dot)} aria-label={`${dot + 1}번째 계약 보기`} className={dot === index ? "h-1.5 w-5 rounded-full bg-primary-foreground" : "size-1.5 rounded-full bg-primary-foreground/40"} />)}</div>
         </div>
       </div>
     </section>
@@ -54,7 +53,7 @@ export function ServiceCards() {
   return (
     <section id="services" className="mx-auto max-w-7xl px-5 py-20 lg:px-8">
       <div className="mb-10 text-center"><h2 className="text-3xl font-bold tracking-tight">주요 서비스</h2><p className="mt-3 text-sm text-muted-foreground">시민을 위한 투명하고 신속한 계약 행정 서비스를 제공합니다.</p></div>
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{services.map(({ title, description, icon: Icon }, index) => <Card key={title} className="items-center py-7 text-center transition-all hover:-translate-y-1 hover:shadow-md"><CardHeader className="items-center"><div className={index === 1 ? "mb-3 flex size-12 items-center justify-center rounded-xl bg-accent text-primary" : "mb-3 flex size-12 items-center justify-center rounded-xl bg-muted text-primary"}><Icon className="size-5" /></div><CardTitle className="whitespace-nowrap">{title}</CardTitle><CardDescription className="max-w-xs leading-relaxed">{description}</CardDescription></CardHeader></Card>)}</div>
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{services.map(({ title, description, icon: Icon }, index) => <button key={title} type="button" onClick={() => title === "AI 계약 도우미" && window.dispatchEvent(new Event("open-contract-assistant"))} className="rounded-xl text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"><Card className="h-full items-center py-7 text-center transition-all hover:-translate-y-1 hover:shadow-md"><CardHeader className="w-full items-center"><div className={index === 1 ? "mb-3 flex size-12 items-center justify-center rounded-xl bg-accent text-primary" : "mb-3 flex size-12 items-center justify-center rounded-xl bg-muted text-primary"}><Icon className="size-5" /></div><CardTitle className="whitespace-nowrap">{title}</CardTitle><CardDescription className="w-full max-w-sm leading-relaxed">{description}</CardDescription></CardHeader></Card></button>)}</div>
     </section>
   )
 }

@@ -1,6 +1,6 @@
 "use client"
 
-import { FormEvent, useRef, useState } from "react"
+import { FormEvent, useEffect, useRef, useState } from "react"
 import { Bot, Mic, RefreshCw, Send, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -14,6 +14,12 @@ export function Chatbot() {
   const [input, setInput] = useState("")
   const [messages, setMessages] = useState<Message[]>([])
   const inputRef = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    const openAssistant = () => setOpen(true)
+    window.addEventListener("open-contract-assistant", openAssistant)
+    return () => window.removeEventListener("open-contract-assistant", openAssistant)
+  }, [])
 
   const send = (text: string) => {
     if (!text.trim()) return
