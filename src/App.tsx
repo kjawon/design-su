@@ -4,18 +4,14 @@ import {
   Footer,
   HeroSection,
   InformationSections,
-  RecentContractsSection,
-  ServiceCards,
 } from "@/components/portal-sections"
 
-export default function Page() {
+export function App() {
   return (
     <>
       <Header />
       <main>
         <HeroSection />
-        <ServiceCards />
-        <RecentContractsSection />
         <InformationSections />
       </main>
       <Footer />

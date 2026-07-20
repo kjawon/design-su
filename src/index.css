@@ -1,0 +1,288 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+html {
+  font-size: 125%;
+}
+
+@theme inline {
+  --font-sans: "Pretendard Variable", Pretendard, "Noto Sans KR", system-ui, sans-serif;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --color-blue-primary: var(--blue-primary);
+  --color-blue-dark: var(--blue-dark);
+  --color-blue-light: var(--blue-light);
+  --color-sky-primary: var(--sky-primary);
+  --color-sky-light: var(--sky-light);
+  --color-red-primary: var(--red-primary);
+  --color-red-strong: var(--red-strong);
+  --color-red-light: var(--red-light);
+  --color-purple-primary: var(--purple-primary);
+  --color-purple-light: var(--purple-light);
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-primary-dark: var(--brand-primary-dark);
+  --color-brand-primary-hover: var(--brand-primary-hover);
+  --color-brand-primary-light: var(--brand-primary-light);
+  --color-ai-primary: var(--ai-primary);
+  --color-ai-secondary: var(--ai-secondary);
+  --color-ai-light: var(--ai-light);
+  --color-ai-soft: var(--ai-soft);
+  --color-accent-red: var(--accent-red);
+  --color-border-hover: var(--border-hover);
+  --color-brand-900: var(--brand-900);
+  --color-brand-700: var(--brand-700);
+  --color-brand-600: var(--brand-600);
+  --color-brand-500: var(--brand-500);
+  --color-brand-300: var(--brand-300);
+  --color-brand-100: var(--brand-100);
+  --color-brand-50: var(--brand-50);
+  --color-brand-navy-950: var(--brand-navy-950);
+  --color-brand-navy-900: var(--brand-navy-900);
+  --color-brand-navy-800: var(--brand-navy-800);
+  --color-brand-navy-700: var(--brand-navy-700);
+  --color-brand-blue-500: var(--brand-blue-500);
+  --color-brand-blue-300: var(--brand-blue-300);
+  --color-brand-blue-200: var(--brand-blue-200);
+  --color-brand-blue-100: var(--brand-blue-100);
+  --color-brand-blue-50: var(--brand-blue-50);
+  --color-page: var(--background-page);
+  --color-section: var(--background-section);
+  --color-border-strong: var(--border-strong);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-footer-text: var(--footer-text);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  color-scheme: light;
+  --blue-primary: #2C73C9;
+  --blue-dark: #1C4F91;
+  --blue-light: #DCEBFA;
+  --sky-primary: #7EC3F2;
+  --sky-light: #EAF6FE;
+  --red-primary: #E56A78;
+  --red-strong: #D95264;
+  --red-light: #FCE7EB;
+  --purple-primary: #9B8AE6;
+  --purple-dark: #8A72E0;
+  --purple-light: #F1EDFF;
+  --bg-page: #F9FAFC;
+  --bg-section: #F4F7FB;
+  --card-bg: #FFFFFF;
+  --border: #DCE3EC;
+  --text-main: #1B2B40;
+  --text-sub: #6B7A90;
+
+  /* 기존 컴포넌트 이름과 새 브랜드 토큰 연결 */
+  --brand-primary: var(--blue-primary);
+  --brand-primary-dark: var(--blue-dark);
+  --brand-primary-hover: var(--blue-dark);
+  --brand-primary-light: var(--blue-light);
+  --ai-primary: var(--purple-primary);
+  --ai-secondary: var(--sky-primary);
+  --ai-light: var(--purple-light);
+  --ai-soft: var(--purple-light);
+  --accent-red: var(--red-primary);
+  --page-background: var(--bg-page);
+  --section-background: var(--bg-section);
+  --card-background: var(--card-bg);
+  --border-default: #DCE3EC;
+  --border-hover: var(--sky-primary);
+  --text-primary: var(--text-main);
+  --text-secondary: var(--text-sub);
+  --text-muted: #8CA0B2;
+  --brand-900: var(--brand-primary-dark);
+  --brand-700: var(--brand-primary);
+  --brand-600: var(--brand-primary);
+  --brand-500: var(--ai-primary);
+  --brand-300: var(--ai-secondary);
+  --brand-100: var(--ai-light);
+  --brand-50: var(--ai-soft);
+  --brand-navy-950: var(--brand-900);
+  --brand-navy-900: var(--brand-900);
+  --brand-navy-800: var(--brand-700);
+  --brand-navy-700: var(--brand-primary-hover);
+  --brand-blue-500: var(--brand-500);
+  --brand-blue-300: var(--brand-300);
+  --brand-blue-200: var(--brand-300);
+  --brand-blue-100: var(--brand-100);
+  --brand-blue-50: var(--brand-50);
+  --background-page: var(--page-background);
+  --background-section: var(--section-background);
+  --background-card: var(--card-background);
+  --border-strong: var(--border-hover);
+  --footer-text: var(--brand-primary-light);
+  --success: #2FAF8F;
+  --warning: #E2A93B;
+  --danger: #D95C5C;
+  --background: var(--background-page);
+  --foreground: var(--text-primary);
+  --card: var(--background-card);
+  --card-foreground: var(--text-primary);
+  --popover: var(--background-card);
+  --popover-foreground: var(--text-primary);
+  --primary: var(--brand-primary);
+  --primary-foreground: var(--background-card);
+  --secondary: var(--ai-light);
+  --secondary-foreground: var(--brand-primary-dark);
+  --muted: var(--background-section);
+  --muted-foreground: var(--text-secondary);
+  --accent: var(--brand-primary-light);
+  --accent-foreground: var(--brand-primary-dark);
+  --destructive: var(--danger);
+  --border: var(--border-default);
+  --input: var(--border-default);
+  --ring: var(--brand-primary-hover);
+  --brand-search-gradient: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-primary) 40%, var(--red-primary) 100%);
+  --brand-chatbot-gradient: linear-gradient(135deg, var(--blue-primary) 0%, var(--purple-primary) 100%);
+  --ai-action-gradient: linear-gradient(90deg, var(--red-primary) 0%, var(--purple-primary) 100%);
+  --resource-law-gradient: linear-gradient(135deg, var(--red-strong) 0%, var(--red-primary) 100%);
+  --resource-form-gradient: linear-gradient(135deg, #66ACEB 0%, #8BC8F3 100%);
+  --ai-border: #D9C9F7;
+  --shadow-contract-hover: 0 8px 24px rgba(44, 115, 201, 0.12);
+  --shadow-chatbot: 0 10px 30px rgba(155, 138, 230, 0.20);
+  --shadow-chatbot-hover: 0 14px 36px rgba(229, 106, 120, 0.25);
+  --search-focus-ring: 0 0 0 3px rgba(126, 195, 242, 0.45);
+  --contract-construction-bg: var(--blue-light);
+  --contract-construction-text: var(--blue-primary);
+  --contract-service-bg: var(--purple-light);
+  --contract-service-text: var(--purple-dark);
+  --contract-goods-bg: var(--red-light);
+  --contract-goods-text: var(--red-strong);
+  --radius: 0.625rem;
+  --sidebar: var(--background-card);
+  --sidebar-foreground: var(--text-primary);
+  --sidebar-primary: var(--brand-primary);
+  --sidebar-primary-foreground: var(--background-card);
+  --sidebar-accent: var(--ai-light);
+  --sidebar-accent-foreground: var(--brand-primary-dark);
+  --sidebar-border: var(--border-default);
+  --sidebar-ring: var(--brand-primary-hover);
+}
+
+.brand-search {
+  background: var(--brand-search-gradient);
+}
+
+.brand-search-field:focus-within {
+  box-shadow: var(--search-focus-ring);
+}
+
+.service-shortcut {
+  background: color-mix(in srgb, var(--card-bg) 88%, transparent);
+  color: var(--text-main);
+}
+
+.service-shortcut:hover {
+  background: var(--card-bg);
+}
+
+.service-shortcut[aria-current="page"] {
+  box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--red-primary) 65%, transparent);
+}
+
+.service-shortcut:nth-child(1) .service-icon { background: var(--sky-light); color: var(--blue-primary); }
+.service-shortcut:nth-child(2) .service-icon { background: var(--red-light); color: var(--red-strong); }
+.service-shortcut:nth-child(3) .service-icon { background: var(--purple-light); color: var(--purple-dark); }
+.service-shortcut:nth-child(4) .service-icon { background: #FDECEF; color: #D85A6C; }
+.service-shortcut:nth-child(5) .service-icon { background: #EEF3F8; color: #4F6D8F; }
+
+.contract-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-contract-hover);
+}
+
+.contract-tag[data-contract-type="공사"] {
+  background: var(--contract-construction-bg);
+  color: var(--contract-construction-text);
+}
+
+.contract-tag[data-contract-type="용역"] {
+  background: var(--contract-service-bg);
+  color: var(--contract-service-text);
+}
+
+.contract-tag[data-contract-type="물품"] {
+  background: var(--contract-goods-bg);
+  color: var(--contract-goods-text);
+}
+
+.brand-chatbot-header {
+  background: var(--brand-chatbot-gradient);
+}
+
+.resource-law {
+  background: var(--resource-law-gradient);
+}
+
+.resource-law:hover {
+  filter: brightness(0.97);
+}
+
+.resource-form {
+  background: var(--resource-form-gradient);
+}
+
+.resource-form:hover {
+  filter: brightness(1.03);
+}
+
+.ai-action {
+  background: var(--ai-action-gradient);
+  box-shadow: 0 8px 20px rgba(155, 138, 230, 0.18);
+}
+
+.ai-action:hover {
+  box-shadow: var(--shadow-chatbot-hover);
+  filter: brightness(1.04);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
