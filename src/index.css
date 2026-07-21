@@ -188,8 +188,8 @@ html {
   --contract-construction-text: var(--blue-primary);
   --contract-service-bg: var(--purple-light);
   --contract-service-text: var(--purple-dark);
-  --contract-goods-bg: var(--sky-light);
-  --contract-goods-text: var(--blue-dark);
+  --contract-goods-bg: var(--red-light);
+  --contract-goods-text: var(--red-strong);
   --radius: 0.625rem;
   --sidebar: var(--background-card);
   --sidebar-foreground: var(--text-primary);
@@ -234,6 +234,42 @@ html {
 .contract-card:hover {
   border-color: var(--border-hover);
   box-shadow: var(--shadow-contract-hover);
+}
+
+.contract-data-card:hover {
+  box-shadow: 0 8px 20px rgba(44, 115, 201, 0.09);
+}
+
+.bookmark-tab {
+  background: var(--card-bg);
+  border-color: var(--border-default);
+  color: var(--text-main);
+  transition: border-color 180ms ease, background-color 180ms ease, color 180ms ease;
+}
+
+.bookmark-tab:hover {
+  background: #F8FBFE;
+  border-color: rgba(44, 115, 201, 0.45);
+  color: var(--blue-primary);
+}
+
+.bookmark-tab[aria-selected="true"] {
+  background: #EAF4FD;
+  border-color: var(--blue-primary);
+  color: var(--blue-dark);
+}
+
+.bookmark-tab[aria-selected="true"]::after {
+  content: "";
+  position: absolute;
+  bottom: -0.45rem;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-left: 0.4rem solid transparent;
+  border-right: 0.4rem solid transparent;
+  border-top: 0.45rem solid var(--blue-primary);
+  transform: translateX(-50%);
 }
 
 .contract-tag[data-contract-type="공사"] {

@@ -1,20 +1,21 @@
+import { useState } from "react"
 import { Chatbot } from "@/components/chatbot"
+import { ContractSearchPanel, type ContractSearch } from "@/components/contract-search-panel"
+import { ContractWorkspace } from "@/components/contract-workspace"
+import { Footer } from "@/components/portal-footer"
 import { Header } from "@/components/portal-header"
-import {
-  Footer,
-  HeroSection,
-  InformationSections,
-  RecentContractsSection,
-} from "@/components/portal-sections"
+import { PortalInformation } from "@/components/portal-information"
 
 export function App() {
+  const [search, setSearch] = useState<ContractSearch>({ field: "전체", query: "" })
+
   return (
     <>
       <Header />
       <main>
-        <HeroSection />
-        <InformationSections />
-        <RecentContractsSection />
+        <ContractSearchPanel onSearch={setSearch} />
+        <ContractWorkspace search={search} />
+        <PortalInformation />
       </main>
       <Footer />
       <Chatbot />
