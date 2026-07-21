@@ -99,16 +99,16 @@ html {
   --blue-primary: #2C73C9;
   --blue-dark: #1C4F91;
   --blue-light: #DCEBFA;
-  --sky-primary: #7EC3F2;
+  --sky-primary: #73B9E8;
   --sky-light: #EAF6FE;
   --red-primary: #E56A78;
   --red-strong: #D95264;
-  --red-light: #FCE7EB;
-  --purple-primary: #9B8AE6;
-  --purple-dark: #8A72E0;
+  --red-light: #FCE8EC;
+  --purple-primary: #8E7DE1;
+  --purple-dark: #7968CF;
   --purple-light: #F1EDFF;
-  --bg-page: #F9FAFC;
-  --bg-section: #F4F7FB;
+  --bg-page: #F7F9FC;
+  --bg-section: #F2F6FA;
   --card-bg: #FFFFFF;
   --border: #DCE3EC;
   --text-main: #1B2B40;
@@ -238,6 +238,69 @@ html {
 
 .contract-data-card:hover {
   box-shadow: 0 8px 20px rgba(44, 115, 201, 0.09);
+}
+
+.hub-carousel {
+  scrollbar-width: none;
+}
+
+.hub-tabs {
+  scrollbar-width: none;
+}
+
+.hub-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.hub-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.recent-contract-carousel {
+  scrollbar-width: none;
+}
+
+.recent-contract-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.recent-contract-slide {
+  flex: 0 0 calc(100% - 1rem);
+  scroll-snap-align: start;
+}
+
+@media (min-width: 40rem) {
+  .recent-contract-slide {
+    flex-basis: calc((100% - 1rem) / 2);
+  }
+}
+
+@media (min-width: 64rem) {
+  .recent-contract-slide {
+    flex-basis: calc((100% - 3rem) / 4);
+  }
+}
+
+.hub-carousel-card {
+  flex: 0 0 calc(100% - 2rem);
+  min-height: 11rem;
+  scroll-snap-align: start;
+}
+
+.hub-carousel-card-detailed {
+  min-height: clamp(22rem, calc(100dvh - 360px), 27rem);
+}
+
+@media (min-width: 40rem) {
+  .hub-carousel-card {
+    flex-basis: calc((100% - 1rem) / 2);
+  }
+}
+
+@media (min-width: 64rem) {
+  .hub-carousel-card {
+    flex-basis: calc((100% - 2rem) / 3);
+  }
 }
 
 .bookmark-tab {

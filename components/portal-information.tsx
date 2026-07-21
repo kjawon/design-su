@@ -9,7 +9,7 @@ const quickLinkStyles = [
 
 export function NoticeSection() {
   return (
-    <div className="rounded-2xl border border-border bg-card p-5 md:p-7">
+    <div className="min-w-0">
       <div className="flex items-center justify-between border-b border-border pb-4">
         <h2 className="text-xl font-extrabold text-text-primary">공지사항</h2>
         <a href="#" className="flex items-center gap-1 text-xs font-bold text-blue-primary hover:text-blue-dark">전체보기<ArrowRight className="size-3.5" /></a>
@@ -30,8 +30,8 @@ export function NoticeSection() {
 
 export function ContractQuickLinks() {
   return (
-    <div className="rounded-2xl border border-border bg-card p-5 md:p-7">
-      <h2 className="border-b border-border pb-4 text-xl font-extrabold text-text-primary">계약자료</h2>
+    <div className="min-w-0 lg:border-l lg:border-border lg:pl-8">
+      <h2 className="border-b border-border pb-4 text-xl font-extrabold text-text-primary">자주 찾는 정보</h2>
       <div className="mt-4 flex flex-col gap-3">
         {frequentlyUsed.slice(0, 3).map(({ title, description, icon: Icon }, index) => (
           <a href="#" key={title} className="group flex items-center gap-3 rounded-xl border border-border bg-card p-3.5 transition hover:-translate-y-0.5 hover:border-blue-primary/40 hover:bg-[#FBFDFF]">
@@ -50,8 +50,8 @@ export function ContractQuickLinks() {
 
 export function PortalInformation() {
   return (
-    <section className="border-t border-border bg-section py-12">
-      <div className="mx-auto grid max-w-[1200px] items-stretch gap-5 px-5 lg:grid-cols-[1.65fr_0.9fr] lg:px-8">
+    <section id="information" className="border-t border-border bg-card py-12 md:py-14">
+      <div className="mx-auto grid max-w-[1200px] items-stretch gap-8 px-5 lg:grid-cols-[1.65fr_0.9fr] lg:px-8">
         <NoticeSection />
         <ContractQuickLinks />
       </div>
