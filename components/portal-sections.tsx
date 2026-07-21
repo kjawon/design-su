@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react"
 import { ArrowRight, ChevronLeft, ChevronRight, Search } from "lucide-react"
-import contractDoctorImage from "@/계약박사.png"
+import contractDoctorImage from "@/계약박사 리뉴얼.png"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -49,37 +49,38 @@ export function HeroSection() {
     <section id="services" className="bg-background">
       <div className="mx-auto max-w-7xl px-5 pb-5 pt-6 lg:px-8 lg:pb-6">
         <div className="grid items-stretch gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(14rem,0.28fr)]">
-          <div className="brand-search flex rounded-2xl px-5 py-4 text-primary-foreground md:px-7 lg:col-start-1">
-            <div className="flex w-full flex-col justify-center gap-3">
-              <h1 className="text-xl font-extrabold tracking-tight md:text-2xl">성남시 계약정보, 한 번에 찾아보세요</h1>
-              <form className="brand-search-field flex min-w-0 items-center rounded-full bg-card p-1 pl-4 shadow-sm transition-shadow" onSubmit={(event) => event.preventDefault()}>
-                <select aria-label="검색 분야" className="h-9 shrink-0 border-0 bg-transparent pr-3 text-sm font-semibold text-foreground outline-none">
-                  <option>계약정보</option>
-                  <option>입찰정보</option>
-                  <option>대금지급</option>
-                </select>
-                <span className="mx-2 h-6 w-px bg-border" aria-hidden="true" />
-                <Input aria-label="계약 검색" placeholder="검색어를 입력해주세요." className="h-9 min-w-0 border-0 bg-transparent text-foreground shadow-none focus-visible:ring-0" />
-                <Button type="submit" size="icon-lg" aria-label="검색" className="size-10 shrink-0 rounded-full bg-blue-primary hover:bg-blue-dark"><Search className="size-5" /></Button>
-              </form>
+          <div className="brand-search flex flex-col overflow-hidden rounded-2xl text-primary-foreground lg:col-start-1">
+            <div className="flex px-5 py-4 md:px-7">
+              <div className="flex w-full flex-col justify-center gap-3 md:flex-row md:items-center md:gap-6">
+                <h1 className="shrink-0 text-xl font-extrabold tracking-tight md:whitespace-nowrap md:text-2xl">성남시 계약정보, 한 번에 찾아보세요</h1>
+                <form className="brand-search-field flex min-w-0 flex-1 items-center rounded-full bg-card p-1 pl-4 shadow-sm transition-shadow" onSubmit={(event) => event.preventDefault()}>
+                  <select aria-label="검색 분야" className="h-9 shrink-0 border-0 bg-transparent pr-3 text-sm font-semibold text-foreground outline-none">
+                    <option>계약정보</option>
+                    <option>입찰정보</option>
+                    <option>대금지급</option>
+                  </select>
+                  <span className="mx-2 h-6 w-px bg-border" aria-hidden="true" />
+                  <Input aria-label="계약 검색" placeholder="검색어를 입력해주세요." className="h-9 min-w-0 border-0 bg-transparent text-foreground shadow-none focus-visible:ring-0" />
+                  <Button type="submit" size="icon-lg" aria-label="검색" className="size-10 shrink-0 rounded-full bg-blue-primary hover:bg-blue-dark"><Search className="size-5" /></Button>
+                </form>
+              </div>
             </div>
-          </div>
-
-          <nav aria-label="계약 서비스 바로가기" className="grid grid-cols-2 gap-3 rounded-2xl bg-card py-3 sm:grid-cols-5 lg:col-start-1">
+            <nav aria-label="계약 서비스 바로가기" className="grid flex-1 grid-cols-2 gap-3 border-t border-blue-primary/20 bg-sky-light px-3 py-3 sm:grid-cols-5">
                 {services.map(({ title, description, icon: Icon }, index) => (
-                  <a key={title} href="#" aria-current={index === 1 ? "page" : undefined} title={description} className="service-shortcut group flex min-w-0 flex-col items-center gap-2 rounded-2xl border px-3 py-3 text-center transition-all hover:-translate-y-0.5">
+                  <a key={title} href="#" aria-current={index === 1 ? "page" : undefined} title={description} className="service-shortcut group flex min-w-0 flex-col items-center justify-center gap-2 rounded-2xl border px-3 py-3 text-center transition-all hover:-translate-y-0.5">
                     <span className="service-icon flex size-14 items-center justify-center rounded-full transition-transform group-hover:scale-105">
                       <Icon className="size-7" strokeWidth={1.8} />
                     </span>
                     <strong className="whitespace-nowrap text-xs font-bold text-text-primary">{title}</strong>
                   </a>
                 ))}
-          </nav>
+            </nav>
+          </div>
 
-          <aside className="flex min-h-72 flex-col items-center justify-center rounded-2xl border-2 border-[var(--ai-border)] bg-purple-light p-5 text-center shadow-[var(--shadow-chatbot)] lg:col-start-2 lg:row-span-2 lg:row-start-1">
+          <aside className="flex min-h-72 flex-col items-center justify-center rounded-2xl border-2 border-[var(--ai-border)] bg-purple-light p-5 text-center shadow-[var(--shadow-chatbot)] lg:col-start-2 lg:row-start-1">
             <img src={contractDoctorImage} alt="계약박사" className="w-full max-w-48 rounded-2xl object-contain" />
             <button type="button" onClick={openAssistant} className="ai-action mt-5 w-full rounded-xl px-4 py-3 text-sm font-bold text-primary-foreground transition-all hover:-translate-y-0.5">
-              계약박사에게 물어보기
+              AI계약박사에게 물어보기
             </button>
           </aside>
 
@@ -178,8 +179,8 @@ export function RecentContractsSection() {
 
   return (
     <section id="recent" className="bg-section">
-      <div className="mx-auto max-w-7xl px-5 py-12 lg:px-8">
-        <div className="mb-6 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+      <div className="mx-auto max-w-7xl px-5 py-6 lg:px-8">
+        <div className="mb-6 flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between sm:pr-[4.25rem]">
           <div>
             <h2 className="text-3xl font-bold tracking-tight">최근 계약 내역</h2>
             <p className="mt-2 text-sm text-text-secondary">오늘 체결된 최신 계약 데이터를 확인하세요.</p>

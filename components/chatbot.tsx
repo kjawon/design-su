@@ -2,7 +2,7 @@
 
 import { FormEvent, useEffect, useRef, useState } from "react"
 import { Mic, RefreshCw, Send, Sparkles } from "lucide-react"
-import contractDoctorImage from "@/계약박사.png"
+import contractDoctorImage from "@/계약박사 리뉴얼.png"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
@@ -31,8 +31,8 @@ export function Chatbot() {
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
-      <SheetTrigger render={<Button size="icon-lg" aria-label="계약박사 AI 챗봇 열기" className="fixed bottom-6 right-6 z-40 size-[4.75rem] overflow-hidden rounded-full border-2 border-ai-primary bg-card p-1.5 shadow-[var(--shadow-chatbot)] transition-all hover:-translate-y-0.5 hover:border-ai-secondary hover:bg-ai-light hover:shadow-[var(--shadow-chatbot-hover)] aria-expanded:bg-ai-primary aria-expanded:[&_img]:brightness-0 aria-expanded:[&_img]:invert" />}>
-        <img src={contractDoctorImage} alt="" className="size-full rounded-full object-contain" />
+      <SheetTrigger render={<Button size="icon-lg" aria-label="계약박사 AI 챗봇 열기" className="fixed bottom-6 right-6 z-40 size-[6.25rem] overflow-hidden rounded-full border-2 border-ai-primary bg-card p-4 shadow-[var(--shadow-chatbot)] transition-all hover:-translate-y-0.5 hover:border-ai-secondary hover:bg-ai-light hover:shadow-[var(--shadow-chatbot-hover)] aria-expanded:bg-ai-primary aria-expanded:[&_img]:brightness-0 aria-expanded:[&_img]:invert" />}>
+        <img src={contractDoctorImage} alt="" className="size-full object-contain" />
       </SheetTrigger>
       <SheetContent side="right" className="w-full gap-0 bg-page [&_[data-slot=sheet-close]]:text-primary-foreground [&_[data-slot=sheet-close]]:hover:bg-primary-foreground/10 [&_[data-slot=sheet-close]]:hover:text-primary-foreground sm:max-w-md" showCloseButton>
         <SheetHeader className="brand-chatbot-header border-b border-ai-primary px-5 py-4 text-primary-foreground">

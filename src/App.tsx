@@ -13,8 +13,8 @@ export function App() {
       <Header />
       <main>
         <HeroSection />
-        <RecentContractsSection />
         <InformationSections />
+        <RecentContractsSection />
       </main>
       <Footer />
       <Chatbot />
