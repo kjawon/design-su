@@ -25,6 +25,7 @@ function ContractCard({ contract, featured = false, compact = false }: { contrac
 export function HeroSection() {
   const [recentIndex, setRecentIndex] = useState(0)
   const [recentPaused, setRecentPaused] = useState(false)
+  const openAssistant = () => window.dispatchEvent(new Event("open-contract-assistant"))
 
   useEffect(() => {
     if (recentPaused) return
@@ -47,8 +48,8 @@ export function HeroSection() {
   return (
     <section id="services" className="bg-background">
       <div className="mx-auto max-w-7xl px-5 pb-5 pt-6 lg:px-8 lg:pb-6">
-        <div className="grid items-stretch gap-4">
-          <div className="brand-search flex rounded-2xl px-5 py-4 text-primary-foreground md:px-7">
+        <div className="grid items-stretch gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(14rem,0.28fr)]">
+          <div className="brand-search flex rounded-2xl px-5 py-4 text-primary-foreground md:px-7 lg:col-start-1">
             <div className="flex w-full flex-col justify-center gap-3">
               <h1 className="text-xl font-extrabold tracking-tight md:text-2xl">성남시 계약정보, 한 번에 찾아보세요</h1>
               <form className="brand-search-field flex min-w-0 items-center rounded-full bg-card p-1 pl-4 shadow-sm transition-shadow" onSubmit={(event) => event.preventDefault()}>
@@ -64,7 +65,7 @@ export function HeroSection() {
             </div>
           </div>
 
-          <nav aria-label="계약 서비스 바로가기" className="grid grid-cols-2 gap-3 rounded-2xl bg-card py-3 sm:grid-cols-5">
+          <nav aria-label="계약 서비스 바로가기" className="grid grid-cols-2 gap-3 rounded-2xl bg-card py-3 sm:grid-cols-5 lg:col-start-1">
                 {services.map(({ title, description, icon: Icon }, index) => (
                   <a key={title} href="#" aria-current={index === 1 ? "page" : undefined} title={description} className="service-shortcut group flex min-w-0 flex-col items-center gap-2 rounded-2xl border px-3 py-3 text-center transition-all hover:-translate-y-0.5">
                     <span className="service-icon flex size-14 items-center justify-center rounded-full transition-transform group-hover:scale-105">
@@ -74,6 +75,13 @@ export function HeroSection() {
                   </a>
                 ))}
           </nav>
+
+          <aside className="flex min-h-72 flex-col items-center justify-center rounded-2xl border-2 border-[var(--ai-border)] bg-purple-light p-5 text-center shadow-[var(--shadow-chatbot)] lg:col-start-2 lg:row-span-2 lg:row-start-1">
+            <img src={contractDoctorImage} alt="계약박사" className="w-full max-w-48 rounded-2xl object-contain" />
+            <button type="button" onClick={openAssistant} className="ai-action mt-5 w-full rounded-xl px-4 py-3 text-sm font-bold text-primary-foreground transition-all hover:-translate-y-0.5">
+              계약박사에게 물어보기
+            </button>
+          </aside>
 
           <aside className="hidden" aria-hidden="true" aria-label="최근 계약 내역" onMouseEnter={() => setRecentPaused(true)} onMouseLeave={() => setRecentPaused(false)}>
             <div className="mb-1 flex items-center justify-between gap-3">
@@ -238,11 +246,10 @@ export function InformationSections() {
   const featuredResources = frequentlyUsed
     .filter(({ title }) => title === "계약법규" || title === "계약서식")
     .sort((a) => (a.title === "계약법규" ? -1 : 1))
-  const openAssistant = () => window.dispatchEvent(new Event("open-contract-assistant"))
 
   return (
     <section className="border-t bg-card">
-      <div className="mx-auto grid max-w-7xl items-stretch gap-6 px-5 py-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(14rem,0.7fr)_minmax(13rem,0.55fr)] lg:px-8">
+      <div className="mx-auto grid max-w-7xl items-stretch gap-6 px-5 py-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(14rem,0.7fr)] lg:px-8">
         <div className="flex flex-col">
           <div className="mb-5 flex items-center justify-between">
             <h2 className="text-xl font-bold">공지사항</h2>
@@ -271,12 +278,6 @@ export function InformationSections() {
           ))}
         </div>
 
-        <aside className="flex min-h-72 flex-col items-center justify-center rounded-2xl border-2 border-[var(--ai-border)] bg-purple-light p-5 text-center shadow-[var(--shadow-chatbot)]">
-          <img src={contractDoctorImage} alt="계약박사" className="w-full max-w-48 rounded-2xl object-contain" />
-          <button type="button" onClick={openAssistant} className="ai-action mt-5 w-full rounded-xl px-4 py-3 text-sm font-bold text-primary-foreground transition-all hover:-translate-y-0.5">
-            계약박사에게 물어보기
-          </button>
-        </aside>
       </div>
     </section>
   )
