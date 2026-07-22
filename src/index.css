@@ -232,22 +232,19 @@ html {
   --brand-chatbot-gradient: linear-gradient(135deg, var(--primary-700) 0%, var(--purple-600) 100%);
   --ai-action-background: var(--primary-700);
   --ai-action-background-hover: var(--primary-600);
-  --resource-law-gradient: linear-gradient(135deg, var(--purple-dark) 0%, var(--purple-primary) 100%);
-  --resource-form-gradient: linear-gradient(135deg, var(--teal-600) 0%, var(--primary-600) 100%);
-  --ai-border: var(--purple-600);
   --shadow-contract-hover: 0 8px 20px rgba(24, 95, 168, 0.12);
   --shadow-chatbot: 0 8px 24px rgba(114, 89, 204, 0.18);
   --shadow-chatbot-hover: 0 10px 28px rgba(114, 89, 204, 0.24);
   --search-focus-ring: 0 0 0 3px rgba(35, 119, 195, 0.20);
-  --contract-construction-bg: #fff1f2;
-  --contract-construction-text: #dc2626;
-  --contract-construction-border: #ef4444;
-  --contract-service-bg: #eff6ff;
-  --contract-service-text: #1d4ed8;
-  --contract-service-border: #3b82f6;
-  --contract-goods-bg: #ecfdf3;
-  --contract-goods-text: #15803d;
-  --contract-goods-border: #22c55e;
+  --contract-construction-bg: #eb3d30;
+  --contract-construction-text: #ffffff;
+  --contract-construction-border: #b91c1c;
+  --contract-service-bg: #258beb;
+  --contract-service-text: #ffffff;
+  --contract-service-border: #1d4ed8;
+  --contract-goods-bg: #1ba316;
+  --contract-goods-text: #ffffff;
+  --contract-goods-border: #15803d;
   --radius: 0.625rem;
   --sidebar: var(--background-card);
   --sidebar-foreground: var(--text-primary);
@@ -497,132 +494,6 @@ main:focus {
   outline-color: var(--ai-fab-focus);
 }
 
-.service-shortcut {
-  background: var(--card-bg);
-  border-color: var(--border-default);
-  color: var(--text-main);
-}
-
-.service-shortcut:hover {
-  background: var(--primary-50);
-  border-color: var(--primary-600);
-}
-
-.service-shortcut[aria-current="page"] {
-  border-color: var(--purple-primary);
-  box-shadow: inset 0 0 0 1px var(--purple-primary), var(--shadow-contract-hover);
-}
-
-.service-shortcut:nth-child(1) .service-icon { background: var(--coral-50); color: var(--coral-600); }
-.service-shortcut:nth-child(2) .service-icon { background: var(--primary-50); color: var(--primary-700); }
-.service-shortcut:nth-child(3) .service-icon { background: var(--purple-50); color: var(--purple-600); }
-.service-shortcut:nth-child(4) .service-icon { background: var(--teal-50); color: var(--teal-600); }
-.service-shortcut:nth-child(5) .service-icon { background: var(--gray-100); color: var(--gray-700); }
-
-.contract-card:hover {
-  border-color: var(--border-hover);
-  box-shadow: var(--shadow-contract-hover);
-}
-
-.contract-data-card:hover {
-  box-shadow: var(--shadow-contract-hover);
-}
-
-.hub-carousel {
-  scrollbar-width: none;
-}
-
-.hub-tabs {
-  scrollbar-width: none;
-}
-
-.hub-tabs::-webkit-scrollbar {
-  display: none;
-}
-
-.hub-carousel::-webkit-scrollbar {
-  display: none;
-}
-
-.recent-contract-carousel {
-  scrollbar-width: none;
-}
-
-.recent-contract-carousel::-webkit-scrollbar {
-  display: none;
-}
-
-.recent-contract-slide {
-  flex: 0 0 calc(100% - 1rem);
-  scroll-snap-align: start;
-}
-
-@media (min-width: 40rem) {
-  .recent-contract-slide {
-    flex-basis: calc((100% - 1rem) / 2);
-  }
-}
-
-@media (min-width: 64rem) {
-  .recent-contract-slide {
-    flex-basis: calc((100% - 3rem) / 4);
-  }
-}
-
-.hub-carousel-card {
-  flex: 0 0 calc(100% - 2rem);
-  min-height: 11rem;
-  scroll-snap-align: start;
-}
-
-.hub-carousel-card-detailed {
-  min-height: clamp(22rem, calc(100dvh - 360px), 27rem);
-}
-
-@media (min-width: 40rem) {
-  .hub-carousel-card {
-    flex-basis: calc((100% - 1rem) / 2);
-  }
-}
-
-@media (min-width: 64rem) {
-  .hub-carousel-card {
-    flex-basis: calc((100% - 2rem) / 3);
-  }
-}
-
-.bookmark-tab {
-  background: var(--card-bg);
-  border-color: var(--border-default);
-  color: var(--text-main);
-  transition: border-color 180ms ease, background-color 180ms ease, color 180ms ease;
-}
-
-.bookmark-tab:hover {
-  background: var(--primary-50);
-  border-color: var(--primary-600);
-  color: var(--blue-primary);
-}
-
-.bookmark-tab[aria-selected="true"] {
-  background: var(--primary-100);
-  border-color: var(--blue-primary);
-  color: var(--blue-dark);
-}
-
-.bookmark-tab[aria-selected="true"]::after {
-  content: "";
-  position: absolute;
-  bottom: -0.45rem;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-left: 0.4rem solid transparent;
-  border-right: 0.4rem solid transparent;
-  border-top: 0.45rem solid var(--blue-primary);
-  transform: translateX(-50%);
-}
-
 .contract-tag[data-contract-type="공사"] {
   background: var(--contract-construction-bg);
   color: var(--contract-construction-text);
@@ -643,22 +514,6 @@ main:focus {
 
 .brand-chatbot-header {
   background: var(--brand-chatbot-gradient);
-}
-
-.resource-law {
-  background: var(--resource-law-gradient);
-}
-
-.resource-law:hover {
-  filter: brightness(0.97);
-}
-
-.resource-form {
-  background: var(--resource-form-gradient);
-}
-
-.resource-form:hover {
-  filter: brightness(1.03);
 }
 
 .ai-action {

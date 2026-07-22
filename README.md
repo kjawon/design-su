@@ -45,19 +45,22 @@ src/
   App.tsx        전체 화면의 구성 순서
   index.css      공통 스타일과 색상 설정
 components/
-  portal-header.tsx    상단 메뉴
-  portal-sections.tsx  메인 화면의 각 영역
-  portal-data.ts       화면에 표시하는 예시 데이터
-  chatbot.tsx          AI 도우미 디자인
-  ui/                  버튼, 카드, 입력창 등 공통 UI
+  portal-header.tsx       상단 메뉴
+  intro-section.tsx       소개 및 검색 영역
+  service-board.tsx       주요 서비스 영역
+  portal-information.tsx  최근 계약과 자주 찾는 정보 영역
+  portal-data.ts          화면에 표시하는 예시 데이터
+  chatbot.tsx             AI 도우미 디자인
+  ui/                     버튼, 배지, 입력창 등 공통 UI
 public/                브라우저 파비콘
 ```
 
 ## 화면 내용을 수정하려면
 
-- 계약, 공지, 서비스 문구: `components/portal-data.ts`
+- 최근 계약과 자주 찾는 정보 문구: `components/portal-data.ts`
 - 상단 메뉴: `components/portal-header.tsx`
-- 메인 화면 구성: `components/portal-sections.tsx`
+- 메인 화면 구성 순서: `src/App.tsx`
+- 주요 서비스 카드: `components/service-board.tsx`
 - 챗봇 화면: `components/chatbot.tsx`
 - 색상과 전체 스타일: `src/index.css`
 

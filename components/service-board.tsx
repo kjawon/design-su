@@ -34,11 +34,10 @@ const services: ServiceItem[] = [
 
 export function ServiceBoard() {
   return (
-    <section id="services" aria-labelledby="services-title" className="bg-section pb-12 pt-6 md:pb-14 md:pt-7">
+    <section id="services" aria-labelledby="services-title" className="bg-section pb-12 pt-4 md:pb-19 md:pt-5">
       <div className="mx-auto max-w-[1400px] px-5 lg:px-8">
         <div className="mb-7">
-          <p className="text-xs font-bold tracking-[0.14em] text-blue-dark">MAIN SERVICES</p>
-          <h2 id="services-title" className="mt-1 text-2xl font-extrabold tracking-tight text-text-primary md:text-3xl">주요 서비스</h2>
+          <h2 id="services-title" className="text-2xl font-extrabold tracking-tight text-text-primary md:text-3xl">주요 서비스</h2>
         </div>
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           {services.map((service) => <ServiceCard key={service.title} service={service} />)}

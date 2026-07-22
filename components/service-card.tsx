@@ -20,7 +20,7 @@ export function ServiceCard({ service }: { service: ServiceItem }) {
           <Icon className="size-[29px]" strokeWidth={1.9} aria-hidden="true" />
         </span>
       </header>
-      <p className="service-card__description service-card-description mt-[16px] min-h-[72px] text-[16px]">{service.description}</p>
+      <p className="service-card__description service-card-description mt-[16px] min-h-[72px] whitespace-pre-line text-[16px]">{service.description}</p>
       <div className="service-card__menu mt-[16px] min-h-[64px]">
         <span className="service-card__menu-label block text-[18px] font-bold text-gray-500">주요 메뉴</span>
         <nav className="service-card__menu-links mt-1 flex min-h-[44px] flex-wrap items-center gap-x-4 gap-y-1 text-left" aria-label={`${service.title} 주요 메뉴`}>
