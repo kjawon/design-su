@@ -29,7 +29,7 @@ export function ContractSearchPanel({ onSearch }: { onSearch: (search: ContractS
               <p className="mt-2 text-sm leading-relaxed text-text-secondary">계약명, 업체명, 기간 또는 금액 조건으로 원하는 계약정보를 찾아보세요.</p>
             </div>
             <form onSubmit={submit} className="flex min-w-0 flex-1 flex-col gap-2 sm:flex-row lg:max-w-[36rem]">
-              <div className="flex min-w-0 flex-1 items-center rounded-xl border border-border bg-[#F8FBFE] p-1 transition focus-within:border-blue-primary focus-within:ring-2 focus-within:ring-blue-primary/15">
+              <div className="flex min-w-0 flex-1 items-center rounded-xl border border-border bg-primary-50 p-1 transition focus-within:border-primary-600 focus-within:ring-2 focus-within:ring-primary-600/20">
                 <select value={field} onChange={(event) => setField(event.target.value as ContractSearch["field"])} aria-label="검색 유형" className="h-10 shrink-0 border-0 bg-transparent pl-3 pr-3 text-xs font-semibold text-text-primary outline-none">
                   <option value="전체">통합검색</option>
                   <option value="계약명">계약명</option>

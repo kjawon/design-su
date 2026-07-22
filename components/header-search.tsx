@@ -36,7 +36,7 @@ export function CollapsibleSearchPanel({ open, onClose }: { open: boolean; onClo
       <div className="overflow-hidden">
         <div className="border-y border-border bg-card px-5 py-4">
           <form onSubmit={submit} className="mx-auto flex max-w-[720px] flex-col gap-2 sm:flex-row">
-            <Input ref={inputRef} value={query} onChange={(event) => setQuery(event.target.value)} tabIndex={open ? 0 : -1} aria-label="계약 검색어" placeholder="계약명 또는 업체명을 입력하세요." className="h-12 rounded-xl bg-[#F8FBFE] px-4" />
+            <Input ref={inputRef} value={query} onChange={(event) => setQuery(event.target.value)} tabIndex={open ? 0 : -1} aria-label="계약 검색어" placeholder="계약명 또는 업체명을 입력하세요." className="h-12 rounded-xl bg-primary-50 px-4" />
             <Button type="submit" tabIndex={open ? 0 : -1} className="h-12 rounded-xl px-6"><Search className="size-4" />검색</Button>
             <Button type="button" tabIndex={open ? 0 : -1} variant="ghost" size="icon" aria-label="검색 패널 닫기" onClick={onClose} className="hidden size-12 sm:inline-flex"><X /></Button>
           </form>

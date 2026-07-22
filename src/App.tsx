@@ -1,14 +1,18 @@
 import { Chatbot } from "@/components/chatbot"
+import { IntroSection } from "@/components/intro-section"
 import { Footer } from "@/components/portal-footer"
 import { Header } from "@/components/portal-header"
+import { PortalInformation } from "@/components/portal-information"
 import { ServiceBoard } from "@/components/service-board"
 
 export function App() {
   return (
     <>
       <Header />
-      <main>
+      <main id="main-content" tabIndex={-1}>
+        <IntroSection />
         <ServiceBoard />
+        <PortalInformation />
       </main>
       <Footer />
       <Chatbot />

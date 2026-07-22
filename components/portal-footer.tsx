@@ -1,7 +1,7 @@
 export function Footer() {
   return (
     <footer className="bg-text-primary text-primary-foreground">
-      <div className="mx-auto flex max-w-[1530px] flex-col items-center gap-5 px-5 py-10 text-center lg:px-8">
+      <div className="mx-auto flex max-w-[1400px] flex-col items-center gap-5 px-5 py-10 text-center lg:px-8">
         <strong className="text-lg">성남시청</strong>
         <nav className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs text-footer-text">
           <a href="#" className="hover:text-ai-secondary">개인정보처리방침</a>

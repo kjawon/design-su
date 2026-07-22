@@ -5,7 +5,7 @@ import { Mic, RefreshCw, Send, Sparkles } from "lucide-react"
 import contractDoctorImage from "@/계약박사 리뉴얼.png"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet"
 
 const suggestions = ["최근 3개월 성남시 최대 계약은?", "IT·정보화 사업 입찰 현황 알려줘", "2026년 정보화 분야 최대 규모 계약", "분당구 도시재생 관련 진행중인 사업"]
 type Message = { role: "user" | "assistant"; content: string }
@@ -15,12 +15,22 @@ export function Chatbot() {
   const [input, setInput] = useState("")
   const [messages, setMessages] = useState<Message[]>([])
   const inputRef = useRef<HTMLInputElement>(null)
+  const triggerRef = useRef<HTMLElement | null>(null)
 
   useEffect(() => {
-    const openAssistant = () => setOpen(true)
+    const openAssistant = (event: Event) => {
+      const customEvent = event as CustomEvent<{ trigger?: HTMLElement }>
+      triggerRef.current = customEvent.detail?.trigger ?? document.activeElement as HTMLElement
+      setOpen(true)
+    }
     window.addEventListener("open-contract-assistant", openAssistant)
     return () => window.removeEventListener("open-contract-assistant", openAssistant)
   }, [])
+
+  const changeOpen = (nextOpen: boolean) => {
+    setOpen(nextOpen)
+    if (!nextOpen) window.requestAnimationFrame(() => triggerRef.current?.focus())
+  }
 
   const send = (text: string) => {
     if (!text.trim()) return
@@ -30,11 +40,8 @@ export function Chatbot() {
   const submit = (event: FormEvent) => { event.preventDefault(); send(input) }
 
   return (
-    <Sheet open={open} onOpenChange={setOpen}>
-      <SheetTrigger render={<Button size="icon-lg" aria-label="계약박사 AI 챗봇 열기" className="fixed bottom-4 right-4 z-40 size-[96px] overflow-hidden rounded-full border-2 border-ai-primary bg-card p-4 shadow-[var(--shadow-chatbot)] transition-all hover:-translate-y-0.5 hover:border-ai-secondary hover:bg-ai-light hover:shadow-[var(--shadow-chatbot-hover)] aria-expanded:bg-ai-primary aria-expanded:[&_img]:brightness-0 aria-expanded:[&_img]:invert sm:bottom-6 sm:right-6 sm:size-[112px] sm:p-5" />}>
-        <img src={contractDoctorImage} alt="" className="size-full object-contain" />
-      </SheetTrigger>
-      <SheetContent side="right" className="w-full gap-0 bg-page [&_[data-slot=sheet-close]]:text-primary-foreground [&_[data-slot=sheet-close]]:hover:bg-primary-foreground/10 [&_[data-slot=sheet-close]]:hover:text-primary-foreground sm:max-w-md" showCloseButton>
+    <Sheet open={open} onOpenChange={changeOpen}>
+      <SheetContent initialFocus={inputRef} finalFocus={() => triggerRef.current} side="right" className="w-full gap-0 bg-section [&_[data-slot=sheet-close]]:text-primary-foreground [&_[data-slot=sheet-close]]:hover:bg-primary-foreground/10 [&_[data-slot=sheet-close]]:hover:text-primary-foreground sm:max-w-md" showCloseButton>
         <SheetHeader className="brand-chatbot-header border-b border-ai-primary px-5 py-4 text-primary-foreground">
           <div className="flex items-center gap-3"><span className="flex size-12 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-primary-foreground/30 bg-card"><img src={contractDoctorImage} alt="계약박사 로고" className="size-full object-contain" /></span><div><SheetTitle className="font-bold text-primary-foreground">계약박사</SheetTitle><SheetDescription className="mt-0.5 flex items-center gap-1.5 text-xs text-primary-foreground/75"><span className="size-1.5 rounded-full bg-success" />AI 계약정보 상담 · 온라인</SheetDescription></div><Button variant="ghost" size="icon-sm" aria-label="대화 새로고침" className="ml-auto mr-8 text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground" onClick={() => setMessages([])}><RefreshCw /></Button></div>
         </SheetHeader>

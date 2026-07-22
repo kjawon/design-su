@@ -70,7 +70,7 @@ export function RecentContractCarousel({ search }: { search: SearchRequest }) {
         <div className="flex flex-wrap items-center gap-2 self-start sm:self-auto">
           <div role="tablist" aria-label="계약 유형 필터" className="flex rounded-xl border border-border bg-card p-1">
             {filters.map((item) => (
-              <button key={item} type="button" role="tab" aria-selected={filter === item} onClick={() => setFilter(item)} className={filter === item ? "rounded-lg bg-blue-primary px-4 py-2 text-xs font-bold text-primary-foreground" : "rounded-lg px-4 py-2 text-xs font-semibold text-text-secondary transition hover:bg-[#EAF4FD] hover:text-blue-primary"}>{item}</button>
+              <button key={item} type="button" role="tab" aria-selected={filter === item} onClick={() => setFilter(item)} className={filter === item ? "rounded-lg bg-primary-700 px-4 py-2 text-xs font-bold text-white" : "rounded-lg px-4 py-2 text-xs font-semibold text-gray-700 transition hover:bg-primary-50 hover:text-primary-700"}>{item}</button>
             ))}
           </div>
           <div className="flex gap-1">
@@ -93,7 +93,7 @@ export function RecentContractCarousel({ search }: { search: SearchRequest }) {
           </div>
 
           <div className="mt-5 flex justify-center gap-2" aria-label="최근 계약 위치">
-            {visible.map((contract, index) => <span key={contract.title} className={activeIndex === index ? "h-2.5 w-7 rounded-full bg-blue-dark transition-all" : "size-2.5 rounded-full bg-sky-primary transition-all"} />)}
+            {visible.map((contract, index) => <span key={contract.title} className={activeIndex === index ? "h-2.5 w-7 rounded-full bg-primary-700 transition-all" : "size-2.5 rounded-full bg-primary-100 transition-all"} />)}
           </div>
         </>
       ) : (
@@ -101,7 +101,7 @@ export function RecentContractCarousel({ search }: { search: SearchRequest }) {
       )}
 
       <div className="mt-6 flex justify-center">
-        <Button variant="outline" className="border-blue-primary/40 bg-card text-blue-dark hover:bg-[#EAF4FD]">전체 계약 내역 더보기<ArrowRight className="size-4" /></Button>
+        <Button variant="outline" className="border-primary-600 bg-white text-primary-700 hover:bg-primary-50">전체 계약 내역 더보기<ArrowRight className="size-4" /></Button>
       </div>
     </section>
   )

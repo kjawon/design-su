@@ -72,7 +72,7 @@ function SheetContent({
           >
             <XIcon
             />
-            <span className="sr-only">Close</span>
+            <span className="sr-only">대화창 닫기</span>
           </SheetPrimitive.Close>
         )}
       </SheetPrimitive.Popup>

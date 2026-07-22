@@ -65,7 +65,7 @@ export function HeroSection() {
                 </form>
               </div>
             </div>
-            <nav aria-label="계약 서비스 바로가기" className="grid flex-1 grid-cols-2 gap-3 border-t border-blue-primary/20 bg-sky-light px-3 py-3 sm:grid-cols-5">
+            <nav aria-label="계약 서비스 바로가기" className="grid flex-1 grid-cols-2 gap-3 border-t border-primary-600/20 bg-primary-50 px-3 py-3 sm:grid-cols-5">
                 {services.map(({ title, description, icon: Icon }, index) => (
                   <a key={title} href="#" aria-current={index === 1 ? "page" : undefined} title={description} className="service-shortcut group flex min-w-0 flex-col items-center justify-center gap-2 rounded-2xl border px-3 py-3 text-center transition-all hover:-translate-y-0.5">
                     <span className="service-icon flex size-14 items-center justify-center rounded-full transition-transform group-hover:scale-105">
