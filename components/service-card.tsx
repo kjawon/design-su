@@ -22,10 +22,10 @@ export function ServiceCard({ service }: { service: ServiceItem }) {
       </header>
       <p className="service-card__description service-card-description mt-[16px] min-h-[72px] text-[16px]">{service.description}</p>
       <div className="service-card__menu mt-[16px] min-h-[64px]">
-        <span className="service-card__menu-label block text-[15px] font-bold text-gray-500">주요 메뉴</span>
+        <span className="service-card__menu-label block text-[18px] font-bold text-gray-500">주요 메뉴</span>
         <nav className="service-card__menu-links mt-1 flex min-h-[44px] flex-wrap items-center gap-x-4 gap-y-1 text-left" aria-label={`${service.title} 주요 메뉴`}>
           {service.links.map((link) => (
-            <a key={link} href="#information" className="service-sub-link inline-flex min-h-[44px] items-center whitespace-nowrap text-[15px] font-semibold">
+            <a key={link} href="#information" className="service-sub-link inline-flex min-h-[44px] items-center whitespace-nowrap text-[18px] font-semibold">
               {link}
             </a>
           ))}

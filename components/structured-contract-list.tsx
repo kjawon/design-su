@@ -21,7 +21,7 @@ export function StructuredContractList() {
             <li key={`${title}-${index}`} className="border-b border-gray-300 last:border-0">
               <div className="contract-list-row grid min-h-14 grid-cols-[auto_1fr] items-center gap-x-3 gap-y-2 rounded-md px-2 py-3 sm:grid-cols-[4rem_minmax(0,1fr)_8.5rem_6rem]">
                 <Badge data-contract-type={type} className="contract-tag w-fit shrink-0 px-2.5 py-1 text-sm font-bold leading-none">{type}</Badge>
-                <a href="#" className="krds-contract-link min-w-0 font-medium text-text-primary sm:truncate" aria-label={`${title} 계약 상세보기`}>
+                <a href="#" className="krds-contract-link min-w-0 text-[18px] font-medium text-text-primary sm:truncate" aria-label={`${title} 계약 상세보기`}>
                   {title}
                 </a>
                 <strong className="w-full text-right text-sm text-primary-700 max-sm:col-start-2">{amount}</strong>

@@ -26,7 +26,7 @@ const services: ServiceItem[] = [
   {
     title: "계약자료",
     description: "계약업무에 필요한 법규·서식과 관련 기관 정보를 확인하세요.",
-    links: ["계약법규", "계약서식", "관련사이트"],
+    links: ["계약법규", "계약서식"],
     icon: Files,
     tone: "teal",
   },

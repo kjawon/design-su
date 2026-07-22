@@ -239,15 +239,15 @@ html {
   --shadow-chatbot: 0 8px 24px rgba(114, 89, 204, 0.18);
   --shadow-chatbot-hover: 0 10px 28px rgba(114, 89, 204, 0.24);
   --search-focus-ring: 0 0 0 3px rgba(35, 119, 195, 0.20);
-  --contract-construction-bg: var(--primary-100);
-  --contract-construction-text: var(--primary-700);
-  --contract-construction-border: var(--primary-600);
-  --contract-service-bg: var(--purple-100);
-  --contract-service-text: var(--purple-600);
-  --contract-service-border: var(--purple-600);
-  --contract-goods-bg: var(--coral-100);
-  --contract-goods-text: var(--coral-600);
-  --contract-goods-border: var(--coral-600);
+  --contract-construction-bg: #fff1f2;
+  --contract-construction-text: #dc2626;
+  --contract-construction-border: #ef4444;
+  --contract-service-bg: #eff6ff;
+  --contract-service-text: #1d4ed8;
+  --contract-service-border: #3b82f6;
+  --contract-goods-bg: #ecfdf3;
+  --contract-goods-text: #15803d;
+  --contract-goods-border: #22c55e;
   --radius: 0.625rem;
   --sidebar: var(--background-card);
   --sidebar-foreground: var(--text-primary);
@@ -400,6 +400,10 @@ main:focus {
 .service-card-link,
 .service-sub-link {
   color: var(--service-point);
+}
+
+.service-card-link {
+  color: #084679;
 }
 
 .service-card-description {
