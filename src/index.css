@@ -264,6 +264,32 @@ html {
   box-shadow: var(--search-focus-ring);
 }
 
+.portal-search-field:focus-visible {
+  outline: none;
+}
+
+.portal-search-options {
+  transform-origin: top;
+  animation: portal-search-options-open 160ms cubic-bezier(0.2, 0, 0, 1);
+}
+
+@keyframes portal-search-options-open {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scaleY(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portal-search-options {
+    animation: none;
+  }
+}
+
 .skip-link {
   position: fixed;
   top: 0.5rem;
@@ -297,7 +323,7 @@ main:focus {
   height: 350px;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .portal-hero-content {
@@ -354,26 +380,26 @@ main:focus {
   }
 }
 
-.seongnam-symbol {
+.gapyeong-symbol {
   position: relative;
   display: block;
   flex: none;
   overflow: hidden;
 }
 
-.seongnam-symbol {
+.gapyeong-symbol {
   width: 54px;
   height: 54px;
 }
 
-.seongnam-symbol img {
+.gapyeong-symbol img {
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
 
 @media (max-width: 40rem) {
-  .seongnam-symbol {
+  .gapyeong-symbol {
     width: 46px;
     height: 46px;
   }
@@ -384,6 +410,9 @@ main:focus {
   border-color: var(--service-border);
   border-top-color: var(--service-point);
   background: var(--service-bg);
+  --accent-soft-1: color-mix(in srgb, var(--service-point) 11%, transparent);
+  --accent-soft-2: color-mix(in srgb, var(--service-point) 19%, transparent);
+  --accent-soft-3: color-mix(in srgb, var(--service-point) 27%, transparent);
 }
 
 .service-card:hover,
@@ -403,17 +432,97 @@ main:focus {
   color: #084679;
 }
 
+.service-card-link-icon {
+  border-color: rgba(8, 70, 121, 0.24);
+  background: rgba(255, 255, 255, 0.62);
+  transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
 .service-card-description {
   color: var(--service-description);
   line-height: 1.6;
 }
 
-.service-card-link:hover,
-.service-card-link:focus-visible,
+.service-sub-link {
+  position: relative;
+  isolation: isolate;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  text-decoration: none;
+  text-shadow: none;
+  transition: transform 160ms ease;
+}
+
+.service-sub-link::before,
+.service-sub-link::after {
+  position: absolute;
+  z-index: -1;
+  display: block;
+  content: "";
+  pointer-events: none;
+  transform-origin: center;
+  transition: opacity 160ms ease;
+}
+
+.service-sub-link::before {
+  right: -2px;
+  bottom: 5px;
+  left: -2px;
+  height: 0.56em;
+  background:
+    linear-gradient(
+      178deg,
+      var(--accent-soft-1) 0%,
+      var(--accent-soft-2) 26%,
+      var(--accent-soft-1) 51%,
+      var(--accent-soft-2) 74%,
+      var(--accent-soft-1) 100%
+    ),
+    linear-gradient(
+      90deg,
+      var(--accent-soft-1) 0%,
+      var(--accent-soft-2) 38%,
+      var(--accent-soft-1) 67%,
+      var(--accent-soft-1) 100%
+    );
+  clip-path: polygon(0 15%, 13% 10%, 25% 14%, 38% 9%, 50% 13%, 63% 10%, 76% 14%, 89% 9%, 100% 13%, 100% 88%, 88% 92%, 75% 87%, 62% 93%, 50% 89%, 37% 94%, 24% 88%, 12% 93%, 0 87%);
+  filter: blur(0.2px);
+  opacity: 0.78;
+  transform: rotate(-0.4deg);
+  -webkit-mask-image: url("/crayon-stroke.svg");
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-image: url("/crayon-stroke.svg");
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+}
+
+.service-sub-link::after {
+  display: none;
+  content: none;
+}
+
 .service-sub-link:hover,
 .service-sub-link:focus-visible {
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
+  transform: translateY(-1px);
+}
+
+.service-sub-link:hover::before,
+.service-sub-link:focus-visible::before {
+  opacity: 1;
+}
+
+.service-card-link:hover,
+.service-card-link:focus-visible {
+  text-decoration: none;
+}
+
+.service-card-link:hover .service-card-link-icon,
+.service-card-link:focus-visible .service-card-link-icon {
+  border-color: rgba(8, 70, 121, 0.38);
+  background: rgba(255, 255, 255, 0.94);
+  transform: translateX(3px);
 }
 
 .service-card[data-service-tone="coral"] {
@@ -449,6 +558,27 @@ main:focus {
 .contract-list-row:has(.krds-contract-link:hover),
 .contract-list-row:has(.krds-contract-link:focus-visible) {
   background: var(--section-background);
+}
+
+.recent-list-enter {
+  animation: recent-list-enter 150ms ease-out;
+}
+
+@keyframes recent-list-enter {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .recent-list-enter {
+    animation: none;
+  }
 }
 
 .quick-link:hover,
@@ -510,6 +640,50 @@ main:focus {
   background: var(--contract-goods-bg);
   color: var(--contract-goods-text);
   box-shadow: inset 0 0 0 1px var(--contract-goods-border);
+}
+
+.payment-tag[data-payment-type="준공"] {
+  background: #2f8a83;
+  color: var(--white);
+  box-shadow: inset 0 0 0 1px #24736d;
+}
+
+.payment-tag[data-payment-type="기성"] {
+  background: var(--primary-600);
+  color: var(--white);
+  box-shadow: inset 0 0 0 1px var(--primary-700);
+}
+
+.payment-tag[data-payment-type="선금"] {
+  background: var(--purple-600);
+  color: var(--white);
+  box-shadow: inset 0 0 0 1px #6048b6;
+}
+
+.payment-tag:not([data-payment-type="준공"]):not([data-payment-type="기성"]):not([data-payment-type="선금"]) {
+  background: var(--gray-500);
+  color: var(--white);
+  box-shadow: inset 0 0 0 1px var(--gray-700);
+}
+
+.notice-tag[data-notice-type="안내"] {
+  background: #eaf3ff;
+  color: #155fc2;
+}
+
+.notice-tag[data-notice-type="공고"] {
+  background: #fff0df;
+  color: #b45309;
+}
+
+.notice-tag[data-notice-type="자료"] {
+  background: #f1edff;
+  color: #6548bd;
+}
+
+.notice-tag:not([data-notice-type="안내"]):not([data-notice-type="공고"]):not([data-notice-type="자료"]) {
+  background: var(--gray-100);
+  color: var(--gray-700);
 }
 
 .brand-chatbot-header {

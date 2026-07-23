@@ -6,6 +6,10 @@ import { PortalInformation } from "@/components/portal-information"
 import { ServiceBoard } from "@/components/service-board"
 
 export function App() {
+  const isChatbotWindow = new URLSearchParams(window.location.search).get("chatbot") === "popup"
+
+  if (isChatbotWindow) return <Chatbot windowMode />
+
   return (
     <>
       <Header />

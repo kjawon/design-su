@@ -10,8 +10,8 @@ const quickLinks = [
 export function QuickLinks() {
   return (
     <section aria-labelledby="quick-links-title" className="flex min-w-0 flex-col lg:col-span-1">
-      <div className="flex h-14 items-center border-b border-border">
-        <h2 id="quick-links-title" className="text-xl font-extrabold text-text-primary">자주 찾는 정보</h2>
+      <div className="flex h-14 items-start border-b border-border py-2">
+        <h2 id="quick-links-title" className="text-xl font-extrabold text-text-primary sm:translate-y-[12px]">자주 찾는 정보</h2>
       </div>
       <ul className="mt-4 flex flex-col gap-3">
         {quickLinks.map(({ title, description, icon: Icon }, index) => (
