@@ -467,7 +467,7 @@ main:focus {
 
 .service-sub-link::before {
   right: -2px;
-  bottom: 5px;
+  bottom: 3px;
   left: -2px;
   height: 0.56em;
   background:

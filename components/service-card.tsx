@@ -24,7 +24,7 @@ export function ServiceCard({ service }: { service: ServiceItem }) {
       <div className="service-card__menu min-h-0 bg-transparent pb-[10px] pt-[23px]">
         <nav className="service-card__menu-links flex flex-wrap gap-x-4 gap-y-[10px] text-left" aria-label={`${service.title} 주요 메뉴`}>
           {service.links.map((link) => (
-            <a key={link} href="#information" className="service-sub-link inline-flex min-h-[30px] w-auto min-w-0 items-center whitespace-nowrap text-[15px] font-bold">
+            <a key={link} href="#information" className="service-sub-link inline-flex min-h-[30px] w-auto min-w-0 items-center whitespace-nowrap text-[16px] font-bold">
               {link}
             </a>
           ))}
