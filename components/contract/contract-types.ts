@@ -1,0 +1,33 @@
+export type ContractType = "공사" | "용역" | "물품"
+
+export type ContractRecord = {
+  id: number
+  type: ContractType
+  office: string
+  title: string
+  amount: number
+  date: string
+  contractor: string
+}
+
+export type ContractFilters = {
+  office: string
+  company: string
+  title: string
+  minAmount: string
+  maxAmount: string
+  startDate: string
+  endDate: string
+}
+
+export type CompletionRecord = {
+  id: number
+  title: string
+  office: string
+  amount: number
+  contractDate: string
+  startDate: string
+  deadlineDate: string
+  completionDate: string
+  inspectionDate: string
+}

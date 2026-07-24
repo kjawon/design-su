@@ -17,7 +17,6 @@ export function Chatbot({ windowMode = false }: { windowMode?: boolean }) {
   useEffect(() => {
     if (windowMode) {
       document.title = "AI 계약박사"
-      window.requestAnimationFrame(() => inputRef.current?.focus())
       return
     }
 
@@ -97,7 +96,7 @@ export function Chatbot({ windowMode = false }: { windowMode?: boolean }) {
             </div>
             <div className="flex w-full flex-col gap-[8px]">
               {suggestions.map((question) => (
-                <button key={question} onClick={() => { send(question); inputRef.current?.focus() }} className="rounded-xl border border-border bg-card px-[14px] py-[10px] text-left text-[14px] text-text-primary transition-colors hover:border-ai-secondary hover:bg-ai-light sm:px-4 sm:py-3 sm:text-sm">
+                <button key={question} onClick={() => send(question)} className="rounded-xl border border-border bg-card px-[14px] py-[10px] text-left text-[14px] text-text-primary transition-colors hover:border-ai-secondary hover:bg-ai-light sm:px-4 sm:py-3 sm:text-sm">
                   {question}
                 </button>
               ))}

@@ -1,17 +1,19 @@
 import { Chatbot } from "@/components/chatbot"
-import { ContractStatusPage } from "@/components/contract-status/contract-status-page"
+import { ContractPage } from "@/components/contract/contract-page"
+import { getContractPageConfig } from "@/components/contract/contract-page-config"
 import { IntroSection } from "@/components/intro-section"
 import { Footer } from "@/components/portal-footer"
-import { Header } from "@/components/portal-header"
+import { Header } from "@/components/navigation/portal-header"
 import { PortalInformation } from "@/components/portal-information"
 import { ServiceBoard } from "@/components/service-board"
 
 export function App() {
   const isChatbotWindow = new URLSearchParams(window.location.search).get("chatbot") === "popup"
   const currentPath = window.location.pathname.replace(/\/+$/, "") || "/"
+  const contractPageConfig = getContractPageConfig(currentPath)
 
   if (isChatbotWindow) return <Chatbot windowMode />
-  if (currentPath === "/contract/status") return <ContractStatusPage />
+  if (contractPageConfig) return <ContractPage config={contractPageConfig} />
 
   return (
     <>

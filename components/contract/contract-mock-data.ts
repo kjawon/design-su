@@ -1,24 +1,8 @@
-export type ContractType = "공사" | "용역" | "물품"
-
-export type ContractRecord = {
-  id: number
-  type: ContractType
-  office: string
-  title: string
-  amount: number
-  date: string
-  contractor: string
-}
-
-export type ContractFilters = {
-  office: string
-  company: string
-  title: string
-  minAmount: string
-  maxAmount: string
-  startDate: string
-  endDate: string
-}
+import type {
+  CompletionRecord,
+  ContractFilters,
+  ContractRecord,
+} from "@/components/contract/contract-types"
 
 export const EMPTY_CONTRACT_FILTERS: ContractFilters = {
   office: "전체",
@@ -29,8 +13,6 @@ export const EMPTY_CONTRACT_FILTERS: ContractFilters = {
   startDate: "",
   endDate: "",
 }
-
-export const TOTAL_CONTRACTS = 4352
 
 export const CONTRACT_RECORDS: ContractRecord[] = [
   {
@@ -140,5 +122,52 @@ export const CONTRACT_RECORDS: ContractRecord[] = [
     amount: 118300000,
     date: "2026-03-04",
     contractor: "주식회사 우리건설",
+  },
+]
+
+export const COMPLETION_RECORDS: CompletionRecord[] = [
+  {
+    id: 236,
+    title: "청평면 생활도로 확장 및 포장 공사",
+    office: "건설도시과",
+    amount: 1245600000,
+    contractDate: "2025-10-18",
+    startDate: "2025-11-01",
+    deadlineDate: "2026-03-31",
+    completionDate: "2026-03-22",
+    inspectionDate: "2026-03-25",
+  },
+  {
+    id: 235,
+    title: "북면 급수관로 정비공사",
+    office: "상하수도사업소",
+    amount: 672400000,
+    contractDate: "2025-11-04",
+    startDate: "2025-11-15",
+    deadlineDate: "2026-03-20",
+    completionDate: "2026-03-16",
+    inspectionDate: "2026-03-19",
+  },
+  {
+    id: 234,
+    title: "조종천 생태하천 산책로 정비공사",
+    office: "환경정책과",
+    amount: 358700000,
+    contractDate: "2025-12-02",
+    startDate: "2025-12-12",
+    deadlineDate: "2026-03-15",
+    completionDate: "2026-03-10",
+    inspectionDate: "2026-03-13",
+  },
+  {
+    id: 233,
+    title: "설악면 행정복지센터 주차장 개선공사",
+    office: "설악면",
+    amount: 118300000,
+    contractDate: "2025-12-18",
+    startDate: "2026-01-03",
+    deadlineDate: "2026-03-10",
+    completionDate: "2026-03-04",
+    inspectionDate: "2026-03-06",
   },
 ]
