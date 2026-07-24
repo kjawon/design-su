@@ -87,11 +87,14 @@ function createDisplayRecords<RecordType extends { id: number }>(
 }
 
 export function ContractPage({ config }: { config: ContractPageConfig }) {
-  const [filters, setFilters] = useState<ContractFilters>(EMPTY_CONTRACT_FILTERS)
+  const [filters, setFilters] = useState<ContractFilters>(() => ({
+    ...EMPTY_CONTRACT_FILTERS,
+  }))
   const [appliedFilters, setAppliedFilters] =
-    useState<ContractFilters>(EMPTY_CONTRACT_FILTERS)
+    useState<ContractFilters>(() => ({ ...EMPTY_CONTRACT_FILTERS }))
   const [page, setPage] = useState(1)
   const [pageSize, setPageSize] = useState(10)
+  const [formVersion, setFormVersion] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState("")
   const searchTimerRef = useRef<number | null>(null)
@@ -159,11 +162,12 @@ export function ContractPage({ config }: { config: ContractPageConfig }) {
   const resetFilters = () => {
     if (searchTimerRef.current !== null) window.clearTimeout(searchTimerRef.current)
     searchTimerRef.current = null
-    setFilters(EMPTY_CONTRACT_FILTERS)
-    setAppliedFilters(EMPTY_CONTRACT_FILTERS)
+    setFilters({ ...EMPTY_CONTRACT_FILTERS })
+    setAppliedFilters({ ...EMPTY_CONTRACT_FILTERS })
     setErrorMessage("")
     setIsLoading(false)
     setPage(1)
+    setFormVersion((current) => current + 1)
   }
 
   const searchContracts = () => {
@@ -271,6 +275,7 @@ export function ContractPage({ config }: { config: ContractPageConfig }) {
             <ContractPageHeader config={config} onPrint={() => window.print()} />
 
             <ContractSearchPanel
+              key={formVersion}
               pageKind={config.pageKind}
               pageTitle={config.title}
               filters={filters}

@@ -1,4 +1,5 @@
 import { LoaderCircle, RotateCcw, Search } from "lucide-react"
+import { CONTRACT_OFFICES } from "@/components/contract/contract-options"
 import type { ContractPageKind } from "@/components/contract/contract-page-config"
 import type { ContractFilters } from "@/components/contract/contract-types"
 import { DateRangeField } from "@/components/contract/date-range-field"
@@ -26,6 +27,7 @@ export function ContractSearchPanel({
     <form
       className="contract-search-panel"
       aria-label={`${pageTitle} 검색 조건`}
+      autoComplete="off"
       onSubmit={(event) => {
         event.preventDefault()
         onSearch()
@@ -40,12 +42,9 @@ export function ContractSearchPanel({
                 value={filters.office}
                 onChange={(event) => onChange("office", event.target.value)}
               >
-                <option>전체</option>
-                <option>본청 회계과</option>
-                <option>보건정책과</option>
-                <option>건설도시과</option>
-                <option>문화체육과</option>
-                <option>상하수도사업소</option>
+                {CONTRACT_OFFICES.map((office) => (
+                  <option key={office}>{office}</option>
+                ))}
               </select>
             </label>
 
@@ -74,8 +73,10 @@ export function ContractSearchPanel({
               <div className="contract-range">
                 <input
                   type="number"
+                  name="contract-min-amount"
                   min="0"
                   inputMode="numeric"
+                  autoComplete="off"
                   aria-label="최소 계약금액"
                   value={filters.minAmount}
                   placeholder="최소 금액"
@@ -84,8 +85,10 @@ export function ContractSearchPanel({
                 <span aria-hidden="true">~</span>
                 <input
                   type="number"
+                  name="contract-max-amount"
                   min="0"
                   inputMode="numeric"
+                  autoComplete="off"
                   aria-label="최대 계약금액"
                   value={filters.maxAmount}
                   placeholder="최대 금액"

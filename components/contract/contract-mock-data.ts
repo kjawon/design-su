@@ -20,7 +20,7 @@ export const CONTRACT_RECORDS: ContractRecord[] = [
   {
     id: 4352,
     type: "용역",
-    office: "본청 회계과",
+    office: "본청",
     title: "2026년 가평군 통합정보시스템 운영 및 유지관리 용역",
     amount: 284000000,
     date: "2026-03-25",
@@ -29,7 +29,7 @@ export const CONTRACT_RECORDS: ContractRecord[] = [
   {
     id: 4351,
     type: "물품",
-    office: "보건정책과",
+    office: "보건소",
     title: "2026년 상반기 예방접종 의약품 구매",
     amount: 48920000,
     date: "2026-03-24",
@@ -38,7 +38,7 @@ export const CONTRACT_RECORDS: ContractRecord[] = [
   {
     id: 4350,
     type: "공사",
-    office: "건설도시과",
+    office: "본청",
     title: "청평면 생활도로 확장 및 포장 공사",
     amount: 1245600000,
     date: "2026-03-22",
@@ -47,7 +47,7 @@ export const CONTRACT_RECORDS: ContractRecord[] = [
   {
     id: 4349,
     type: "용역",
-    office: "문화체육과",
+    office: "본청",
     title: "자라섬 문화축제 홍보 대행 및 행사 운영 용역",
     amount: 85000000,
     date: "2026-03-20",
@@ -56,7 +56,7 @@ export const CONTRACT_RECORDS: ContractRecord[] = [
   {
     id: 4348,
     type: "물품",
-    office: "교육정책과",
+    office: "평생교육사업소",
     title: "공공도서관 신입생 가방 및 학용품 세트 납품",
     amount: 32150000,
     date: "2026-03-18",
@@ -65,7 +65,7 @@ export const CONTRACT_RECORDS: ContractRecord[] = [
   {
     id: 4347,
     type: "공사",
-    office: "상하수도사업소",
+    office: "상수도사업소",
     title: "북면 급수관로 정비공사",
     amount: 672400000,
     date: "2026-03-16",
@@ -74,7 +74,7 @@ export const CONTRACT_RECORDS: ContractRecord[] = [
   {
     id: 4346,
     type: "용역",
-    office: "관광과",
+    office: "본청",
     title: "가평 관광 통합안내체계 개선 연구용역",
     amount: 96000000,
     date: "2026-03-14",
@@ -83,7 +83,7 @@ export const CONTRACT_RECORDS: ContractRecord[] = [
   {
     id: 4345,
     type: "물품",
-    office: "산림과",
+    office: "본청",
     title: "산불진화 개인보호장비 및 소모품 구매",
     amount: 41800000,
     date: "2026-03-12",
@@ -92,7 +92,7 @@ export const CONTRACT_RECORDS: ContractRecord[] = [
   {
     id: 4344,
     type: "공사",
-    office: "환경정책과",
+    office: "본청",
     title: "조종천 생태하천 산책로 정비공사",
     amount: 358700000,
     date: "2026-03-10",
@@ -101,7 +101,7 @@ export const CONTRACT_RECORDS: ContractRecord[] = [
   {
     id: 4343,
     type: "용역",
-    office: "안전재난과",
+    office: "본청",
     title: "재난 예·경보시설 통합 유지관리 용역",
     amount: 142000000,
     date: "2026-03-08",
@@ -110,7 +110,7 @@ export const CONTRACT_RECORDS: ContractRecord[] = [
   {
     id: 4342,
     type: "물품",
-    office: "복지정책과",
+    office: "본청",
     title: "취약계층 냉방용품 지원 물품 구매",
     amount: 27600000,
     date: "2026-03-06",
@@ -131,7 +131,7 @@ export const COMPLETION_RECORDS: CompletionRecord[] = [
   {
     id: 236,
     title: "청평면 생활도로 확장 및 포장 공사",
-    office: "건설도시과",
+    office: "본청",
     amount: 1245600000,
     contractDate: "2025-10-18",
     startDate: "2025-11-01",
@@ -142,7 +142,7 @@ export const COMPLETION_RECORDS: CompletionRecord[] = [
   {
     id: 235,
     title: "북면 급수관로 정비공사",
-    office: "상하수도사업소",
+    office: "상수도사업소",
     amount: 672400000,
     contractDate: "2025-11-04",
     startDate: "2025-11-15",
@@ -153,7 +153,7 @@ export const COMPLETION_RECORDS: CompletionRecord[] = [
   {
     id: 234,
     title: "조종천 생태하천 산책로 정비공사",
-    office: "환경정책과",
+    office: "본청",
     amount: 358700000,
     contractDate: "2025-12-02",
     startDate: "2025-12-12",
