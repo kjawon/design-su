@@ -14,6 +14,7 @@ export function Header() {
   const [activeMenuIndex, setActiveMenuIndex] = useState<number | null>(null)
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false)
   const menuButtonRef = useRef<HTMLButtonElement>(null)
+  const desktopNavigationRef = useRef<HTMLDivElement>(null)
   const desktopMenuButtonRefs = useRef<Array<HTMLButtonElement | null>>([])
   const closeTimerRef = useRef<number | null>(null)
   const currentPath = window.location.pathname.replace(/\/+$/, "") || "/"
@@ -63,8 +64,17 @@ export function Header() {
       }
     }
 
+    const closeWithOutsideClick = (event: PointerEvent) => {
+      if (desktopNavigationRef.current?.contains(event.target as Node)) return
+      closeMegaMenu()
+    }
+
     window.addEventListener("keydown", closeWithEscape)
-    return () => window.removeEventListener("keydown", closeWithEscape)
+    window.addEventListener("pointerdown", closeWithOutsideClick)
+    return () => {
+      window.removeEventListener("keydown", closeWithEscape)
+      window.removeEventListener("pointerdown", closeWithOutsideClick)
+    }
   }, [activeMenuIndex, isMegaMenuOpen, menuOpen])
 
   return (
@@ -83,6 +93,7 @@ export function Header() {
           </a>
 
           <div
+            ref={desktopNavigationRef}
             className="ml-auto hidden h-full items-center lg:flex"
             onMouseEnter={clearCloseTimer}
             onMouseLeave={scheduleMegaMenuClose}
@@ -97,7 +108,7 @@ export function Header() {
               {globalMenus.map((menu, index) => {
                 const menuPath = menu.path?.split("#")[0]
                 const isCurrent =
-                  menu.label === "계약현황"
+                  menu.label === "계약정보"
                     ? currentPath.startsWith("/contract/")
                     : Boolean(menuPath && menuPath !== "/" && currentPath.startsWith(menuPath))
                 const isHighlighted = isCurrent || (isMegaMenuOpen && activeMenuIndex === index)
@@ -114,6 +125,7 @@ export function Header() {
                       aria-controls={dropdownId}
                       aria-current={isCurrent ? "page" : undefined}
                       onMouseEnter={() => openMegaMenu(index)}
+                      onFocus={() => openMegaMenu(index)}
                       onClick={() => {
                         if (isMegaMenuOpen && activeMenuIndex === index) {
                           closeMegaMenu()

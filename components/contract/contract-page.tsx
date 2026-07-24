@@ -11,13 +11,16 @@ import {
   COMPLETION_RECORDS,
   CONTRACT_RECORDS,
   EMPTY_CONTRACT_FILTERS,
+  EVALUATION_RECORDS,
 } from "@/components/contract/contract-mock-data"
 import type {
   CompletionRecord,
   ContractFilters,
   ContractRecord,
+  EvaluationRecord,
 } from "@/components/contract/contract-types"
 import { ContractTable } from "@/components/contract/contract-table"
+import { EvaluationTable } from "@/components/contract/evaluation-table"
 import { Footer } from "@/components/portal-footer"
 import { Header } from "@/components/navigation/portal-header"
 import "@/components/contract/styles/contract.css"
@@ -46,6 +49,21 @@ function matchesCompletionFilters(record: CompletionRecord, filters: ContractFil
     (!normalizedTitle || record.title.toLocaleLowerCase("ko-KR").includes(normalizedTitle)) &&
     (!filters.startDate || record.completionDate >= filters.startDate) &&
     (!filters.endDate || record.completionDate <= filters.endDate)
+  )
+}
+
+function matchesEvaluationFilters(record: EvaluationRecord, filters: ContractFilters) {
+  const normalizedOffice =
+    filters.office === "전체" ? "" : filters.office.trim().toLocaleLowerCase("ko-KR")
+  const normalizedDepartment = filters.department.trim().toLocaleLowerCase("ko-KR")
+  const normalizedTitle = filters.title.trim().toLocaleLowerCase("ko-KR")
+
+  return (
+    (!normalizedOffice || record.office.toLocaleLowerCase("ko-KR").includes(normalizedOffice)) &&
+    (!normalizedDepartment ||
+      record.department.toLocaleLowerCase("ko-KR").includes(normalizedDepartment)) &&
+    (!normalizedTitle ||
+      record.projectTitle.toLocaleLowerCase("ko-KR").includes(normalizedTitle))
   )
 }
 
@@ -80,6 +98,7 @@ export function ContractPage({ config }: { config: ContractPageConfig }) {
 
   const contractSource = config.dataKind === "empty" ? [] : CONTRACT_RECORDS
   const completionSource = config.dataKind === "completion" ? COMPLETION_RECORDS : []
+  const evaluationSource = config.dataKind === "evaluation" ? EVALUATION_RECORDS : []
 
   const filteredContractRecords = useMemo(
     () => contractSource.filter((record) => matchesContractFilters(record, appliedFilters)),
@@ -89,13 +108,19 @@ export function ContractPage({ config }: { config: ContractPageConfig }) {
     () => completionSource.filter((record) => matchesCompletionFilters(record, appliedFilters)),
     [appliedFilters, completionSource],
   )
+  const filteredEvaluationRecords = useMemo(
+    () => evaluationSource.filter((record) => matchesEvaluationFilters(record, appliedFilters)),
+    [appliedFilters, evaluationSource],
+  )
   const isFiltered = Object.entries(appliedFilters).some(
     ([key, value]) => value !== EMPTY_CONTRACT_FILTERS[key as keyof ContractFilters],
   )
   const filteredCount =
     config.pageKind === "completion"
       ? filteredCompletionRecords.length
-      : filteredContractRecords.length
+      : config.pageKind === "evaluation"
+        ? filteredEvaluationRecords.length
+        : filteredContractRecords.length
   const totalCount = isFiltered ? filteredCount : config.totalCount
   const totalPages = Math.max(1, Math.ceil(totalCount / pageSize))
 
@@ -112,6 +137,13 @@ export function ContractPage({ config }: { config: ContractPageConfig }) {
         ? filteredCompletionRecords.slice((page - 1) * pageSize, page * pageSize)
         : createDisplayRecords(completionSource, totalCount, page, pageSize),
     [completionSource, filteredCompletionRecords, isFiltered, page, pageSize, totalCount],
+  )
+  const displayEvaluationRecords = useMemo(
+    () =>
+      isFiltered
+        ? filteredEvaluationRecords.slice((page - 1) * pageSize, page * pageSize)
+        : createDisplayRecords(evaluationSource, totalCount, page, pageSize),
+    [evaluationSource, filteredEvaluationRecords, isFiltered, page, pageSize, totalCount],
   )
 
   useEffect(() => {
@@ -169,7 +201,18 @@ export function ContractPage({ config }: { config: ContractPageConfig }) {
               record.inspectionDate,
             ]),
           ]
-        : [
+        : config.pageKind === "evaluation"
+          ? [
+              ["번호", "관서명", "부서명", "사업명", "평가일"],
+              ...displayEvaluationRecords.map((record) => [
+                record.id,
+                record.office,
+                record.department,
+                record.projectTitle,
+                record.evaluationDate,
+              ]),
+            ]
+          : [
             ["번호", "구분", "관서명", "계약명", "계약금액", "계약일", "계약상대자"],
             ...displayContractRecords.map((record) => [
               record.id,
@@ -202,14 +245,18 @@ export function ContractPage({ config }: { config: ContractPageConfig }) {
         <nav className="contract-breadcrumb" aria-label="현재 위치">
           <div>
             <a href="/" aria-label="홈">
-              <House size={17} aria-hidden="true" />
+              <House size={20} aria-hidden="true" />
               <span>홈</span>
             </a>
-            <ChevronRight size={15} aria-hidden="true" />
+            <ChevronRight size={18} aria-hidden="true" />
             <span>계약정보</span>
-            <ChevronRight size={15} aria-hidden="true" />
-            <span>{config.accountLabel}</span>
-            <ChevronRight size={15} aria-hidden="true" />
+            {!config.standalone && (
+              <>
+                <ChevronRight size={18} aria-hidden="true" />
+                <span>{config.accountLabel}</span>
+              </>
+            )}
+            <ChevronRight size={18} aria-hidden="true" />
             <strong aria-current="page">{config.menuLabel}</strong>
           </div>
         </nav>
@@ -251,6 +298,8 @@ export function ContractPage({ config }: { config: ContractPageConfig }) {
 
             {config.pageKind === "completion" ? (
               <CompletionTable records={displayCompletionRecords} isLoading={isLoading} />
+            ) : config.pageKind === "evaluation" ? (
+              <EvaluationTable records={displayEvaluationRecords} isLoading={isLoading} />
             ) : (
               <ContractTable records={displayContractRecords} isLoading={isLoading} />
             )}

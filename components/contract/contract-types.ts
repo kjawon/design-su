@@ -12,12 +12,21 @@ export type ContractRecord = {
 
 export type ContractFilters = {
   office: string
+  department: string
   company: string
   title: string
   minAmount: string
   maxAmount: string
   startDate: string
   endDate: string
+}
+
+export type EvaluationRecord = {
+  id: number
+  office: string
+  department: string
+  projectTitle: string
+  evaluationDate: string
 }
 
 export type CompletionRecord = {

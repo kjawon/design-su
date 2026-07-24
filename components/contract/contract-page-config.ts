@@ -1,7 +1,7 @@
 // Central route and navigation configuration for every contract page.
 export type AccountType = "general" | "special"
-export type ContractPageKind = "contract" | "completion"
-export type ContractDataKind = "contract" | "empty" | "completion"
+export type ContractPageKind = "contract" | "completion" | "evaluation"
+export type ContractDataKind = "contract" | "empty" | "completion" | "evaluation"
 
 export type ContractMenuKey =
   | "general-status"
@@ -12,6 +12,7 @@ export type ContractMenuKey =
   | "special-private"
   | "special-subcontract"
   | "special-completion"
+  | "negotiation-evaluation"
 
 export type ContractPageConfig = {
   path: string
@@ -25,6 +26,7 @@ export type ContractPageConfig = {
   dataKind: ContractDataKind
   totalCount: number
   downloadFileName: string
+  standalone?: boolean
 }
 
 export const contractMenuGroups = [
@@ -154,6 +156,20 @@ export const contractPageConfigs: ContractPageConfig[] = [
     dataKind: "completion",
     totalCount: 58,
     downloadFileName: "가평군_특별회계_준공검사.xls",
+  },
+  {
+    path: "/contract/negotiation-evaluation",
+    title: "협상계약평가결과",
+    menuLabel: "협상계약평가결과",
+    description: "관서명, 부서명, 사업명을 기준으로 협상계약 평가결과를 조회할 수 있습니다.",
+    accountType: "general",
+    accountLabel: "일반회계",
+    menuKey: "negotiation-evaluation",
+    pageKind: "evaluation",
+    dataKind: "evaluation",
+    totalCount: 11,
+    downloadFileName: "가평군_협상계약평가결과.xls",
+    standalone: true,
   },
 ]
 

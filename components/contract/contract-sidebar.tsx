@@ -12,6 +12,7 @@ type ContractSidebarProps = {
 }
 
 export function ContractSidebar({ accountType, activeMenu }: ContractSidebarProps) {
+  const isEvaluationPage = activeMenu === "negotiation-evaluation"
   const [openGroups, setOpenGroups] = useState<Record<string, boolean>>({
     general: true,
     special: true,
@@ -75,8 +76,13 @@ export function ContractSidebar({ accountType, activeMenu }: ContractSidebarProp
             </section>
           )
         })}
-        <a href="#" className="contract-sidebar__single">
-          협상계약평가결과
+        <a
+          href="/contract/negotiation-evaluation"
+          className={`contract-sidebar__single ${isEvaluationPage ? "is-current" : ""}`}
+          aria-current={isEvaluationPage ? "page" : undefined}
+        >
+          <FileText size={18} strokeWidth={1.8} aria-hidden="true" />
+          <span>협상계약평가결과</span>
         </a>
       </nav>
 
@@ -126,7 +132,14 @@ export function ContractSidebar({ accountType, activeMenu }: ContractSidebarProp
         </div>
 
         <div className="contract-sidebar__mobile-single">
-          <a href="#">협상계약평가결과</a>
+          <a
+            href="/contract/negotiation-evaluation"
+            className={isEvaluationPage ? "is-current" : undefined}
+            aria-current={isEvaluationPage ? "page" : undefined}
+          >
+            <FileText size={18} strokeWidth={1.8} aria-hidden="true" />
+            <span>협상계약평가결과</span>
+          </a>
         </div>
       </nav>
     </aside>

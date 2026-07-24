@@ -55,7 +55,7 @@ export const globalMenus: GlobalMenu[] = [
     ],
   },
   {
-    label: "계약현황",
+    label: "계약정보",
     path: "/contract/status",
     columns: 3,
     groups: [
@@ -70,7 +70,7 @@ export const globalMenus: GlobalMenu[] = [
       {
         items: [
           // TODO: 상세 화면 라우트가 추가되면 경로를 연결합니다.
-          { label: "협상계약평가결과", path: "/contract/status" },
+          { label: "협상계약평가결과", path: "/contract/negotiation-evaluation" },
         ],
       },
     ],

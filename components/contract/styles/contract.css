@@ -18,7 +18,7 @@
   min-height: 48px;
   margin: 0 auto;
   color: #64748b;
-  font-size: 13px;
+  font-size: 15px;
 }
 
 .contract-breadcrumb a {
@@ -54,7 +54,7 @@
   padding: 22px 20px 18px;
   border-bottom: 1px solid #e6edf5;
   color: #0f2a43;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 800;
 }
 
@@ -74,7 +74,7 @@
   border-radius: 9px;
   color: #233e58;
   background: transparent;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 750;
   cursor: pointer;
 }
@@ -104,7 +104,7 @@
   padding: 0 13px 0 36px;
   border-radius: 8px;
   color: #596d82;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
 }
 
@@ -114,13 +114,15 @@
   background: #f5f9ff;
 }
 
-.contract-sidebar__group li a.is-current {
+.contract-sidebar__group li a.is-current,
+.contract-sidebar__single.is-current {
   color: #155fc2;
   background: #eaf3ff;
   font-weight: 800;
 }
 
-.contract-sidebar__group li a.is-current::before {
+.contract-sidebar__group li a.is-current::before,
+.contract-sidebar__single.is-current::before {
   position: absolute;
   top: 9px;
   bottom: 9px;
@@ -132,8 +134,12 @@
 }
 
 .contract-sidebar__single {
+  gap: 8px;
+  min-height: 46px;
   margin: 8px;
   padding-left: 13px;
+  font-size: 16px;
+  font-weight: 750;
 }
 
 .contract-sidebar__mobile {
@@ -466,7 +472,7 @@
   height: 50px;
   padding: 0 16px;
   color: #314960;
-  font-size: 13px;
+  font-size: 17px;
   font-weight: 800;
   text-align: center;
 }
@@ -502,12 +508,28 @@
   text-align: right;
 }
 
+.contract-evaluation-table {
+  min-width: 920px !important;
+}
+
+.contract-evaluation-table__col-number { width: 80px; }
+.contract-evaluation-table__col-office { width: 170px; }
+.contract-evaluation-table__col-department { width: 190px; }
+.contract-evaluation-table__col-title { width: auto; }
+.contract-evaluation-table__col-date { width: 140px; }
+
+.contract-evaluation-table th:nth-child(2),
+.contract-evaluation-table th:nth-child(3),
+.contract-evaluation-table th:nth-child(4) {
+  text-align: left;
+}
+
 .contract-table-card td {
   height: 58px;
   padding: 10px 16px;
   border-top: 1px solid #e5ebf2;
   color: #40566c;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.45;
   vertical-align: middle;
 }
@@ -571,7 +593,7 @@
   height: 26px;
   padding: 0 10px;
   border-radius: 999px;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 800;
 }
 
@@ -684,7 +706,7 @@
   .contract-sidebar h2 {
     padding: 18px 18px 0;
     border-bottom: 0;
-    font-size: 20px;
+    font-size: 22px;
   }
 
   .contract-sidebar__desktop {
@@ -716,7 +738,7 @@
     border-radius: 8px;
     color: #64748b;
     background: transparent;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 650;
     cursor: pointer;
     transition: color 150ms ease, background-color 150ms ease, box-shadow 150ms ease;
@@ -757,7 +779,7 @@
     padding: 0 16px;
     border-radius: 8px;
     color: #596d82;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
     transition: color 150ms ease, background-color 150ms ease;
   }
@@ -774,13 +796,15 @@
     outline-offset: 1px;
   }
 
-  .contract-sidebar__mobile-panel li a.is-current {
+  .contract-sidebar__mobile-panel li a.is-current,
+  .contract-sidebar__mobile-single a.is-current {
     color: #155fc2;
     background: #eaf3ff;
     font-weight: 700;
   }
 
-  .contract-sidebar__mobile-panel li a.is-current::before {
+  .contract-sidebar__mobile-panel li a.is-current::before,
+  .contract-sidebar__mobile-single a.is-current::before {
     position: absolute;
     top: 9px;
     bottom: 9px;
@@ -795,6 +819,12 @@
     margin-top: 14px;
     padding-top: 12px;
     border-top: 1px solid #eef2f6;
+  }
+
+  .contract-sidebar__mobile-single a {
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 750;
   }
 
   .contract-page-header {

@@ -2,10 +2,12 @@ import type {
   CompletionRecord,
   ContractFilters,
   ContractRecord,
+  EvaluationRecord,
 } from "@/components/contract/contract-types"
 
 export const EMPTY_CONTRACT_FILTERS: ContractFilters = {
   office: "전체",
+  department: "",
   company: "",
   title: "",
   minAmount: "",
@@ -169,5 +171,78 @@ export const COMPLETION_RECORDS: CompletionRecord[] = [
     deadlineDate: "2026-03-10",
     completionDate: "2026-03-04",
     inspectionDate: "2026-03-06",
+  },
+]
+
+export const EVALUATION_RECORDS: EvaluationRecord[] = [
+  {
+    id: 11,
+    office: "본청",
+    department: "기획예산담당관",
+    projectTitle: "가평군 지속가능발전 기본전략 및 추진계획 수립 용역",
+    evaluationDate: "2023-07-14",
+  },
+  {
+    id: 10,
+    office: "농업기술센터",
+    department: "기술기획과",
+    projectTitle: "거점형 농산물종합가공센터 가공장비 구입",
+    evaluationDate: "2022-06-03",
+  },
+  {
+    id: 9,
+    office: "본청",
+    department: "자치행정과",
+    projectTitle: "가평군 이장 역량강화 워크숍 위탁 용역",
+    evaluationDate: "2018-07-20",
+  },
+  {
+    id: 8,
+    office: "본청",
+    department: "자치행정과",
+    projectTitle: "가평군 전직원 한마음 연수 위탁 용역",
+    evaluationDate: "2018-06-18",
+  },
+  {
+    id: 7,
+    office: "본청",
+    department: "안전총괄과",
+    projectTitle: "재난현장 대응 표준화 시범사업 연구용역",
+    evaluationDate: "2017-10-19",
+  },
+  {
+    id: 6,
+    office: "본청",
+    department: "자치행정과",
+    projectTitle: "희복 미래창조도시발전 경영진단 연구용역",
+    evaluationDate: "2017-02-17",
+  },
+  {
+    id: 5,
+    office: "본청",
+    department: "도시과",
+    projectTitle: "가평 구 역사 주변지역 활성화 방안 수립 용역",
+    evaluationDate: "2017-01-06",
+  },
+  {
+    id: 4,
+    office: "본청",
+    department: "문화체육과",
+    projectTitle: "한석봉 체육관 내 인공암벽 조성사업",
+    evaluationDate: "2016-01-14",
+  },
+  {
+    id: 3,
+    office: "본청",
+    department: "문화체육과",
+    projectTitle: "자라섬 씽씽 겨울축제 행사대행 용역",
+    evaluationDate: "2015-09-04",
+  },
+  {
+    id: 2,
+    office: "본청",
+    department: "문화체육과",
+    projectTitle: "자라섬 씽씽 겨울축제 행사대행 용역",
+    evaluationDate: "2014-09-12",
   },
 ]

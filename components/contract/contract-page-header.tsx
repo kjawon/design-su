@@ -10,9 +10,11 @@ export function ContractPageHeader({ config, onPrint }: ContractPageHeaderProps)
   return (
     <header className="contract-page-header">
       <div>
-        <span className="contract-page-account" data-account={config.accountType}>
-          {config.accountLabel}
-        </span>
+        {!config.standalone && (
+          <span className="contract-page-account" data-account={config.accountType}>
+            {config.accountLabel}
+          </span>
+        )}
         <h1 id="contract-page-title">{config.title}</h1>
         <p>{config.description}</p>
       </div>

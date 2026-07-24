@@ -104,7 +104,7 @@ export function ContractSearchPanel({
               onEndDateChange={(value) => onChange("endDate", value)}
             />
           </>
-        ) : (
+        ) : pageKind === "completion" ? (
           <>
             <label className="contract-field">
               <span>계약명</span>
@@ -125,6 +125,38 @@ export function ContractSearchPanel({
               onStartDateChange={(value) => onChange("startDate", value)}
               onEndDateChange={(value) => onChange("endDate", value)}
             />
+          </>
+        ) : (
+          <>
+            <label className="contract-field">
+              <span>관서명</span>
+              <input
+                type="text"
+                value={filters.office === "전체" ? "" : filters.office}
+                placeholder="관서명을 입력하세요"
+                onChange={(event) => onChange("office", event.target.value)}
+              />
+            </label>
+
+            <label className="contract-field">
+              <span>부서명</span>
+              <input
+                type="text"
+                value={filters.department}
+                placeholder="부서명을 입력하세요"
+                onChange={(event) => onChange("department", event.target.value)}
+              />
+            </label>
+
+            <label className="contract-field">
+              <span>사업명</span>
+              <input
+                type="text"
+                value={filters.title}
+                placeholder="사업명을 입력하세요"
+                onChange={(event) => onChange("title", event.target.value)}
+              />
+            </label>
           </>
         )}
 
