@@ -168,14 +168,14 @@
 .contract-page-account {
   display: inline-flex;
   align-items: center;
-  min-height: 26px;
-  margin-bottom: 8px;
-  padding: 0 10px;
+  min-height: 30px;
+  margin-bottom: 4px;
+  padding: 0 12px;
   border: 1px solid #c9def5;
   border-radius: 6px;
   color: #155fc2;
   background: #f5f9ff;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 800;
 }
 
