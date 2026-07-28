@@ -8,7 +8,10 @@ import type {
 export const EMPTY_CONTRACT_FILTERS: ContractFilters = {
   office: "전체",
   department: "",
-  company: "",
+  category: "",
+  contractor: "",
+  contractMethod: "",
+  contractName: "",
   title: "",
   minAmount: "",
   maxAmount: "",

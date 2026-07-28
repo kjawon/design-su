@@ -25,16 +25,17 @@ import { Header } from "@/components/navigation/portal-header"
 import "@/components/contract/styles/contract.css"
 
 function matchesContractFilters(record: ContractRecord, filters: ContractFilters) {
-  const normalizedTitle = filters.title.trim().toLocaleLowerCase("ko-KR")
-  const normalizedCompany = filters.company.trim().toLocaleLowerCase("ko-KR")
+  const normalizedTitle = filters.contractName.trim().toLocaleLowerCase("ko-KR")
+  const normalizedContractor = filters.contractor.trim().toLocaleLowerCase("ko-KR")
   const minAmount = filters.minAmount ? Number(filters.minAmount) : 0
   const maxAmount = filters.maxAmount ? Number(filters.maxAmount) : Number.POSITIVE_INFINITY
 
   return (
-    (filters.office === "전체" || record.office === filters.office) &&
+    (!filters.category || record.type === filters.category) &&
+    (!filters.department || record.office === filters.department) &&
     (!normalizedTitle || record.title.toLocaleLowerCase("ko-KR").includes(normalizedTitle)) &&
-    (!normalizedCompany ||
-      record.contractor.toLocaleLowerCase("ko-KR").includes(normalizedCompany)) &&
+    (!normalizedContractor ||
+      record.contractor.toLocaleLowerCase("ko-KR").includes(normalizedContractor)) &&
     record.amount >= minAmount &&
     record.amount <= maxAmount &&
     (!filters.startDate || record.date >= filters.startDate) &&
@@ -296,7 +297,6 @@ export function ContractPage({ config }: { config: ContractPageConfig }) {
                 setPage(1)
               }}
               onDownload={downloadExcel}
-              onPrint={() => window.print()}
             />
 
             {config.pageKind === "completion" ? (
@@ -304,7 +304,11 @@ export function ContractPage({ config }: { config: ContractPageConfig }) {
             ) : config.pageKind === "evaluation" ? (
               <EvaluationTable records={displayEvaluationRecords} isLoading={isLoading} />
             ) : (
-              <ContractTable records={displayContractRecords} isLoading={isLoading} />
+              <ContractTable
+                records={displayContractRecords}
+                detailBasePath={config.path}
+                isLoading={isLoading}
+              />
             )}
             <ContractPagination
               currentPage={Math.min(page, totalPages)}

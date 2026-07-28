@@ -4,10 +4,15 @@ const amountFormatter = new Intl.NumberFormat("ko-KR")
 
 type DataTableProps<RecordType> = {
   records: RecordType[]
+  detailBasePath: string
   isLoading?: boolean
 }
 
-export function ContractTable({ records, isLoading = false }: DataTableProps<ContractRecord>) {
+export function ContractTable({
+  records,
+  detailBasePath,
+  isLoading = false,
+}: DataTableProps<ContractRecord>) {
   return (
     <div className="contract-table-card">
       <div className="contract-table-scroll">
@@ -39,13 +44,11 @@ export function ContractTable({ records, isLoading = false }: DataTableProps<Con
                 <tr key={record.id}>
                   <td className="contract-table__number">{record.id}</td>
                   <td className="contract-table__type">
-                    <span className={`contract-type-badge contract-type-badge--${record.type}`}>
-                      {record.type}
-                    </span>
+                    <span className="contract-type-badge">{record.type}</span>
                   </td>
                   <td className="contract-table__office">{record.office}</td>
                   <td className="contract-table__title">
-                    <a href="#" title={record.title}>
+                    <a href={`${detailBasePath}/${record.id}`} title={record.title}>
                       {record.title}
                     </a>
                   </td>

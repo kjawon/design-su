@@ -7,6 +7,7 @@ type DateRangeFieldProps = {
   endLabel: string
   startDate: string
   endDate: string
+  errorMessage?: string
   onStartDateChange: (value: string) => void
   onEndDateChange: (value: string) => void
 }
@@ -22,10 +23,14 @@ function openDatePicker(event: MouseEvent<HTMLInputElement>) {
 function DateInput({
   label,
   value,
+  errorId,
+  isInvalid,
   onChange,
 }: {
   label: string
   value: string
+  errorId?: string
+  isInvalid?: boolean
   onChange: (value: string) => void
 }) {
   return (
@@ -33,6 +38,8 @@ function DateInput({
       <input
         type="date"
         aria-label={label}
+        aria-invalid={isInvalid}
+        aria-describedby={errorId}
         value={value}
         onClick={openDatePicker}
         onChange={(event) => onChange(event.target.value)}
@@ -54,17 +61,37 @@ export function DateRangeField({
   endLabel,
   startDate,
   endDate,
+  errorMessage,
   onStartDateChange,
   onEndDateChange,
 }: DateRangeFieldProps) {
+  const errorId = errorMessage ? "contract-date-error" : undefined
+
   return (
     <fieldset className="contract-field">
       <legend>{label}</legend>
       <div className="contract-range contract-date-range">
-        <DateInput label={startLabel} value={startDate} onChange={onStartDateChange} />
+        <DateInput
+          label={startLabel}
+          value={startDate}
+          errorId={errorId}
+          isInvalid={Boolean(errorMessage)}
+          onChange={onStartDateChange}
+        />
         <span aria-hidden="true">~</span>
-        <DateInput label={endLabel} value={endDate} onChange={onEndDateChange} />
+        <DateInput
+          label={endLabel}
+          value={endDate}
+          errorId={errorId}
+          isInvalid={Boolean(errorMessage)}
+          onChange={onEndDateChange}
+        />
       </div>
+      {errorMessage && (
+        <p id={errorId} className="contract-field-error" role="alert">
+          {errorMessage}
+        </p>
+      )}
     </fieldset>
   )
 }

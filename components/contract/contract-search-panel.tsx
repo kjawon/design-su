@@ -1,8 +1,19 @@
-import { LoaderCircle, RotateCcw, Search } from "lucide-react"
+import {
+  ChevronDown,
+  ChevronUp,
+  LoaderCircle,
+  RotateCcw,
+  Search,
+  SlidersHorizontal,
+} from "lucide-react"
+import { useState } from "react"
 import { CONTRACT_OFFICES } from "@/components/contract/contract-options"
 import type { ContractPageKind } from "@/components/contract/contract-page-config"
 import type { ContractFilters } from "@/components/contract/contract-types"
 import { DateRangeField } from "@/components/contract/date-range-field"
+
+const CONTRACT_CATEGORIES = ["공사", "용역", "물품"] as const
+const CONTRACT_METHODS = ["일반경쟁", "제한경쟁", "지명경쟁", "수의계약"] as const
 
 type ContractSearchPanelProps = {
   pageKind: ContractPageKind
@@ -14,6 +25,51 @@ type ContractSearchPanelProps = {
   onSearch: () => void
 }
 
+function formatAmount(value: string) {
+  return value ? Number(value).toLocaleString("ko-KR") : ""
+}
+
+function normalizeAmount(value: string) {
+  return value.replace(/\D/g, "")
+}
+
+function SearchActionButtons({
+  isLoading,
+  onReset,
+}: {
+  isLoading: boolean
+  onReset: () => void
+}) {
+  return (
+    <div className="contract-search-actions">
+      <button
+        type="button"
+        className="contract-button contract-button--outline contract-reset-button"
+        onClick={onReset}
+      >
+        <RotateCcw size={17} aria-hidden="true" />
+        초기화
+      </button>
+      <button
+        type="submit"
+        className="contract-button contract-button--primary contract-submit-button"
+        disabled={isLoading}
+      >
+        {isLoading ? (
+          <LoaderCircle
+            className="contract-loading-spinner"
+            size={18}
+            aria-hidden="true"
+          />
+        ) : (
+          <Search size={18} aria-hidden="true" />
+        )}
+        검색
+      </button>
+    </div>
+  )
+}
+
 export function ContractSearchPanel({
   pageKind,
   pageTitle,
@@ -23,171 +79,265 @@ export function ContractSearchPanel({
   onReset,
   onSearch,
 }: ContractSearchPanelProps) {
+  const [isDetailOpen, setIsDetailOpen] = useState(false)
+  const [dateError, setDateError] = useState("")
+  const [amountError, setAmountError] = useState("")
+
+  const changeFilter = (field: keyof ContractFilters, value: string) => {
+    onChange(field, value)
+    if (field === "startDate" || field === "endDate") setDateError("")
+    if (field === "minAmount" || field === "maxAmount") setAmountError("")
+  }
+
+  const submitSearch = () => {
+    const nextDateError =
+      filters.startDate && filters.endDate && filters.startDate > filters.endDate
+        ? "시작일은 종료일보다 늦을 수 없습니다."
+        : ""
+    const nextAmountError =
+      filters.minAmount &&
+      filters.maxAmount &&
+      Number(filters.minAmount) > Number(filters.maxAmount)
+        ? "최소금액은 최대금액보다 클 수 없습니다."
+        : ""
+
+    setDateError(nextDateError)
+    setAmountError(nextAmountError)
+    if (nextDateError || nextAmountError) return
+
+    onSearch()
+  }
+
+  const resetSearch = () => {
+    setDateError("")
+    setAmountError("")
+    setIsDetailOpen(false)
+    onReset()
+  }
+
+  if (pageKind !== "contract") {
+    return (
+      <form
+        className="contract-search-panel"
+        aria-label={`${pageTitle} 검색 조건`}
+        autoComplete="off"
+        onSubmit={(event) => {
+          event.preventDefault()
+          onSearch()
+        }}
+      >
+        <div className="contract-search-grid">
+          {pageKind === "completion" ? (
+            <>
+              <label className="contract-field">
+                <span>계약명</span>
+                <input
+                  type="text"
+                  value={filters.title}
+                  placeholder="계약명을 입력하세요"
+                  onChange={(event) => onChange("title", event.target.value)}
+                />
+              </label>
+
+              <DateRangeField
+                label="준공일"
+                startLabel="준공일 시작일"
+                endLabel="준공일 종료일"
+                startDate={filters.startDate}
+                endDate={filters.endDate}
+                onStartDateChange={(value) => onChange("startDate", value)}
+                onEndDateChange={(value) => onChange("endDate", value)}
+              />
+            </>
+          ) : (
+            <>
+              <label className="contract-field">
+                <span>관서명</span>
+                <input
+                  type="text"
+                  value={filters.office === "전체" ? "" : filters.office}
+                  placeholder="관서명을 입력하세요"
+                  onChange={(event) => onChange("office", event.target.value)}
+                />
+              </label>
+
+              <label className="contract-field">
+                <span>부서명</span>
+                <input
+                  type="text"
+                  value={filters.department}
+                  placeholder="부서명을 입력하세요"
+                  onChange={(event) => onChange("department", event.target.value)}
+                />
+              </label>
+
+              <label className="contract-field">
+                <span>사업명</span>
+                <input
+                  type="text"
+                  value={filters.title}
+                  placeholder="사업명을 입력하세요"
+                  onChange={(event) => onChange("title", event.target.value)}
+                />
+              </label>
+            </>
+          )}
+        </div>
+      </form>
+    )
+  }
+
   return (
     <form
-      className="contract-search-panel"
+      className="contract-search-panel contract-search-panel--contract"
       aria-label={`${pageTitle} 검색 조건`}
       autoComplete="off"
       onSubmit={(event) => {
         event.preventDefault()
-        onSearch()
+        submitSearch()
       }}
     >
-      <div className="contract-search-grid">
-        {pageKind === "contract" ? (
-          <>
-            <label className="contract-field">
-              <span>관서구분</span>
-              <select
-                value={filters.office}
-                onChange={(event) => onChange("office", event.target.value)}
-              >
-                {CONTRACT_OFFICES.map((office) => (
-                  <option key={office}>{office}</option>
-                ))}
-              </select>
-            </label>
+      <div className="contract-search-basic">
+        <label className="contract-field contract-search-name">
+          <span>계약명</span>
+          <input
+            type="text"
+            value={filters.contractName}
+            placeholder="계약명을 입력하세요"
+            onChange={(event) => changeFilter("contractName", event.target.value)}
+          />
+        </label>
 
-            <label className="contract-field">
-              <span>업체명</span>
-              <input
-                type="text"
-                value={filters.company}
-                placeholder="업체명을 입력하세요"
-                onChange={(event) => onChange("company", event.target.value)}
-              />
-            </label>
+        <DateRangeField
+          label="계약일자"
+          startLabel="계약일자 시작일"
+          endLabel="계약일자 종료일"
+          startDate={filters.startDate}
+          endDate={filters.endDate}
+          errorMessage={dateError}
+          onStartDateChange={(value) => changeFilter("startDate", value)}
+          onEndDateChange={(value) => changeFilter("endDate", value)}
+        />
+      </div>
 
-            <label className="contract-field">
-              <span>계약명</span>
-              <input
-                type="text"
-                value={filters.title}
-                placeholder="계약명을 입력하세요"
-                onChange={(event) => onChange("title", event.target.value)}
-              />
-            </label>
+      {isDetailOpen && (
+        <div id="contract-detail-search" className="contract-detail-panel">
+          <div className="contract-detail-grid">
+              <label className="contract-field">
+                <span>구분</span>
+                <select
+                  value={filters.category}
+                  onChange={(event) => changeFilter("category", event.target.value)}
+                >
+                  <option value="">전체</option>
+                  {CONTRACT_CATEGORIES.map((category) => (
+                    <option key={category} value={category}>
+                      {category}
+                    </option>
+                  ))}
+                </select>
+              </label>
 
-            <fieldset className="contract-field">
-              <legend>계약금액</legend>
-              <div className="contract-range">
+              <label className="contract-field">
+                <span>관서명</span>
+                <select
+                  value={filters.department}
+                  onChange={(event) => changeFilter("department", event.target.value)}
+                >
+                  <option value="">전체</option>
+                  {CONTRACT_OFFICES.filter((office) => office !== "전체").map((office) => (
+                    <option key={office} value={office}>
+                      {office}
+                    </option>
+                  ))}
+                </select>
+              </label>
+
+              <label className="contract-field">
+                <span>계약상대자</span>
                 <input
-                  type="number"
-                  name="contract-min-amount"
-                  min="0"
-                  inputMode="numeric"
-                  autoComplete="off"
-                  aria-label="최소 계약금액"
-                  value={filters.minAmount}
-                  placeholder="최소 금액"
-                  onChange={(event) => onChange("minAmount", event.target.value)}
+                  type="text"
+                  value={filters.contractor}
+                  placeholder="계약상대자를 입력하세요"
+                  onChange={(event) => changeFilter("contractor", event.target.value)}
                 />
-                <span aria-hidden="true">~</span>
-                <input
-                  type="number"
-                  name="contract-max-amount"
-                  min="0"
-                  inputMode="numeric"
-                  autoComplete="off"
-                  aria-label="최대 계약금액"
-                  value={filters.maxAmount}
-                  placeholder="최대 금액"
-                  onChange={(event) => onChange("maxAmount", event.target.value)}
-                />
-              </div>
-            </fieldset>
+              </label>
 
-            <DateRangeField
-              label="계약일자"
-              startLabel="계약일자 시작일"
-              endLabel="계약일자 종료일"
-              startDate={filters.startDate}
-              endDate={filters.endDate}
-              onStartDateChange={(value) => onChange("startDate", value)}
-              onEndDateChange={(value) => onChange("endDate", value)}
-            />
-          </>
-        ) : pageKind === "completion" ? (
-          <>
-            <label className="contract-field">
-              <span>계약명</span>
-              <input
-                type="text"
-                value={filters.title}
-                placeholder="계약명을 입력하세요"
-                onChange={(event) => onChange("title", event.target.value)}
-              />
-            </label>
+              <fieldset className="contract-field contract-field--amount">
+                <legend>계약금액</legend>
+                <div className="contract-range contract-amount-range">
+                  <input
+                    type="text"
+                    inputMode="numeric"
+                    aria-label="최소금액"
+                    aria-invalid={Boolean(amountError)}
+                    aria-describedby={amountError ? "contract-amount-error" : undefined}
+                    value={formatAmount(filters.minAmount)}
+                    placeholder="최소금액"
+                    onChange={(event) =>
+                      changeFilter("minAmount", normalizeAmount(event.target.value))
+                    }
+                  />
+                  <span aria-hidden="true">~</span>
+                  <input
+                    type="text"
+                    inputMode="numeric"
+                    aria-label="최대금액"
+                    aria-invalid={Boolean(amountError)}
+                    aria-describedby={amountError ? "contract-amount-error" : undefined}
+                    value={formatAmount(filters.maxAmount)}
+                    placeholder="최대금액"
+                    onChange={(event) =>
+                      changeFilter("maxAmount", normalizeAmount(event.target.value))
+                    }
+                  />
+                </div>
+                {amountError && (
+                  <p id="contract-amount-error" className="contract-field-error" role="alert">
+                    {amountError}
+                  </p>
+                )}
+              </fieldset>
 
-            <DateRangeField
-              label="준공일"
-              startLabel="준공일 시작일"
-              endLabel="준공일 종료일"
-              startDate={filters.startDate}
-              endDate={filters.endDate}
-              onStartDateChange={(value) => onChange("startDate", value)}
-              onEndDateChange={(value) => onChange("endDate", value)}
-            />
-          </>
-        ) : (
-          <>
-            <label className="contract-field">
-              <span>관서명</span>
-              <input
-                type="text"
-                value={filters.office === "전체" ? "" : filters.office}
-                placeholder="관서명을 입력하세요"
-                onChange={(event) => onChange("office", event.target.value)}
-              />
-            </label>
-
-            <label className="contract-field">
-              <span>부서명</span>
-              <input
-                type="text"
-                value={filters.department}
-                placeholder="부서명을 입력하세요"
-                onChange={(event) => onChange("department", event.target.value)}
-              />
-            </label>
-
-            <label className="contract-field">
-              <span>사업명</span>
-              <input
-                type="text"
-                value={filters.title}
-                placeholder="사업명을 입력하세요"
-                onChange={(event) => onChange("title", event.target.value)}
-              />
-            </label>
-          </>
-        )}
-
-        <div className={`contract-search-actions ${pageKind === "completion" ? "contract-search-actions--completion" : ""}`}>
-          <button
-            type="button"
-            className="contract-button contract-button--outline"
-            aria-label={`${pageTitle} 검색 조건 초기화`}
-            disabled={isLoading}
-            onClick={onReset}
-          >
-            <RotateCcw size={18} aria-hidden="true" />
-            초기화
-          </button>
-          <button
-            type="submit"
-            className="contract-button contract-button--primary"
-            aria-label={`${pageTitle} 조회`}
-            disabled={isLoading}
-          >
-            {isLoading ? (
-              <LoaderCircle className="contract-loading-spinner" size={18} aria-hidden="true" />
-            ) : (
-              <Search size={18} aria-hidden="true" />
-            )}
-            {isLoading ? "조회 중" : "조회"}
-          </button>
+              <label className="contract-field">
+                <span>계약방법</span>
+                <select
+                  value={filters.contractMethod}
+                  onChange={(event) => changeFilter("contractMethod", event.target.value)}
+                >
+                  <option value="">전체</option>
+                  {CONTRACT_METHODS.map((method) => (
+                    <option key={method} value={method}>
+                      {method}
+                    </option>
+                  ))}
+                </select>
+              </label>
+          </div>
         </div>
+      )}
+
+      <div className="contract-search-controls">
+        <button
+          type="button"
+          className={`contract-detail-toggle${isDetailOpen ? " is-open" : ""}`}
+          aria-expanded={isDetailOpen}
+          aria-controls="contract-detail-search"
+          onClick={() => setIsDetailOpen((current) => !current)}
+        >
+          <SlidersHorizontal
+            size={18}
+            strokeWidth={1.8}
+            aria-hidden="true"
+          />
+          <span>상세검색</span>
+          {isDetailOpen ? (
+            <ChevronUp size={16} aria-hidden="true" />
+          ) : (
+            <ChevronDown size={16} aria-hidden="true" />
+          )}
+        </button>
+        <SearchActionButtons isLoading={isLoading} onReset={resetSearch} />
       </div>
     </form>
   )

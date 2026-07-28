@@ -13,6 +13,23 @@ export function Chatbot({ windowMode = false }: { windowMode?: boolean }) {
   const [input, setInput] = useState("")
   const [messages, setMessages] = useState<Message[]>([])
   const inputRef = useRef<HTMLInputElement>(null)
+  const messageListRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const messageList = messageListRef.current
+    if (!messageList || messages.length === 0) return
+
+    const animationFrame = window.requestAnimationFrame(() => {
+      messageList.scrollTo({
+        top: messageList.scrollHeight,
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+          ? "auto"
+          : "smooth",
+      })
+    })
+
+    return () => window.cancelAnimationFrame(animationFrame)
+  }, [messages])
 
   useEffect(() => {
     if (windowMode) {
@@ -81,7 +98,11 @@ export function Chatbot({ windowMode = false }: { windowMode?: boolean }) {
         </div>
       </header>
 
-      <div className="flex min-h-0 flex-1 flex-col overflow-y-auto p-[16px] sm:p-5" aria-live="polite">
+      <div
+        ref={messageListRef}
+        className="flex min-h-0 flex-1 flex-col overflow-y-auto p-[16px] sm:p-5"
+        aria-live="polite"
+      >
         {messages.length === 0 ? (
           <div className="my-auto flex flex-col items-center gap-[18px] py-[24px] text-center sm:gap-5 sm:py-8">
             <span className="flex size-[64px] items-center justify-center rounded-2xl bg-ai-light text-ai-primary">

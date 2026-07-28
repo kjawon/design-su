@@ -1,11 +1,10 @@
-import { Download, Printer } from "lucide-react"
+import { Download } from "lucide-react"
 
 type ContractResultToolbarProps = {
   totalCount: number
   pageSize: number
   onPageSizeChange: (pageSize: number) => void
   onDownload: () => void
-  onPrint: () => void
 }
 
 export function ContractResultToolbar({
@@ -13,7 +12,6 @@ export function ContractResultToolbar({
   pageSize,
   onPageSizeChange,
   onDownload,
-  onPrint,
 }: ContractResultToolbarProps) {
   return (
     <div className="contract-results-tools">
@@ -39,14 +37,6 @@ export function ContractResultToolbar({
         >
           <Download size={18} aria-hidden="true" />
           엑셀 다운로드
-        </button>
-        <button
-          type="button"
-          className="contract-button contract-button--outline contract-print-button"
-          onClick={onPrint}
-        >
-          <Printer size={18} aria-hidden="true" />
-          인쇄
         </button>
       </div>
     </div>

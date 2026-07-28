@@ -13,7 +13,10 @@ export type ContractRecord = {
 export type ContractFilters = {
   office: string
   department: string
-  company: string
+  category: string
+  contractor: string
+  contractMethod: string
+  contractName: string
   title: string
   minAmount: string
   maxAmount: string
