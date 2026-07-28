@@ -8,8 +8,8 @@ export function Footer() {
           <a href="#" className="hover:text-ai-secondary">이메일무단수집거부</a>
           <a href="#" className="hover:text-ai-secondary">찾아오시는 길</a>
         </nav>
-        <p className="text-xs leading-relaxed text-footer-text">(13437) 경기도 성남시 중원구 성남대로 997(여수동 200번지) 성남시청<br />대표전화: 1577-3100 · 평일 09:00 ~ 18:00</p>
-        <p className="text-xs text-footer-text">Copyright © Seongnam City. All Rights Reserved.</p>
+        <p className="text-xs leading-relaxed text-footer-text">(12417) 경기도 가평군 가평읍 석봉로 181 가평군청<br />대표전화: 031-580-2114 · 평일 09:00 ~ 18:00</p>
+        <p className="text-xs text-footer-text">Copyright © Gapyeong County. All Rights Reserved.</p>
       </div>
     </footer>
   )

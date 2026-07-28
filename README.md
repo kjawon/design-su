@@ -1,6 +1,6 @@
-# 성남시 계약정보포털 디자인
+# 가평군청 계약정보포털 디자인
 
-성남시 계약·입찰 정보를 보여주는 포털 화면 디자인입니다. 실제 계약 데이터나 서버 API에는 연결되어 있지 않으며, 화면 구성과 사용자 경험을 확인하기 위한 React 프로젝트입니다.
+가평군청 계약·입찰 정보를 보여주는 포털 화면 디자인입니다. 실제 계약 데이터나 서버 API에는 연결되어 있지 않으며, 화면 구성과 사용자 경험을 확인하기 위한 React 프로젝트입니다.
 
 ## 사용 기술
 
@@ -41,24 +41,40 @@ npm run preview
 
 ```text
 src/
-  main.tsx       React가 시작되는 파일
-  App.tsx        전체 화면의 구성 순서
-  index.css      공통 스타일과 색상 설정
+  main.tsx                  React가 시작되는 파일
+  App.tsx                   pathname 기반 화면 분기
+  index.css                 공통 스타일과 색상 설정
 components/
-  portal-header.tsx       상단 메뉴
-  intro-section.tsx       소개 및 검색 영역
-  service-board.tsx       주요 서비스 영역
-  portal-information.tsx  최근 계약과 자주 찾는 정보 영역
-  portal-data.ts          화면에 표시하는 예시 데이터
-  chatbot.tsx             AI 도우미 디자인
-  ui/                     버튼, 배지, 입력창 등 공통 UI
-public/                브라우저 파비콘
+  contract/                 계약 페이지 기능
+    contract-page.tsx       공통 계약 페이지 조립
+    contract-page-config.ts 계약 페이지 경로와 설정
+    contract-types.ts       계약 데이터 타입
+    contract-mock-data.ts   임시 계약·준공검사 데이터
+    contract-search-panel.tsx
+    contract-sidebar.tsx
+    contract-table.tsx
+    completion-table.tsx
+    styles/contract.css     계약 페이지 전용 스타일
+  navigation/               전역 내비게이션
+    portal-header.tsx
+    global-menu-data.ts
+    global-dropdown.tsx
+  intro-section.tsx         소개 및 검색 영역
+  service-board.tsx         주요 서비스 영역
+  portal-information.tsx    최근 계약과 자주 찾는 정보 영역
+  portal-data.ts            메인 화면 예시 데이터
+  chatbot.tsx               AI 도우미 디자인
+  ui/                       버튼, 배지, 입력창 등 공통 UI
+public/                      브라우저 파비콘
 ```
 
 ## 화면 내용을 수정하려면
 
 - 최근 계약과 자주 찾는 정보 문구: `components/portal-data.ts`
-- 상단 메뉴: `components/portal-header.tsx`
+- 상단 메뉴: `components/navigation/global-menu-data.ts`
+- 계약 페이지 설정과 경로: `components/contract/contract-page-config.ts`
+- 계약 페이지 임시 데이터: `components/contract/contract-mock-data.ts`
+- 계약 페이지 스타일: `components/contract/styles/contract.css`
 - 메인 화면 구성 순서: `src/App.tsx`
 - 주요 서비스 카드: `components/service-board.tsx`
 - 챗봇 화면: `components/chatbot.tsx`
@@ -68,9 +84,10 @@ public/                브라우저 파비콘
 
 ## 현재 구현 범위
 
-현재 프로젝트는 디자인 확인용입니다.
+현재 프로젝트는 디자인 확인용이며 계약 페이지도 로컬 mock 데이터를 사용합니다.
 
-- 검색창은 실제 검색을 수행하지 않습니다.
+- 메인 검색창은 실제 검색을 수행하지 않습니다.
+- 계약 페이지 검색은 현재 로컬 mock 데이터만 필터링합니다.
 - 계약과 공지 내용은 예시 데이터입니다.
 - 챗봇은 예시 답변만 표시합니다.
 - 로그인, 음성 입력, 상세 페이지 이동은 연결되어 있지 않습니다.
