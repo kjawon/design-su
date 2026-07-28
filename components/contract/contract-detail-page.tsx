@@ -57,14 +57,6 @@ function DetailPageHeader({
 }) {
   return (
     <header className="contract-detail-page-header">
-      <div>
-        <h1>계약 상세</h1>
-        <p>
-          {hasRecord
-            ? "계약 건의 기본정보와 계약 및 지급현황을 확인할 수 있습니다."
-            : "요청하신 계약 정보를 찾을 수 없습니다."}
-        </p>
-      </div>
       <div className="contract-detail-page-actions">
         <a
           href={listPath}
