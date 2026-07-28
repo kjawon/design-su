@@ -1,6 +1,6 @@
 "use client"
 
-import { Menu, X } from "lucide-react"
+import { ChevronDown, Menu, X } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 import gapyeongLogo from "@/가평군청 로고.svg"
 import { GlobalDropdown } from "@/components/navigation/global-dropdown"
@@ -11,6 +11,8 @@ const CLOSE_DELAY = 150
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [mobileContractOpen, setMobileContractOpen] = useState(false)
+  const [mobileContractGroups, setMobileContractGroups] = useState<Record<number, boolean>>({})
   const [activeMenuIndex, setActiveMenuIndex] = useState<number | null>(null)
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false)
   const menuButtonRef = useRef<HTMLButtonElement>(null)
@@ -163,16 +165,118 @@ export function Header() {
         </div>
 
         {menuOpen && (
-          <div id="mobile-navigation" className="border-t border-border bg-card p-4 lg:hidden">
+          <div id="mobile-navigation" className="max-h-[calc(100dvh-60px)] overflow-y-auto border-t border-border bg-card p-4 lg:hidden">
             <nav aria-label="모바일 주요 메뉴">
               <ul className="flex flex-col gap-1">
-                {globalMenus.map((menu) => (
-                  <li key={menu.label}>
-                    <a href={menu.path} onClick={() => setMenuOpen(false)} className="flex min-h-11 items-center rounded-md px-3 text-sm font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-700">
-                      {menu.label}
-                    </a>
-                  </li>
-                ))}
+                {globalMenus.map((menu) => {
+                  const isContractMenu = menu.label === "계약정보"
+
+                  if (!isContractMenu) {
+                    return (
+                      <li key={menu.label}>
+                        <a href={menu.path} onClick={() => setMenuOpen(false)} className="flex min-h-11 items-center rounded-md px-3 text-sm font-medium text-gray-700 hover:bg-primary-50 hover:text-primary-700">
+                          {menu.label}
+                        </a>
+                      </li>
+                    )
+                  }
+
+                  return (
+                    <li key={menu.label}>
+                      <button
+                        type="button"
+                        className={`flex min-h-11 w-full items-center justify-between rounded-md px-3 text-sm font-bold ${
+                          currentPath.startsWith("/contract/")
+                            ? "bg-primary-50 text-primary-700"
+                            : "text-gray-700 hover:bg-primary-50 hover:text-primary-700"
+                        }`}
+                        aria-expanded={mobileContractOpen}
+                        aria-controls="mobile-contract-navigation"
+                        onClick={() => {
+                          const nextOpen = !mobileContractOpen
+                          setMobileContractOpen(nextOpen)
+                          if (nextOpen) {
+                            const activeGroupIndex = menu.groups.findIndex((group) =>
+                              group.items.some(
+                                (item) => (item.path.replace(/\/+$/, "") || "/") === currentPath,
+                              ),
+                            )
+                            if (activeGroupIndex >= 0) {
+                              setMobileContractGroups((current) => ({
+                                ...current,
+                                [activeGroupIndex]: true,
+                              }))
+                            }
+                          }
+                        }}
+                      >
+                        {menu.label}
+                        <ChevronDown
+                          className={`size-4 transition-transform ${mobileContractOpen ? "rotate-180" : ""}`}
+                          aria-hidden="true"
+                        />
+                      </button>
+
+                      {mobileContractOpen && (
+                        <div id="mobile-contract-navigation" className="ml-2 mt-1 border-l border-primary-100 pl-2">
+                          {menu.groups.map((group, groupIndex) => {
+                            const groupTitle = group.title ?? "기타"
+                            const isGroupOpen = Boolean(mobileContractGroups[groupIndex])
+                            const groupId = `mobile-contract-group-${groupIndex}`
+
+                            return (
+                              <section key={groupTitle}>
+                                <button
+                                  type="button"
+                                  className="flex min-h-11 w-full items-center justify-between rounded-md px-3 text-sm font-semibold text-gray-700 hover:bg-primary-50 hover:text-primary-700"
+                                  aria-expanded={isGroupOpen}
+                                  aria-controls={groupId}
+                                  onClick={() =>
+                                    setMobileContractGroups((current) => ({
+                                      ...current,
+                                      [groupIndex]: !current[groupIndex],
+                                    }))
+                                  }
+                                >
+                                  {groupTitle}
+                                  <ChevronDown
+                                    className={`size-4 transition-transform ${isGroupOpen ? "rotate-180" : ""}`}
+                                    aria-hidden="true"
+                                  />
+                                </button>
+
+                                {isGroupOpen && (
+                                  <ul id={groupId} className="pb-1 pl-2">
+                                    {group.items.map((item) => {
+                                      const itemPath = item.path.replace(/\/+$/, "") || "/"
+                                      const isCurrent = itemPath === currentPath
+                                      return (
+                                        <li key={`${groupTitle}-${item.label}`}>
+                                          <a
+                                            href={item.path}
+                                            aria-current={isCurrent ? "page" : undefined}
+                                            onClick={() => setMenuOpen(false)}
+                                            className={`flex min-h-11 items-center rounded-md px-3 text-sm ${
+                                              isCurrent
+                                                ? "bg-primary-50 font-bold text-primary-700"
+                                                : "font-medium text-gray-600 hover:bg-primary-50 hover:text-primary-700"
+                                            }`}
+                                          >
+                                            {item.label}
+                                          </a>
+                                        </li>
+                                      )
+                                    })}
+                                  </ul>
+                                )}
+                              </section>
+                            )
+                          })}
+                        </div>
+                      )}
+                    </li>
+                  )
+                })}
               </ul>
             </nav>
           </div>

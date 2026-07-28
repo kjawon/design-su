@@ -1,7 +1,6 @@
 import { ChevronRight, House } from "lucide-react"
 import { useEffect, useMemo, useRef, useState } from "react"
 import type { ContractPageConfig } from "@/components/contract/contract-page-config"
-import { ContractPageHeader } from "@/components/contract/contract-page-header"
 import { ContractPagination } from "@/components/contract/contract-pagination"
 import { ContractResultToolbar } from "@/components/contract/contract-result-toolbar"
 import { ContractSearchPanel } from "@/components/contract/contract-search-panel"
@@ -271,9 +270,7 @@ export function ContractPage({ config }: { config: ContractPageConfig }) {
             activeMenu={config.menuKey}
           />
 
-          <section className="contract-content" aria-labelledby="contract-page-title">
-            <ContractPageHeader config={config} onPrint={() => window.print()} />
-
+          <section className="contract-content" aria-label={config.title}>
             <ContractSearchPanel
               key={formVersion}
               pageKind={config.pageKind}
@@ -299,6 +296,7 @@ export function ContractPage({ config }: { config: ContractPageConfig }) {
                 setPage(1)
               }}
               onDownload={downloadExcel}
+              onPrint={() => window.print()}
             />
 
             {config.pageKind === "completion" ? (
