@@ -1,15 +1,14 @@
 import {
   ChevronDown,
   ChevronUp,
-  LoaderCircle,
-  RotateCcw,
-  Search,
   SlidersHorizontal,
 } from "lucide-react"
 import { useState } from "react"
-import { CONTRACT_OFFICES } from "@/components/contract/contract-options"
-import { DateRangeField } from "@/components/contract/date-range-field"
 import type { PaymentFilters } from "@/components/payment/payment-types"
+import { DateRangeField } from "@/components/shared/date-range-field"
+import { OFFICE_OPTIONS } from "@/components/shared/office-options"
+import { SearchActions } from "@/components/shared/search-actions"
+import { formatNumericInput, keepDigits } from "@/lib/number-input"
 
 type PaymentSearchPanelProps = {
   pageTitle: string
@@ -18,14 +17,6 @@ type PaymentSearchPanelProps = {
   onChange: (field: keyof PaymentFilters, value: string) => void
   onReset: () => void
   onSearch: () => void
-}
-
-function formatAmount(value: string) {
-  return value ? Number(value).toLocaleString("ko-KR") : ""
-}
-
-function normalizeAmount(value: string) {
-  return value.replace(/\D/g, "")
 }
 
 export function PaymentSearchPanel({
@@ -113,7 +104,7 @@ export function PaymentSearchPanel({
                 value={filters.office}
                 onChange={(event) => changeFilter("office", event.target.value)}
               >
-                {CONTRACT_OFFICES.map((office) => (
+                {OFFICE_OPTIONS.map((office) => (
                   <option key={office} value={office}>
                     {office}
                   </option>
@@ -130,10 +121,10 @@ export function PaymentSearchPanel({
                   aria-label="최소 계약금액"
                   aria-invalid={Boolean(amountError)}
                   aria-describedby={amountError ? "payment-amount-error" : undefined}
-                  value={formatAmount(filters.minAmount)}
+                  value={formatNumericInput(filters.minAmount)}
                   placeholder="최소금액"
                   onChange={(event) =>
-                    changeFilter("minAmount", normalizeAmount(event.target.value))
+                    changeFilter("minAmount", keepDigits(event.target.value))
                   }
                 />
                 <span aria-hidden="true">~</span>
@@ -143,10 +134,10 @@ export function PaymentSearchPanel({
                   aria-label="최대 계약금액"
                   aria-invalid={Boolean(amountError)}
                   aria-describedby={amountError ? "payment-amount-error" : undefined}
-                  value={formatAmount(filters.maxAmount)}
+                  value={formatNumericInput(filters.maxAmount)}
                   placeholder="최대금액"
                   onChange={(event) =>
-                    changeFilter("maxAmount", normalizeAmount(event.target.value))
+                    changeFilter("maxAmount", keepDigits(event.target.value))
                   }
                 />
               </div>
@@ -177,28 +168,7 @@ export function PaymentSearchPanel({
           )}
         </button>
 
-        <div className="contract-search-actions">
-          <button
-            type="button"
-            className="contract-button contract-button--outline contract-reset-button"
-            onClick={resetSearch}
-          >
-            <RotateCcw size={17} aria-hidden="true" />
-            초기화
-          </button>
-          <button
-            type="submit"
-            className="contract-button contract-button--primary contract-submit-button"
-            disabled={isLoading}
-          >
-            {isLoading ? (
-              <LoaderCircle className="contract-loading-spinner" size={18} aria-hidden="true" />
-            ) : (
-              <Search size={18} aria-hidden="true" />
-            )}
-            검색
-          </button>
-        </div>
+        <SearchActions isLoading={isLoading} onReset={resetSearch} />
       </div>
     </form>
   )

@@ -1,4 +1,4 @@
-export const CONTRACT_OFFICES = [
+export const OFFICE_OPTIONS = [
   "전체",
   "군의회",
   "본청",

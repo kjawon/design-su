@@ -1,5 +1,5 @@
 import gapyeongLogo from "@/가평군청 로고.svg"
-import { Search } from "@/components/search"
+import { Search } from "@/components/home/search"
 
 export function IntroSection() {
   return (

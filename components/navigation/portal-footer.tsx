@@ -1,4 +1,4 @@
-export function Footer() {
+export function PortalFooter() {
   return (
     <footer className="bg-text-primary text-primary-foreground">
       <div className="mx-auto flex max-w-[1400px] flex-col items-center gap-3 px-5 pb-7 pt-5 text-center lg:px-8">

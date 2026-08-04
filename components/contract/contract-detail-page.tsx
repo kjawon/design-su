@@ -1,10 +1,11 @@
-import { ArrowLeft, ChevronRight, House, Printer } from "lucide-react"
+import { ArrowLeft, Printer } from "lucide-react"
 import { ContractDetailContent } from "@/components/contract/contract-detail-content"
 import { CONTRACT_RECORDS } from "@/components/contract/contract-mock-data"
 import type { ContractPageConfig } from "@/components/contract/contract-page-config"
 import { ContractSidebar } from "@/components/contract/contract-sidebar"
 import { Header } from "@/components/navigation/portal-header"
-import { Footer } from "@/components/portal-footer"
+import { PortalFooter } from "@/components/navigation/portal-footer"
+import { PageBreadcrumb, type BreadcrumbItem } from "@/components/shared/page-breadcrumb"
 import "@/components/contract/styles/contract.css"
 import "@/components/contract/styles/contract-detail.css"
 
@@ -21,31 +22,6 @@ function findDisplayRecord(config: ContractPageConfig, contractId: number) {
   return sourceIndex >= 0
     ? CONTRACT_RECORDS[sourceIndex % CONTRACT_RECORDS.length]
     : undefined
-}
-
-function DetailBreadcrumb({ config }: { config: ContractPageConfig }) {
-  return (
-    <nav className="contract-breadcrumb" aria-label="현재 위치">
-      <div>
-        <a href="/" aria-label="홈">
-          <House size={20} aria-hidden="true" />
-          <span>홈</span>
-        </a>
-        <ChevronRight size={18} aria-hidden="true" />
-        <span>계약정보</span>
-        {!config.standalone && (
-          <>
-            <ChevronRight size={18} aria-hidden="true" />
-            <span>{config.accountLabel}</span>
-          </>
-        )}
-        <ChevronRight size={18} aria-hidden="true" />
-        <a href={config.path}>{config.menuLabel}</a>
-        <ChevronRight size={18} aria-hidden="true" />
-        <strong aria-current="page">계약 상세</strong>
-      </div>
-    </nav>
-  )
 }
 
 function DetailPageHeader({
@@ -86,12 +62,18 @@ export function ContractDetailPage({
   contractId,
 }: ContractDetailPageProps) {
   const record = findDisplayRecord(config, contractId)
+  const breadcrumbItems: BreadcrumbItem[] = [
+    { label: "계약정보" },
+    ...(!config.standalone ? [{ label: config.accountLabel }] : []),
+    { label: config.menuLabel, href: config.path },
+    { label: "계약 상세" },
+  ]
 
   return (
     <div className="contract-status-page contract-detail-shell">
       <Header />
       <main id="main-content" tabIndex={-1}>
-        <DetailBreadcrumb config={config} />
+        <PageBreadcrumb items={breadcrumbItems} />
         <div className="contract-layout">
           <ContractSidebar
             accountType={config.accountType}
@@ -103,7 +85,7 @@ export function ContractDetailPage({
           </article>
         </div>
       </main>
-      <Footer />
+      <PortalFooter />
     </div>
   )
 }

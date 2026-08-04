@@ -1,16 +1,15 @@
 import {
   ChevronDown,
   ChevronUp,
-  LoaderCircle,
-  RotateCcw,
-  Search,
   SlidersHorizontal,
 } from "lucide-react"
 import { useState } from "react"
-import { CONTRACT_OFFICES } from "@/components/contract/contract-options"
 import type { ContractPageKind } from "@/components/contract/contract-page-config"
 import type { ContractFilters } from "@/components/contract/contract-types"
-import { DateRangeField } from "@/components/contract/date-range-field"
+import { DateRangeField } from "@/components/shared/date-range-field"
+import { OFFICE_OPTIONS } from "@/components/shared/office-options"
+import { SearchActions } from "@/components/shared/search-actions"
+import { formatNumericInput, keepDigits } from "@/lib/number-input"
 
 const CONTRACT_CATEGORIES = ["공사", "용역", "물품"] as const
 const CONTRACT_METHODS = ["일반경쟁", "제한경쟁", "지명경쟁", "수의계약"] as const
@@ -23,51 +22,6 @@ type ContractSearchPanelProps = {
   onChange: (field: keyof ContractFilters, value: string) => void
   onReset: () => void
   onSearch: () => void
-}
-
-function formatAmount(value: string) {
-  return value ? Number(value).toLocaleString("ko-KR") : ""
-}
-
-function normalizeAmount(value: string) {
-  return value.replace(/\D/g, "")
-}
-
-function SearchActionButtons({
-  isLoading,
-  onReset,
-}: {
-  isLoading: boolean
-  onReset: () => void
-}) {
-  return (
-    <div className="contract-search-actions">
-      <button
-        type="button"
-        className="contract-button contract-button--outline contract-reset-button"
-        onClick={onReset}
-      >
-        <RotateCcw size={17} aria-hidden="true" />
-        초기화
-      </button>
-      <button
-        type="submit"
-        className="contract-button contract-button--primary contract-submit-button"
-        disabled={isLoading}
-      >
-        {isLoading ? (
-          <LoaderCircle
-            className="contract-loading-spinner"
-            size={18}
-            aria-hidden="true"
-          />
-        ) : (
-          <Search size={18} aria-hidden="true" />
-        )}
-        검색
-      </button>
-    </div>
-  )
 }
 
 export function ContractSearchPanel({
@@ -245,7 +199,7 @@ export function ContractSearchPanel({
                   onChange={(event) => changeFilter("department", event.target.value)}
                 >
                   <option value="">전체</option>
-                  {CONTRACT_OFFICES.filter((office) => office !== "전체").map((office) => (
+                  {OFFICE_OPTIONS.filter((office) => office !== "전체").map((office) => (
                     <option key={office} value={office}>
                       {office}
                     </option>
@@ -272,10 +226,10 @@ export function ContractSearchPanel({
                     aria-label="최소금액"
                     aria-invalid={Boolean(amountError)}
                     aria-describedby={amountError ? "contract-amount-error" : undefined}
-                    value={formatAmount(filters.minAmount)}
+                    value={formatNumericInput(filters.minAmount)}
                     placeholder="최소금액"
                     onChange={(event) =>
-                      changeFilter("minAmount", normalizeAmount(event.target.value))
+                      changeFilter("minAmount", keepDigits(event.target.value))
                     }
                   />
                   <span aria-hidden="true">~</span>
@@ -285,10 +239,10 @@ export function ContractSearchPanel({
                     aria-label="최대금액"
                     aria-invalid={Boolean(amountError)}
                     aria-describedby={amountError ? "contract-amount-error" : undefined}
-                    value={formatAmount(filters.maxAmount)}
+                    value={formatNumericInput(filters.maxAmount)}
                     placeholder="최대금액"
                     onChange={(event) =>
-                      changeFilter("maxAmount", normalizeAmount(event.target.value))
+                      changeFilter("maxAmount", keepDigits(event.target.value))
                     }
                   />
                 </div>
@@ -337,7 +291,7 @@ export function ContractSearchPanel({
             <ChevronDown size={16} aria-hidden="true" />
           )}
         </button>
-        <SearchActionButtons isLoading={isLoading} onReset={resetSearch} />
+        <SearchActions isLoading={isLoading} onReset={resetSearch} />
       </div>
     </form>
   )

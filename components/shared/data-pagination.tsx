@@ -6,19 +6,19 @@ import {
 } from "lucide-react"
 import type { ReactNode } from "react"
 
-type ContractPaginationProps = {
+type DataPaginationProps = {
   currentPage: number
   totalPages: number
   onChange: (page: number) => void
   ariaLabel?: string
 }
 
-export function ContractPagination({
+export function DataPagination({
   currentPage,
   totalPages,
   onChange,
   ariaLabel = "계약현황 페이지",
-}: ContractPaginationProps) {
+}: DataPaginationProps) {
   const start = Math.max(1, Math.min(currentPage - 2, totalPages - 4))
   const pages = Array.from({ length: Math.min(5, totalPages) }, (_, index) => start + index)
 

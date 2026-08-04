@@ -16,7 +16,7 @@ function openDatePicker(event: MouseEvent<HTMLInputElement>) {
   try {
     event.currentTarget.showPicker?.()
   } catch {
-    // showPicker를 지원하지 않는 브라우저는 기본 날짜 입력 동작을 사용합니다.
+    // 지원하지 않는 브라우저에서는 기본 날짜 입력 동작을 사용합니다.
   }
 }
 
@@ -65,7 +65,7 @@ export function DateRangeField({
   onStartDateChange,
   onEndDateChange,
 }: DateRangeFieldProps) {
-  const errorId = errorMessage ? "contract-date-error" : undefined
+  const errorId = errorMessage ? "date-range-error" : undefined
 
   return (
     <fieldset className="contract-field">

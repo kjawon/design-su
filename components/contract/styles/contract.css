@@ -32,6 +32,12 @@
   flex: 0 0 auto;
 }
 
+.contract-breadcrumb__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .contract-breadcrumb a {
   display: inline-flex;
   align-items: center;
@@ -498,16 +504,6 @@
 
 .contract-search-panel--contract .contract-date-input:has(input[aria-invalid="true"]) {
   border-color: #c7656f;
-}
-
-.contract-results-error {
-  margin-top: 18px;
-  padding: 12px 14px;
-  border: 1px solid #f0c8cc;
-  border-radius: 8px;
-  color: #9f2f3a;
-  background: #fff7f8;
-  font-size: 14px;
 }
 
 .contract-results-tools {

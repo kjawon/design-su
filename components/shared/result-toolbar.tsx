@@ -1,18 +1,18 @@
 import { Download } from "lucide-react"
 
-type ContractResultToolbarProps = {
+type ResultToolbarProps = {
   totalCount: number
   pageSize: number
   onPageSizeChange: (pageSize: number) => void
   onDownload: () => void
 }
 
-export function ContractResultToolbar({
+export function ResultToolbar({
   totalCount,
   pageSize,
   onPageSizeChange,
   onDownload,
-}: ContractResultToolbarProps) {
+}: ResultToolbarProps) {
   return (
     <div className="contract-results-tools">
       <p className="contract-results-count" aria-live="polite">

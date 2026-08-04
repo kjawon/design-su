@@ -1,5 +1,5 @@
 import { ArrowRight } from "lucide-react"
-import { useEffect, useRef, useState, type MouseEvent } from "react"
+import { type MouseEvent, useEffect, useRef, useState } from "react"
 import contractDoctorImage from "@/계약박사 리뉴얼.png"
 
 export function AiDoctorFab() {

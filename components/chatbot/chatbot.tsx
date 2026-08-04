@@ -1,6 +1,6 @@
 "use client"
 
-import { FormEvent, useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, type FormEvent } from "react"
 import { RefreshCw, Send, Sparkles, X } from "lucide-react"
 import contractDoctorImage from "@/계약박사 리뉴얼.png"
 import { Button } from "@/components/ui/button"

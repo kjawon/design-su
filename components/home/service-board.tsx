@@ -1,5 +1,5 @@
 import { FileSignature, HandCoins, LibraryBig, Megaphone } from "lucide-react"
-import { ServiceCard, type ServiceItem } from "@/components/service-card"
+import { ServiceCard, type ServiceItem } from "@/components/home/service-card"
 
 const services: ServiceItem[] = [
   {

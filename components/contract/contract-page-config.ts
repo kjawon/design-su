@@ -18,7 +18,6 @@ export type ContractPageConfig = {
   path: string
   title: string
   menuLabel: string
-  description: string
   accountType: AccountType
   accountLabel: "일반회계" | "특별회계"
   menuKey: ContractMenuKey
@@ -57,7 +56,6 @@ export const contractPageConfigs: ContractPageConfig[] = [
     path: "/contract/status",
     title: "계약현황",
     menuLabel: "계약현황",
-    description: "조건을 설정해 원하는 계약 정보를 조회할 수 있습니다.",
     accountType: "general",
     accountLabel: "일반회계",
     menuKey: "general-status",
@@ -70,7 +68,6 @@ export const contractPageConfigs: ContractPageConfig[] = [
     path: "/contract/private",
     title: "수의계약현황",
     menuLabel: "수의계약현황",
-    description: "조건을 설정해 원하는 수의계약 정보를 조회할 수 있습니다.",
     accountType: "general",
     accountLabel: "일반회계",
     menuKey: "general-private",
@@ -83,7 +80,6 @@ export const contractPageConfigs: ContractPageConfig[] = [
     path: "/contract/subcontract",
     title: "하도급 계약현황",
     menuLabel: "하도급계약현황",
-    description: "조건을 설정해 원하는 하도급 계약 정보를 조회할 수 있습니다.",
     accountType: "general",
     accountLabel: "일반회계",
     menuKey: "general-subcontract",
@@ -96,7 +92,6 @@ export const contractPageConfigs: ContractPageConfig[] = [
     path: "/contract/completion",
     title: "준공검사",
     menuLabel: "준공검사",
-    description: "계약명과 준공일을 기준으로 준공검사 정보를 조회할 수 있습니다.",
     accountType: "general",
     accountLabel: "일반회계",
     menuKey: "general-completion",
@@ -109,7 +104,6 @@ export const contractPageConfigs: ContractPageConfig[] = [
     path: "/contract/special/status",
     title: "계약현황",
     menuLabel: "계약현황",
-    description: "조건을 설정해 원하는 계약 정보를 조회할 수 있습니다.",
     accountType: "special",
     accountLabel: "특별회계",
     menuKey: "special-status",
@@ -122,7 +116,6 @@ export const contractPageConfigs: ContractPageConfig[] = [
     path: "/contract/special/private",
     title: "수의계약현황",
     menuLabel: "수의계약현황",
-    description: "조건을 설정해 원하는 수의계약 정보를 조회할 수 있습니다.",
     accountType: "special",
     accountLabel: "특별회계",
     menuKey: "special-private",
@@ -135,7 +128,6 @@ export const contractPageConfigs: ContractPageConfig[] = [
     path: "/contract/special/subcontract",
     title: "하도급 계약현황",
     menuLabel: "하도급계약현황",
-    description: "조건을 설정해 원하는 하도급 계약 정보를 조회할 수 있습니다.",
     accountType: "special",
     accountLabel: "특별회계",
     menuKey: "special-subcontract",
@@ -148,7 +140,6 @@ export const contractPageConfigs: ContractPageConfig[] = [
     path: "/contract/special/completion",
     title: "준공검사",
     menuLabel: "준공검사",
-    description: "계약명과 준공일을 기준으로 준공검사 정보를 조회할 수 있습니다.",
     accountType: "special",
     accountLabel: "특별회계",
     menuKey: "special-completion",
@@ -161,7 +152,6 @@ export const contractPageConfigs: ContractPageConfig[] = [
     path: "/contract/negotiation-evaluation",
     title: "협상계약평가결과",
     menuLabel: "협상계약평가결과",
-    description: "관서명, 부서명, 사업명을 기준으로 협상계약 평가결과를 조회할 수 있습니다.",
     accountType: "general",
     accountLabel: "일반회계",
     menuKey: "negotiation-evaluation",

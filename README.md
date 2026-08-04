@@ -9,14 +9,19 @@
 > 화면을 컴포넌트로 나누고, 데이터가 바뀌면 화면도 함께 갱신합니다.
 
 - **핵심 역할:** 재사용 가능한 화면 구성, 사용자 입력 처리, 상태에 따른 렌더링
+<<<<<<< HEAD
 - **사용 예시:** 헤더, 검색 패널, 사이드바, 목록, 상세 카드, 챗봇
 - **관리하는 상태:** 검색 조건, 현재 페이지, 상세검색 열림 여부, 로딩 상태
+=======
+- **사용 예시:** 검색 패널, 사이드바, 목록, 계약 상세 카드, 챗봇
+>>>>>>> 8b03932 (최적화 작업)
 
 ### Vite — 개발 서버와 배포 빌드
 
 > React와 TypeScript 코드를 브라우저에서 실행할 수 있도록 변환합니다.
 
 - **개발:** `npm run dev`로 개발 서버 실행 및 빠른 화면 갱신
+<<<<<<< HEAD
 - **배포:** `npm run build`로 최적화된 파일을 `dist/`에 생성
 - **프로젝트 설정:** `vite.config.ts`에서 React 플러그인과 `@` 경로 별칭 관리
 
@@ -64,6 +69,39 @@
 4. **Lucide**가 검색과 초기화 버튼에 아이콘을 제공합니다.
 5. **Vite**가 전체 코드를 개발 서버에서 실행하거나 배포 파일로 변환합니다.
 6. UI 동작이 더 복잡해지면 **Base UI** 기반 컴포넌트로 확장할 수 있습니다.
+=======
+- **배포:** `npm run build`로 최적화된 결과물을 `dist/`에 생성
+- **설정:** `vite.config.ts`에서 React 플러그인과 `@` 경로 별칭 관리
+
+### TypeScript — 데이터 구조와 오류 검사
+
+> JavaScript에 타입 검사를 추가해 잘못된 코드와 데이터 누락을 실행 전에 발견합니다.
+
+- **사용 예시:** `ContractRecord`, `PaymentRecord`, 검색 조건, 페이지 설정
+- **장점:** 잘못된 속성이나 컴포넌트 입력값을 빌드 전에 확인
+
+### Tailwind CSS 4 — 화면 스타일과 반응형 구성
+
+> 유틸리티 클래스를 조합해 화면의 모양과 배치를 만듭니다.
+
+- **사용 예시:** 메인 화면, 헤더, 서비스 카드, 푸터, 공통 UI
+- **디자인 관리:** `src/index.css`의 `@theme`과 CSS 변수로 공통 색상 관리
+- **전용 CSS:** 복잡한 계약·대금지급 표는 각 기능 폴더의 CSS로 관리
+
+### Base UI — 접근성을 고려한 UI 동작 기반
+
+> 디자인을 직접 적용하면서 키보드 조작과 상태 관리 기반을 활용합니다.
+
+- **현재 사용:** 공통 버튼과 입력 컴포넌트
+- **확장 예시:** 팝업, 선택 메뉴, 드롭다운 등 동작이 복잡한 UI
+
+### Lucide — 공통 SVG 아이콘
+
+> 동일한 선 스타일의 아이콘을 React 컴포넌트처럼 사용합니다.
+
+- **사용 예시:** 검색, 초기화, 다운로드, 인쇄, 달력, 메뉴, 페이지 이동
+- **접근성:** 장식용 아이콘에는 `aria-hidden` 적용
+>>>>>>> 8b03932 (최적화 작업)
 
 ## 처음 실행하기
 
@@ -93,21 +131,46 @@ npm run preview
 
 ## 주요 화면 경로
 
+<<<<<<< HEAD
 개발 서버를 실행한 뒤 다음 경로에서 주요 화면을 확인할 수 있습니다.
 
+=======
+>>>>>>> 8b03932 (최적화 작업)
 | 화면 | 경로 |
 | --- | --- |
 | 메인 | `/` |
 | 일반회계 계약현황 | `/contract/status` |
 | 수의계약현황 | `/contract/private` |
+<<<<<<< HEAD
 | 계약 상세 예시 | `/contract/status/4352` |
 | 일반회계 대금지급현황 | `/payment/status` |
 | 대금지급 상세 예시 | `/payment/status/32897` |
+=======
+| 하도급계약현황 | `/contract/subcontract` |
+| 준공검사 | `/contract/completion` |
+| 특별회계 계약현황 | `/contract/special/status` |
+| 특별회계 수의계약현황 | `/contract/special/private` |
+| 특별회계 하도급계약현황 | `/contract/special/subcontract` |
+| 특별회계 준공검사 | `/contract/special/completion` |
+| 협상계약평가결과 | `/contract/negotiation-evaluation` |
+| 계약 상세 예시 | `/contract/status/4352` |
+| 일반회계 대금지급현황 | `/payment/status` |
+>>>>>>> 8b03932 (최적화 작업)
 | 일반회계 대금지급예고 | `/payment/notice` |
 | 특별회계 대금지급현황 | `/payment/special/status` |
 | 특별회계 대금지급예고 | `/payment/special/notice` |
 
+<<<<<<< HEAD
 라우팅 라이브러리 없이 `src/App.tsx`에서 현재 `pathname`을 기준으로 화면을 분기합니다.
+=======
+## 구조 변경 요약
+
+- 메인 화면 전용 컴포넌트는 `components/home/`으로 모았습니다.
+- 챗봇과 전역 내비게이션은 각각 `components/chatbot/`, `components/navigation/`으로 분리했습니다.
+- 계약과 대금지급 화면에서 함께 사용하는 검색·사이드바·목록 UI는 `components/shared/`로 추출했습니다.
+- 다운로드, mock 페이지 생성, 숫자 입력 처리처럼 화면에 종속되지 않는 함수는 `lib/`에서 관리합니다.
+- 계약과 대금지급 도메인에는 해당 화면의 설정, 타입, mock 데이터, 테이블, 전용 스타일만 유지합니다.
+>>>>>>> 8b03932 (최적화 작업)
 
 ## 폴더 구성
 
@@ -117,8 +180,12 @@ src/
   App.tsx                   pathname 기반 화면 분기
   index.css                 공통 스타일과 색상 설정
 components/
+  chatbot/                  AI 도우미 기능
+    chatbot.tsx             챗봇 패널과 팝업 화면
   contract/                 계약 페이지 기능
     contract-page.tsx       공통 계약 페이지 조립
+    contract-detail-page.tsx
+    contract-detail-content.tsx
     contract-page-config.ts 계약 페이지 경로와 설정
     contract-detail-page.tsx
     contract-detail-content.tsx
@@ -128,8 +195,10 @@ components/
     contract-sidebar.tsx
     contract-table.tsx
     completion-table.tsx
+    evaluation-table.tsx
     styles/contract.css     계약 페이지 전용 스타일
     styles/contract-detail.css
+<<<<<<< HEAD
   payment/                  대금지급 페이지 기능
     payment-page.tsx        대금지급 목록 화면 조립
     payment-page-config.ts  일반·특별회계 경로와 메뉴 설정
@@ -141,37 +210,82 @@ components/
     payment-sidebar.tsx
     payment-table.tsx
     styles/payment.css      대금지급 전용 스타일
+=======
+  home/                     메인 화면 기능
+    ai-doctor-fab.tsx       AI 도우미 실행 버튼
+    intro-section.tsx       소개 및 통합 검색 영역
+    search.tsx              메인 검색
+    service-board.tsx       주요 서비스 영역
+    service-card.tsx
+    portal-information.tsx  최근 정보와 자주 찾는 정보
+    portal-data.ts          메인 화면 예시 데이터
+    quick-links.tsx
+    structured-contract-list.tsx
+>>>>>>> 8b03932 (최적화 작업)
   navigation/               전역 내비게이션
     portal-header.tsx
+    portal-footer.tsx
     global-menu-data.ts
+<<<<<<< HEAD
   intro-section.tsx         소개 및 검색 영역
   service-board.tsx         주요 서비스 영역
   portal-information.tsx    최근 계약과 자주 찾는 정보 영역
   portal-data.ts            메인 화면 예시 데이터
   chatbot.tsx               AI 도우미 디자인
+=======
+  payment/                  대금지급 페이지 기능
+    payment-page.tsx
+    payment-page-config.ts
+    payment-types.ts
+    payment-search-panel.tsx
+    payment-sidebar.tsx
+    payment-table.tsx
+    payment-mock-data.ts
+    styles/payment.css
+  shared/                   계약·대금지급 공용 기능
+    account-sidebar.tsx
+    data-pagination.tsx
+    date-range-field.tsx
+    office-options.ts
+    page-breadcrumb.tsx
+    result-toolbar.tsx
+    search-actions.tsx
+>>>>>>> 8b03932 (최적화 작업)
   ui/                       버튼, 배지, 입력창 등 공통 UI
+lib/                        화면에 종속되지 않는 공통 함수
+  download-table.ts         표 데이터를 파일로 다운로드
+  mock-page.ts              화면 확인용 페이지 데이터 생성
+  number-input.ts           숫자 입력 정규화와 표시 형식 처리
+  utils.ts                  className 병합
 public/                      브라우저 파비콘
 ```
 
 ## 화면 내용을 수정하려면
 
-- 최근 계약과 자주 찾는 정보 문구: `components/portal-data.ts`
+- 최근 계약과 자주 찾는 정보 문구: `components/home/portal-data.ts`
 - 상단 메뉴: `components/navigation/global-menu-data.ts`
 - 계약 페이지 설정과 경로: `components/contract/contract-page-config.ts`
 - 계약 페이지 임시 데이터: `components/contract/contract-mock-data.ts`
 - 계약 페이지 스타일: `components/contract/styles/contract.css`
+<<<<<<< HEAD
 - 대금지급 페이지 설정과 경로: `components/payment/payment-page-config.ts`
 - 대금지급 페이지 임시 데이터: `components/payment/payment-mock-data.ts`
 - 대금지급 목록·상세 스타일: `components/payment/styles/payment.css`
+=======
+- 대금지급 설정과 경로: `components/payment/payment-page-config.ts`
+- 대금지급 임시 데이터: `components/payment/payment-mock-data.ts`
+- 공용 검색·목록 컴포넌트: `components/shared/`
+>>>>>>> 8b03932 (최적화 작업)
 - 메인 화면 구성 순서: `src/App.tsx`
-- 주요 서비스 카드: `components/service-board.tsx`
-- 챗봇 화면: `components/chatbot.tsx`
+- 주요 서비스 카드: `components/home/service-board.tsx`
+- 챗봇 화면: `components/chatbot/chatbot.tsx`
 - 색상과 전체 스타일: `src/index.css`
 
 파일을 저장하면 실행 중인 브라우저 화면에 변경 내용이 자동으로 반영됩니다.
 
 ## 현재 구현 범위
 
+<<<<<<< HEAD
 현재 프로젝트는 디자인 확인용이며 계약 및 대금지급 페이지는 로컬 mock 데이터를 사용합니다.
 
 - 메인 검색창은 실제 검색을 수행하지 않습니다.
@@ -184,6 +298,18 @@ public/                      브라우저 파비콘
 - 계약과 공지 내용은 예시 데이터입니다.
 - 챗봇은 예시 답변만 표시합니다.
 - 로그인, 음성 입력, 실제 파일 서버 및 백엔드 저장 기능은 연결되어 있지 않습니다.
+=======
+현재 프로젝트는 디자인 확인용이며 계약과 대금지급 페이지는 로컬 mock 데이터를 사용합니다.
+
+- 메인 검색창은 실제 검색을 수행하지 않습니다.
+- 계약 페이지 검색은 현재 로컬 mock 데이터만 필터링합니다.
+- 대금지급현황 검색은 현재 로컬 mock 데이터만 필터링합니다.
+- 목록 개수 변경, 페이지네이션, 초기화, 엑셀 다운로드와 계약 상세 인쇄 UI를 확인할 수 있습니다.
+- 대금지급예고 화면은 경로와 메뉴가 연결되어 있으며 현재 빈 결과 상태입니다.
+- 계약과 공지 내용은 예시 데이터입니다.
+- 챗봇은 예시 답변만 표시합니다.
+- 로그인, 음성 입력, 실제 파일 서버와 백엔드 저장 기능은 연결되어 있지 않습니다.
+>>>>>>> 8b03932 (최적화 작업)
 
 실제 서비스로 확장하려면 별도의 API, 데이터베이스, 로그인 기능을 연결해야 합니다.
 

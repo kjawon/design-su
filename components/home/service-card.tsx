@@ -1,5 +1,4 @@
-import { ArrowRight } from "lucide-react"
-import type { LucideIcon } from "lucide-react"
+import { ArrowRight, type LucideIcon } from "lucide-react"
 
 export type ServiceItem = {
   title: string

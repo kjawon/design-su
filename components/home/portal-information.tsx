@@ -1,5 +1,5 @@
-import { QuickLinks } from "@/components/quick-links"
-import { StructuredContractList } from "@/components/structured-contract-list"
+import { QuickLinks } from "@/components/home/quick-links"
+import { StructuredContractList } from "@/components/home/structured-contract-list"
 
 export function PortalInformation() {
   return (

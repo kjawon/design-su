@@ -1,8 +1,4 @@
-import {
-  FileText,
-  Landmark,
-  Link2,
-} from "lucide-react"
+import { FileText, Landmark, Link2 } from "lucide-react"
 
 export type RecentContentType = "contract" | "payment" | "notice"
 

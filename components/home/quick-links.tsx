@@ -1,5 +1,5 @@
 import { ArrowRight } from "lucide-react"
-import { frequentlyUsed } from "@/components/portal-data"
+import { frequentlyUsed } from "@/components/home/portal-data"
 
 const quickLinks = [
   frequentlyUsed.find(({ title }) => title === "계약법규")!,

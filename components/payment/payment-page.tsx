@@ -1,9 +1,6 @@
-import { ChevronRight, House } from "lucide-react"
 import { useEffect, useMemo, useRef, useState } from "react"
-import { ContractPagination } from "@/components/contract/contract-pagination"
-import { ContractResultToolbar } from "@/components/contract/contract-result-toolbar"
-import { Footer } from "@/components/portal-footer"
 import { Header } from "@/components/navigation/portal-header"
+import { PortalFooter } from "@/components/navigation/portal-footer"
 import {
   EMPTY_PAYMENT_FILTERS,
   PAYMENT_RECORDS,
@@ -13,8 +10,15 @@ import { PaymentSearchPanel } from "@/components/payment/payment-search-panel"
 import { PaymentSidebar } from "@/components/payment/payment-sidebar"
 import { PaymentTable } from "@/components/payment/payment-table"
 import type { PaymentFilters, PaymentRecord } from "@/components/payment/payment-types"
+import { DataPagination } from "@/components/shared/data-pagination"
+import { PageBreadcrumb } from "@/components/shared/page-breadcrumb"
+import { ResultToolbar } from "@/components/shared/result-toolbar"
+import { downloadTable } from "@/lib/download-table"
+import { createMockPage } from "@/lib/mock-page"
 import "@/components/contract/styles/contract.css"
 import "@/components/payment/styles/payment.css"
+
+const EMPTY_PAYMENT_RECORDS: PaymentRecord[] = []
 
 function matchesPaymentFilters(record: PaymentRecord, filters: PaymentFilters) {
   const normalizedName = filters.contractName.trim().toLocaleLowerCase("ko-KR")
@@ -32,25 +36,6 @@ function matchesPaymentFilters(record: PaymentRecord, filters: PaymentFilters) {
   )
 }
 
-function createDisplayRecords(
-  source: PaymentRecord[],
-  totalCount: number,
-  page: number,
-  pageSize: number,
-) {
-  if (source.length === 0 || totalCount === 0) return []
-
-  const startIndex = (page - 1) * pageSize
-  const remaining = Math.max(0, totalCount - startIndex)
-  return Array.from({ length: Math.min(pageSize, remaining) }, (_, index) => {
-    const template = source[(startIndex + index) % source.length]
-    return {
-      ...template,
-      id: totalCount - startIndex - index,
-    }
-  })
-}
-
 export function PaymentPage({ config }: { config: PaymentPageConfig }) {
   const [filters, setFilters] = useState<PaymentFilters>(() => ({
     ...EMPTY_PAYMENT_FILTERS,
@@ -60,12 +45,10 @@ export function PaymentPage({ config }: { config: PaymentPageConfig }) {
   }))
   const [page, setPage] = useState(1)
   const [pageSize, setPageSize] = useState(10)
-  const [formVersion, setFormVersion] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
-  const [errorMessage, setErrorMessage] = useState("")
   const searchTimerRef = useRef<number | null>(null)
 
-  const source = config.pageKind === "status" ? PAYMENT_RECORDS : []
+  const source = config.pageKind === "status" ? PAYMENT_RECORDS : EMPTY_PAYMENT_RECORDS
   const filteredRecords = useMemo(
     () => source.filter((record) => matchesPaymentFilters(record, appliedFilters)),
     [appliedFilters, source],
@@ -79,7 +62,7 @@ export function PaymentPage({ config }: { config: PaymentPageConfig }) {
     () =>
       isFiltered
         ? filteredRecords.slice((page - 1) * pageSize, page * pageSize)
-        : createDisplayRecords(source, totalCount, page, pageSize),
+        : createMockPage(source, totalCount, page, pageSize),
     [filteredRecords, isFiltered, page, pageSize, source, totalCount],
   )
 
@@ -98,27 +81,19 @@ export function PaymentPage({ config }: { config: PaymentPageConfig }) {
     searchTimerRef.current = null
     setFilters({ ...EMPTY_PAYMENT_FILTERS })
     setAppliedFilters({ ...EMPTY_PAYMENT_FILTERS })
-    setErrorMessage("")
     setIsLoading(false)
     setPage(1)
-    setFormVersion((current) => current + 1)
   }
 
   const searchPayments = () => {
     if (searchTimerRef.current !== null) window.clearTimeout(searchTimerRef.current)
     setIsLoading(true)
-    setErrorMessage("")
 
     searchTimerRef.current = window.setTimeout(() => {
-      try {
-        setAppliedFilters({ ...filters })
-        setPage(1)
-      } catch {
-        setErrorMessage("조회 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.")
-      } finally {
-        setIsLoading(false)
-        searchTimerRef.current = null
-      }
+      setAppliedFilters({ ...filters })
+      setPage(1)
+      setIsLoading(false)
+      searchTimerRef.current = null
     }, 180)
   }
 
@@ -147,45 +122,26 @@ export function PaymentPage({ config }: { config: PaymentPageConfig }) {
         record.paymentDate,
       ]),
     ]
-    const tabSeparated = rows
-      .map((row) => row.map((cell) => String(cell).replaceAll("\t", " ")).join("\t"))
-      .join("\n")
-    const blob = new Blob([`\uFEFF${tabSeparated}`], {
-      type: "application/vnd.ms-excel;charset=utf-8",
-    })
-    const url = URL.createObjectURL(blob)
-    const link = document.createElement("a")
-    link.href = url
-    link.download = config.downloadFileName
-    link.click()
-    URL.revokeObjectURL(url)
+    downloadTable(rows, config.downloadFileName)
   }
 
   return (
     <div className="contract-status-page payment-status-page">
       <Header />
       <main id="main-content" tabIndex={-1}>
-        <nav className="contract-breadcrumb" aria-label="현재 위치">
-          <div>
-            <a href="/" aria-label="홈">
-              <House size={20} aria-hidden="true" />
-              <span>홈</span>
-            </a>
-            <ChevronRight size={18} aria-hidden="true" />
-            <span>대금지급</span>
-            <ChevronRight size={18} aria-hidden="true" />
-            <span>{config.accountLabel}</span>
-            <ChevronRight size={18} aria-hidden="true" />
-            <strong aria-current="page">{config.menuLabel}</strong>
-          </div>
-        </nav>
+        <PageBreadcrumb
+          items={[
+            { label: "대금지급" },
+            { label: config.accountLabel },
+            { label: config.menuLabel },
+          ]}
+        />
 
         <div className="contract-layout">
           <PaymentSidebar accountType={config.accountType} activeMenu={config.menuKey} />
 
           <section className="contract-content" aria-label={config.title}>
             <PaymentSearchPanel
-              key={formVersion}
               pageTitle={config.title}
               filters={filters}
               isLoading={isLoading}
@@ -194,13 +150,7 @@ export function PaymentPage({ config }: { config: PaymentPageConfig }) {
               onSearch={searchPayments}
             />
 
-            {errorMessage && (
-              <p className="contract-results-error" role="alert">
-                {errorMessage}
-              </p>
-            )}
-
-            <ContractResultToolbar
+            <ResultToolbar
               totalCount={totalCount}
               pageSize={pageSize}
               onPageSizeChange={(nextPageSize) => {
@@ -210,12 +160,17 @@ export function PaymentPage({ config }: { config: PaymentPageConfig }) {
               onDownload={downloadExcel}
             />
 
+<<<<<<< HEAD
             <PaymentTable
               records={displayRecords}
               detailBasePath={config.path}
               isLoading={isLoading}
             />
             <ContractPagination
+=======
+            <PaymentTable records={displayRecords} isLoading={isLoading} />
+            <DataPagination
+>>>>>>> 8b03932 (최적화 작업)
               currentPage={Math.min(page, totalPages)}
               totalPages={totalPages}
               onChange={setPage}
@@ -224,7 +179,7 @@ export function PaymentPage({ config }: { config: PaymentPageConfig }) {
           </section>
         </div>
       </main>
-      <Footer />
+      <PortalFooter />
     </div>
   )
 }

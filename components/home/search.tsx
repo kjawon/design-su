@@ -1,6 +1,6 @@
-import { FormEvent, KeyboardEvent, useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from "react"
 import { ChevronDown, SearchIcon } from "lucide-react"
-import { AiDoctorFab } from "@/components/ai-doctor-fab"
+import { AiDoctorFab } from "@/components/home/ai-doctor-fab"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 

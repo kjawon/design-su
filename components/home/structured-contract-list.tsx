@@ -4,7 +4,7 @@ import {
   recentInformation,
   type RecentContentType,
   type RecentListItemData,
-} from "@/components/portal-data"
+} from "@/components/home/portal-data"
 import { Badge } from "@/components/ui/badge"
 
 interface ContentOption {
