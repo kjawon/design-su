@@ -5,6 +5,7 @@ import { getContractPageConfig } from "@/components/contract/contract-page-confi
 import { IntroSection } from "@/components/intro-section"
 import { Footer } from "@/components/portal-footer"
 import { Header } from "@/components/navigation/portal-header"
+import { PaymentDetailPage } from "@/components/payment/payment-detail-page"
 import { PaymentPage } from "@/components/payment/payment-page"
 import { getPaymentPageConfig } from "@/components/payment/payment-page-config"
 import { PortalInformation } from "@/components/portal-information"
@@ -19,6 +20,9 @@ export function App() {
   const contractDetailConfig = contractDetailMatch
     ? getContractPageConfig(contractDetailMatch[1])
     : undefined
+  const paymentDetailConfig = contractDetailMatch
+    ? getPaymentPageConfig(contractDetailMatch[1])
+    : undefined
   const contractDetailId = contractDetailMatch ? Number(contractDetailMatch[2]) : null
 
   if (isChatbotWindow) return <Chatbot windowMode />
@@ -30,6 +34,17 @@ export function App() {
       <ContractDetailPage
         config={contractDetailConfig}
         contractId={contractDetailId}
+      />
+    )
+  }
+  if (
+    paymentDetailConfig?.pageKind === "status" &&
+    contractDetailId !== null
+  ) {
+    return (
+      <PaymentDetailPage
+        config={paymentDetailConfig}
+        paymentId={contractDetailId}
       />
     )
   }

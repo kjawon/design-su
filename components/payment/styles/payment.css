@@ -28,18 +28,66 @@
   text-align: right;
 }
 
-.payment-data-table .contract-table__title span {
-  display: block;
-  overflow: hidden;
-  color: #155fc2;
-  font-weight: 750;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
 .payment-table__amount {
   padding-right: 8px !important;
   font-size: 14px !important;
+}
+
+.payment-detail-empty {
+  margin-top: 0;
+  text-align: center;
+}
+
+.payment-detail-empty h2 {
+  margin-bottom: 8px;
+}
+
+.payment-detail-empty p {
+  color: #64748b;
+  font-size: 16px;
+}
+
+.payment-detail-table-card {
+  overflow: hidden;
+  border: 1px solid #dce5ef;
+  border-radius: 12px;
+}
+
+.payment-detail-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.payment-detail-table thead {
+  background: #f5f8fb;
+}
+
+.payment-detail-table th {
+  height: 48px;
+  padding: 0 18px;
+  color: #344d65;
+  font-size: 16px;
+  font-weight: 750;
+  text-align: center;
+}
+
+.payment-detail-table th + th,
+.payment-detail-table td + td {
+  border-left: 1px solid #e5ebf2;
+}
+
+.payment-detail-table td {
+  height: 52px;
+  padding: 12px 18px;
+  border-top: 1px solid #e5ebf2;
+  color: #40566c;
+  font-size: 15px;
+  text-align: center;
+}
+
+.payment-detail-table__empty {
+  color: #718397 !important;
 }
 
 @media (max-width: 1024px) {
