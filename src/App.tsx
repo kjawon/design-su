@@ -5,6 +5,8 @@ import { getContractPageConfig } from "@/components/contract/contract-page-confi
 import { IntroSection } from "@/components/intro-section"
 import { Footer } from "@/components/portal-footer"
 import { Header } from "@/components/navigation/portal-header"
+import { PaymentPage } from "@/components/payment/payment-page"
+import { getPaymentPageConfig } from "@/components/payment/payment-page-config"
 import { PortalInformation } from "@/components/portal-information"
 import { ServiceBoard } from "@/components/service-board"
 
@@ -12,6 +14,7 @@ export function App() {
   const isChatbotWindow = new URLSearchParams(window.location.search).get("chatbot") === "popup"
   const currentPath = window.location.pathname.replace(/\/+$/, "") || "/"
   const contractPageConfig = getContractPageConfig(currentPath)
+  const paymentPageConfig = getPaymentPageConfig(currentPath)
   const contractDetailMatch = currentPath.match(/^(.*)\/(\d+)$/)
   const contractDetailConfig = contractDetailMatch
     ? getContractPageConfig(contractDetailMatch[1])
@@ -31,6 +34,7 @@ export function App() {
     )
   }
   if (contractPageConfig) return <ContractPage config={contractPageConfig} />
+  if (paymentPageConfig) return <PaymentPage config={paymentPageConfig} />
 
   return (
     <>

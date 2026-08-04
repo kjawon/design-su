@@ -1,3 +1,6 @@
+import { contractMenuGroups } from "@/components/contract/contract-page-config"
+import { paymentMenuGroups } from "@/components/payment/payment-page-config"
+
 export type MenuItem = {
   label: string
   path: string
@@ -16,6 +19,7 @@ export type GlobalMenu = {
 }
 
 const [generalContractMenu, specialContractMenu] = contractMenuGroups
+const [generalPaymentMenu, specialPaymentMenu] = paymentMenuGroups
 
 export const globalMenus: GlobalMenu[] = [
   {
@@ -77,23 +81,16 @@ export const globalMenus: GlobalMenu[] = [
   },
   {
     label: "대금지급",
-    path: "/#information",
+    path: "/payment/status",
     columns: 2,
     groups: [
       {
         title: "일반회계",
-        items: [
-          // TODO: 상세 화면 라우트가 추가되면 기존 홈 섹션 경로를 교체합니다.
-          { label: "대금지급현황", path: "/#information" },
-          { label: "대금지급예고", path: "/#information" },
-        ],
+        items: generalPaymentMenu.items.map(({ label, path }) => ({ label, path })),
       },
       {
         title: "특별회계",
-        items: [
-          { label: "대금지급현황", path: "/#information" },
-          { label: "대금지급예고", path: "/#information" },
-        ],
+        items: specialPaymentMenu.items.map(({ label, path }) => ({ label, path })),
       },
     ],
   },
@@ -128,6 +125,3 @@ export const globalMenus: GlobalMenu[] = [
     ],
   },
 ]
-import { contractMenuGroups } from "@/components/contract/contract-page-config"
-
-// Desktop and mobile global navigation share this data source.

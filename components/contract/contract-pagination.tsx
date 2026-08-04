@@ -10,12 +10,14 @@ type ContractPaginationProps = {
   currentPage: number
   totalPages: number
   onChange: (page: number) => void
+  ariaLabel?: string
 }
 
 export function ContractPagination({
   currentPage,
   totalPages,
   onChange,
+  ariaLabel = "계약현황 페이지",
 }: ContractPaginationProps) {
   const start = Math.max(1, Math.min(currentPage - 2, totalPages - 4))
   const pages = Array.from({ length: Math.min(5, totalPages) }, (_, index) => start + index)
@@ -37,7 +39,7 @@ export function ContractPagination({
   )
 
   return (
-    <nav className="contract-pagination" aria-label="계약현황 페이지">
+    <nav className="contract-pagination" aria-label={ariaLabel}>
       {pageButton("첫 페이지", 1, <ChevronsLeft size={17} aria-hidden="true" />, currentPage === 1)}
       {pageButton(
         "이전 페이지",

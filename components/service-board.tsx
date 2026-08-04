@@ -21,8 +21,8 @@ const services: ServiceItem[] = [
   {
     title: "대금지급",
     description: "계약별 지급현황과 업체별 대금 지급 내역을 빠르게 확인하세요.",
-    links: ["지급현황", "업체별 지급조회"],
-    href: "#information",
+    links: ["대금지급현황", "대금지급예고"],
+    href: "/payment/status",
     icon: HandCoins,
     tone: "purple",
   },

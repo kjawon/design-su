@@ -1,0 +1,55 @@
+.payment-detail-grid {
+  grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.2fr);
+}
+
+.payment-data-table {
+  min-width: 1060px !important;
+}
+
+.payment-table__col-number { width: 64px; }
+.payment-table__col-office { width: 120px; }
+.payment-table__col-title { width: 270px; }
+.payment-table__col-amount { width: 99px; }
+.payment-table__col-date { width: 111px; }
+
+.payment-data-table th {
+  padding-inline: 8px;
+  font-size: 15px;
+  white-space: nowrap;
+}
+
+.payment-data-table th:nth-child(2),
+.payment-data-table th:nth-child(3) {
+  text-align: left;
+}
+
+.payment-data-table th:nth-child(n + 4):nth-child(-n + 8) {
+  padding-right: 8px;
+  text-align: right;
+}
+
+.payment-data-table .contract-table__title span {
+  display: block;
+  overflow: hidden;
+  color: #155fc2;
+  font-weight: 750;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.payment-table__amount {
+  padding-right: 8px !important;
+  font-size: 14px !important;
+}
+
+@media (max-width: 1024px) {
+  .payment-detail-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .payment-detail-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

@@ -28,7 +28,7 @@ const contentOptions: ContentOption[] = [
   {
     value: "payment",
     label: "대금지급",
-    href: "#payments",
+    href: "/payment/status",
     moreLabel: "대금지급 전체 목록",
     listLabel: "최근 대금지급 목록",
     itemLabel: "대금지급 상세보기",
