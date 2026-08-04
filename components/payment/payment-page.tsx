@@ -210,7 +210,11 @@ export function PaymentPage({ config }: { config: PaymentPageConfig }) {
               onDownload={downloadExcel}
             />
 
-            <PaymentTable records={displayRecords} isLoading={isLoading} />
+            <PaymentTable
+              records={displayRecords}
+              detailBasePath={config.path}
+              isLoading={isLoading}
+            />
             <ContractPagination
               currentPage={Math.min(page, totalPages)}
               totalPages={totalPages}

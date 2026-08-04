@@ -12,9 +12,11 @@ function PaymentAmount({ value }: { value: number }) {
 
 export function PaymentTable({
   records,
+  detailBasePath,
   isLoading = false,
 }: {
   records: PaymentRecord[]
+  detailBasePath: string
   isLoading?: boolean
 }) {
   return (
@@ -55,7 +57,7 @@ export function PaymentTable({
                     {record.office}
                   </td>
                   <td className="contract-table__title" title={record.contractName}>
-                    <span>{record.contractName}</span>
+                    <a href={`${detailBasePath}/${record.id}`}>{record.contractName}</a>
                   </td>
                   <PaymentAmount value={record.totalPayment} />
                   <PaymentAmount value={record.advancePayment} />
