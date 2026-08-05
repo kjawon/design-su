@@ -1,10 +1,10 @@
 import { ArrowLeft, ChevronRight, House, Printer } from "lucide-react"
 import { Header } from "@/components/navigation/portal-header"
+import { PortalFooter } from "@/components/navigation/portal-footer"
 import { PaymentDetailContent } from "@/components/payment/payment-detail-content"
 import { PAYMENT_RECORDS } from "@/components/payment/payment-mock-data"
 import type { PaymentPageConfig } from "@/components/payment/payment-page-config"
 import { PaymentSidebar } from "@/components/payment/payment-sidebar"
-import { Footer } from "@/components/portal-footer"
 import "@/components/contract/styles/contract.css"
 import "@/components/contract/styles/contract-detail.css"
 import "@/components/payment/styles/payment.css"
@@ -91,7 +91,7 @@ export function PaymentDetailPage({
           </article>
         </div>
       </main>
-      <Footer />
+      <PortalFooter />
     </div>
   )
 }

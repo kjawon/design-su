@@ -6,11 +6,8 @@ import { IntroSection } from "@/components/home/intro-section"
 import { PortalInformation } from "@/components/home/portal-information"
 import { ServiceBoard } from "@/components/home/service-board"
 import { Header } from "@/components/navigation/portal-header"
-<<<<<<< HEAD
-import { PaymentDetailPage } from "@/components/payment/payment-detail-page"
-=======
 import { PortalFooter } from "@/components/navigation/portal-footer"
->>>>>>> 8b03932 (최적화 작업)
+import { PaymentDetailPage } from "@/components/payment/payment-detail-page"
 import { PaymentPage } from "@/components/payment/payment-page"
 import { getPaymentPageConfig } from "@/components/payment/payment-page-config"
 

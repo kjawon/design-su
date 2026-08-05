@@ -160,17 +160,12 @@ export function PaymentPage({ config }: { config: PaymentPageConfig }) {
               onDownload={downloadExcel}
             />
 
-<<<<<<< HEAD
             <PaymentTable
               records={displayRecords}
               detailBasePath={config.path}
               isLoading={isLoading}
             />
-            <ContractPagination
-=======
-            <PaymentTable records={displayRecords} isLoading={isLoading} />
             <DataPagination
->>>>>>> 8b03932 (최적화 작업)
               currentPage={Math.min(page, totalPages)}
               totalPages={totalPages}
               onChange={setPage}
