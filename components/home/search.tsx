@@ -3,15 +3,20 @@ import { ChevronDown, SearchIcon } from "lucide-react"
 import { AiDoctorFab } from "@/components/home/ai-doctor-fab"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { AI_CONTRACT_DOCTOR_ENABLED } from "@/lib/feature-flags"
 
 const searchFieldOptions = [
-  { value: "contract", label: "계약명" },
-  { value: "company", label: "업체명" },
+  { value: "procurement-plan", label: "발주계획" },
+  { value: "bid-notice", label: "입찰공고" },
+  { value: "bid-result", label: "개찰결과" },
+  { value: "contract-status", label: "계약현황" },
+  { value: "inspection", label: "검사검수" },
+  { value: "payment", label: "대금지급" },
 ] as const
 
 export function Search() {
   const [query, setQuery] = useState("")
-  const [searchField, setSearchField] = useState("contract")
+  const [searchField, setSearchField] = useState<(typeof searchFieldOptions)[number]["value"]>("procurement-plan")
   const [isFieldMenuOpen, setIsFieldMenuOpen] = useState(false)
   const [activeOptionIndex, setActiveOptionIndex] = useState(0)
   const fieldSelectRef = useRef<HTMLDivElement>(null)
@@ -20,9 +25,7 @@ export function Search() {
   const selectedOptionIndex = searchFieldOptions.findIndex((option) => option.value === searchField)
   const selectedOption = searchFieldOptions[selectedOptionIndex]
 
-  const placeholder = searchField === "contract"
-    ? "계약명을 입력하세요."
-    : "업체명을 입력하세요."
+  const placeholder = "검색어를 입력하세요."
 
   const submit = (event: FormEvent) => {
     event.preventDefault()
@@ -122,11 +125,11 @@ export function Search() {
               aria-activedescendant={isFieldMenuOpen ? `contract-search-field-option-${activeOptionIndex}` : undefined}
               onClick={() => isFieldMenuOpen ? setIsFieldMenuOpen(false) : openFieldMenu()}
               onKeyDown={handleFieldKeyDown}
-              className={`flex h-full w-full items-center justify-between gap-3 bg-transparent pl-2 pr-1 text-left text-[17px] font-bold text-gray-700 outline-none transition-colors hover:bg-[#F3F7FF] focus-visible:ring-2 focus-visible:ring-[#155FC2] focus-visible:ring-offset-1 ${
+              className={`flex h-full w-full items-center justify-between gap-2 bg-transparent pl-2 pr-1 text-left text-[15px] font-bold text-gray-700 outline-none transition-colors hover:bg-[#F3F7FF] focus-visible:ring-2 focus-visible:ring-[#155FC2] focus-visible:ring-offset-1 ${
                 isFieldMenuOpen ? "rounded-t-md rounded-b-none" : "rounded-md"
               }`}
             >
-              <span id="contract-search-field-value">{selectedOption.label}</span>
+              <span id="contract-search-field-value" className="whitespace-nowrap">{selectedOption.label}</span>
               <ChevronDown
                 className={`size-4 shrink-0 text-gray-500 transition-transform duration-200 ${isFieldMenuOpen ? "rotate-180" : ""}`}
                 aria-hidden="true"
@@ -187,7 +190,7 @@ export function Search() {
             <SearchIcon className="size-5" aria-hidden="true" />
           </Button>
         </form>
-        <AiDoctorFab />
+        {AI_CONTRACT_DOCTOR_ENABLED && <AiDoctorFab />}
       </div>
     </section>
   )

@@ -23,25 +23,20 @@ const [generalPaymentMenu, specialPaymentMenu] = paymentMenuGroups
 
 export const globalMenus: GlobalMenu[] = [
   {
-    label: "발주계획",
+    label: "발주·입찰정보",
     path: "/#services",
-    columns: 1,
+    columns: 3,
     groups: [
       {
+        title: "발주계획",
         items: [
           // TODO: 상세 화면 라우트가 추가되면 기존 홈 섹션 경로를 교체합니다.
           { label: "조달청발주계획", path: "/#services" },
           { label: "발주계획", path: "/#services" },
         ],
       },
-    ],
-  },
-  {
-    label: "입찰정보",
-    path: "/#services",
-    columns: 2,
-    groups: [
       {
+        title: "입찰공고",
         items: [
           // TODO: 상세 화면 라우트가 추가되면 기존 홈 섹션 경로를 교체합니다.
           { label: "공사입찰", path: "/#services" },
@@ -50,6 +45,7 @@ export const globalMenus: GlobalMenu[] = [
         ],
       },
       {
+        title: "개찰결과",
         items: [
           { label: "공사개찰", path: "/#services" },
           { label: "용역개찰", path: "/#services" },

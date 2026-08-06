@@ -10,9 +10,11 @@ import { PortalFooter } from "@/components/navigation/portal-footer"
 import { PaymentDetailPage } from "@/components/payment/payment-detail-page"
 import { PaymentPage } from "@/components/payment/payment-page"
 import { getPaymentPageConfig } from "@/components/payment/payment-page-config"
+import { AI_CONTRACT_DOCTOR_ENABLED } from "@/lib/feature-flags"
 
 export function App() {
-  const isChatbotWindow = new URLSearchParams(window.location.search).get("chatbot") === "popup"
+  const isChatbotWindow = AI_CONTRACT_DOCTOR_ENABLED &&
+    new URLSearchParams(window.location.search).get("chatbot") === "popup"
   const currentPath = window.location.pathname.replace(/\/+$/, "") || "/"
   const contractPageConfig = getContractPageConfig(currentPath)
   const paymentPageConfig = getPaymentPageConfig(currentPath)
@@ -60,7 +62,7 @@ export function App() {
         <PortalInformation />
       </main>
       <PortalFooter />
-      <Chatbot />
+      {AI_CONTRACT_DOCTOR_ENABLED && <Chatbot />}
     </>
   )
 }
