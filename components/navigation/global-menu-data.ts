@@ -24,32 +24,32 @@ const [generalPaymentMenu, specialPaymentMenu] = paymentMenuGroups
 export const globalMenus: GlobalMenu[] = [
   {
     label: "발주·입찰정보",
-    path: "/#services",
+    path: "/procurement/plan",
     columns: 3,
     groups: [
       {
         title: "발주계획",
         items: [
           // TODO: 상세 화면 라우트가 추가되면 기존 홈 섹션 경로를 교체합니다.
-          { label: "조달청발주계획", path: "/#services" },
-          { label: "발주계획", path: "/#services" },
+          { label: "조달청 발주계획", path: "https://www.g2b.go.kr/" },
+          { label: "자체 발주계획", path: "/procurement/plan" },
         ],
       },
       {
-        title: "입찰공고",
+        title: "조달청 입찰공고",
         items: [
           // TODO: 상세 화면 라우트가 추가되면 기존 홈 섹션 경로를 교체합니다.
-          { label: "공사입찰", path: "/#services" },
-          { label: "용역입찰", path: "/#services" },
-          { label: "물품입찰", path: "/#services" },
+          { label: "공사입찰", path: "https://www.g2b.go.kr/" },
+          { label: "용역입찰", path: "https://www.g2b.go.kr/" },
+          { label: "물품입찰", path: "https://www.g2b.go.kr/" },
         ],
       },
       {
-        title: "개찰결과",
+        title: "조달청 개찰결과",
         items: [
-          { label: "공사개찰", path: "/#services" },
-          { label: "용역개찰", path: "/#services" },
-          { label: "물품개찰", path: "/#services" },
+          { label: "공사개찰", path: "https://www.g2b.go.kr/" },
+          { label: "용역개찰", path: "https://www.g2b.go.kr/" },
+          { label: "물품개찰", path: "https://www.g2b.go.kr/" },
         ],
       },
     ],

@@ -1,0 +1,85 @@
+.procurement-search-panel {
+  padding: 28px;
+}
+
+.procurement-search-panel .contract-field :is(input, select),
+.procurement-search-panel .contract-date-input {
+  height: 48px;
+}
+
+.procurement-search-panel .contract-field :is(input, select),
+.procurement-search-panel .contract-date-input__value {
+  font-size: 16px;
+}
+
+.procurement-detail-grid {
+  grid-template-columns: minmax(0, 1.25fr) minmax(440px, 1fr);
+}
+
+.procurement-data-table {
+  min-width: 1060px !important;
+}
+
+.procurement-table__col-number { width: 76px; }
+.procurement-table__col-title { width: auto; }
+.procurement-table__col-author { width: 120px; }
+.procurement-table__col-date { width: 135px; }
+.procurement-table__col-attachment { width: 320px; }
+
+.procurement-data-table th:nth-child(2),
+.procurement-data-table th:nth-child(5) {
+  text-align: left;
+}
+
+.procurement-table__number,
+.procurement-table__author,
+.procurement-table__date {
+  text-align: center;
+  white-space: nowrap;
+}
+
+.procurement-table__title,
+.procurement-table__attachment {
+  overflow: hidden;
+  text-align: left;
+}
+
+.procurement-table__title > span {
+  display: block;
+  overflow: hidden;
+  color: #155fc2;
+  font-weight: 750;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.procurement-table__attachment a:hover,
+.procurement-table__attachment a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.procurement-table__attachment a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  color: #40566c;
+}
+
+.procurement-table__attachment a span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.procurement-table__attachment svg {
+  flex: 0 0 auto;
+  color: #6e8194;
+}
+
+@media (max-width: 768px) {
+  .procurement-detail-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

@@ -512,6 +512,50 @@ main:focus {
   opacity: 1;
 }
 
+.service-card__menu-links--list {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 4px;
+  transform: translateY(8px);
+}
+
+.service-sub-link--list::before,
+.service-sub-link--list::after {
+  display: none;
+  content: none;
+}
+
+.service-sub-link--list {
+  padding: 0 2px;
+  color: var(--service-point);
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.service-sub-link--list:hover,
+.service-sub-link--list:focus-visible {
+  color: var(--service-point);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.service-sub-link__icon {
+  flex: 0 0 auto;
+}
+
+.service-sub-link__icons {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  flex: 0 0 auto;
+  margin-left: 10px;
+}
+
+.service-sub-link__agency-icon {
+  display: block;
+  width: auto;
+  height: 24px;
+  object-fit: contain;
+}
+
 .service-card-link:hover,
 .service-card-link:focus-visible {
   text-decoration: none;

@@ -10,6 +10,7 @@ import { PortalFooter } from "@/components/navigation/portal-footer"
 import { PaymentDetailPage } from "@/components/payment/payment-detail-page"
 import { PaymentPage } from "@/components/payment/payment-page"
 import { getPaymentPageConfig } from "@/components/payment/payment-page-config"
+import { ProcurementPage } from "@/components/procurement/procurement-page"
 import { AI_CONTRACT_DOCTOR_ENABLED } from "@/lib/feature-flags"
 
 export function App() {
@@ -52,6 +53,7 @@ export function App() {
   }
   if (contractPageConfig) return <ContractPage config={contractPageConfig} />
   if (paymentPageConfig) return <PaymentPage config={paymentPageConfig} />
+  if (currentPath === "/procurement/plan") return <ProcurementPage />
 
   return (
     <>
