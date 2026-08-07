@@ -54,9 +54,9 @@ export function G2BLinkedServices() {
       <header className="procurement-section-header">
         <h2 id="g2b-services-title">조달청 연계서비스</h2>
         <p>
-          발주계획, 입찰공고 및 개찰결과를 조달청 나라장터에서 확인할 수 있습니다.
+          나라장터의 발주·입찰·개찰 정보를 빠르게 확인할 수 있습니다.
           <br />
-          각 항목을 선택하면 관련 정보가 새 창에서 열립니다.
+          각 서비스를 선택하면 새 창으로 이동합니다.
         </p>
       </header>
 
@@ -65,6 +65,10 @@ export function G2BLinkedServices() {
           <G2BServiceCard key={service.id} service={service} />
         ))}
       </div>
+
+      <p className="procurement-linked-services__notice">
+        ※ 조달청 나라장터에서 제공되는 외부 연계 서비스입니다.
+      </p>
     </section>
   )
 }

@@ -24,7 +24,7 @@ export const g2bServiceGroups = [
   {
     id: "plan",
     title: "발주계획",
-    description: "기관별 발주 예정 사업 정보를 확인할 수 있습니다.",
+    description: "기관별 발주 예정 사업과 주요 계획 정보를 확인할 수 있습니다.",
     links: [{ label: "조달청 발주계획", url: G2B_URL }],
   },
   {
@@ -40,7 +40,7 @@ export const g2bServiceGroups = [
   {
     id: "opening",
     title: "개찰결과",
-    description: "공사·용역·물품 입찰의 개찰 및 낙찰 결과를 확인할 수 있습니다.",
+    description: "공사·용역·물품 입찰의 개찰 현황과 낙찰 결과를 확인할 수 있습니다.",
     links: [
       { label: "공사개찰", url: G2B_URL },
       { label: "용역개찰", url: G2B_URL },
