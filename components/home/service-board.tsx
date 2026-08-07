@@ -1,37 +1,19 @@
 import { FileSignature, HandCoins, LibraryBig, Megaphone } from "lucide-react"
 import { ServiceCard, type ServiceItem } from "@/components/home/service-card"
-import g2bIcon from "@/조달청 아이콘.svg"
+import { G2B_URL } from "@/components/procurement/procurement-page-config"
 
 const services: ServiceItem[] = [
   {
     title: "발주·입찰정보",
     description: "예정된 발주계획부터 입찰공고와 개찰결과까지 한눈에 확인하세요.",
     links: [
-      { label: "자체 발주계획", href: "/procurement/plan", showArrow: true },
-      {
-        label: "발주계획",
-        href: "https://www.g2b.go.kr/",
-        external: true,
-        agencyIcon: g2bIcon,
-      },
-      {
-        label: "입찰공고",
-        href: "https://www.g2b.go.kr/",
-        external: true,
-        agencyIcon: g2bIcon,
-      },
-      {
-        label: "개찰결과",
-        href: "https://www.g2b.go.kr/",
-        external: true,
-        agencyIcon: g2bIcon,
-      }
+      { label: "발주계획", href: G2B_URL, external: true, showExternalIcon: false },
+      { label: "입찰공고", href: G2B_URL, external: true, showExternalIcon: false },
+      { label: "개찰결과", href: G2B_URL, external: true, showExternalIcon: false },
     ],
     href: "/procurement/plan",
     icon: Megaphone,
     tone: "coral",
-    linkLayout: "list",
-    hideCta: true,
   },
   {
     title: "계약현황",

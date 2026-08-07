@@ -9,6 +9,7 @@ export type ServiceItem = {
         label: string
         href: string
         external?: boolean
+        showExternalIcon?: boolean
         showArrow?: boolean
         agencyIcon?: string
       }
@@ -61,6 +62,7 @@ export function ServiceCard({ service }: { service: ServiceItem }) {
             const item = typeof link === "string"
               ? { label: link, href: "#information", external: false }
               : link
+            const showExternalIcon = item.external && item.showExternalIcon !== false
 
             return (
               <a
@@ -76,7 +78,7 @@ export function ServiceCard({ service }: { service: ServiceItem }) {
                 rel={item.external ? "noopener noreferrer" : undefined}
               >
                 <span className="service-sub-link__label">{item.label}</span>
-                {(item.agencyIcon || item.external || item.showArrow) && (
+                {(item.agencyIcon || showExternalIcon || item.showArrow) && (
                   <span className="service-sub-link__icons" aria-hidden="true">
                     {item.agencyIcon && (
                       <img
@@ -85,7 +87,7 @@ export function ServiceCard({ service }: { service: ServiceItem }) {
                         alt=""
                       />
                     )}
-                    {item.external ? (
+                    {showExternalIcon ? (
                       <ExternalLink
                         className="service-sub-link__icon"
                         size={15}
