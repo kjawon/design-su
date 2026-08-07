@@ -9,3 +9,8 @@ export const AI_CONTRACT_DOCTOR_ENABLED = isFeatureEnabled(
   import.meta.env.VITE_AI_CONTRACT_DOCTOR_ENABLED,
   true,
 )
+
+export const OWN_PROCUREMENT_PLAN_ENABLED = isFeatureEnabled(
+  import.meta.env.VITE_OWN_PROCUREMENT_PLAN_ENABLED,
+  true,
+)

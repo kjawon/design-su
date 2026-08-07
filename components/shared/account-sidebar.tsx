@@ -1,10 +1,11 @@
-import { ChevronDown, ChevronUp, FileText } from "lucide-react"
+import { ChevronDown, ChevronUp, ExternalLink, FileText } from "lucide-react"
 import { useEffect, useState } from "react"
 
 type SidebarMenuItem<MenuKey extends string> = {
   key: MenuKey
   label: string
   path: string
+  external?: boolean
 }
 
 type SidebarMenuGroup<AccountType extends string, MenuKey extends string> = {
@@ -21,6 +22,7 @@ type AccountSidebarProps<AccountType extends string, MenuKey extends string> = {
   accountType: AccountType
   activeMenu: MenuKey
   singleItem?: SidebarMenuItem<MenuKey>
+  groupSelectorLabel?: string
 }
 
 export function AccountSidebar<AccountType extends string, MenuKey extends string>({
@@ -31,6 +33,7 @@ export function AccountSidebar<AccountType extends string, MenuKey extends strin
   accountType,
   activeMenu,
   singleItem,
+  groupSelectorLabel = "회계구분",
 }: AccountSidebarProps<AccountType, MenuKey>) {
   const [openGroups, setOpenGroups] = useState<Record<string, boolean>>(() =>
     Object.fromEntries(groups.map((group) => [group.id, true])),
@@ -85,8 +88,22 @@ export function AccountSidebar<AccountType extends string, MenuKey extends strin
                           href={item.path}
                           className={selected ? "is-current" : undefined}
                           aria-current={selected ? "page" : undefined}
+                          aria-label={item.external ? `${item.label} (새 창)` : undefined}
+                          target={item.external ? "_blank" : undefined}
+                          rel={item.external ? "noopener noreferrer" : undefined}
                         >
-                          {item.label}
+                          <span className="contract-sidebar__item-label">
+                            <span>{item.label}</span>
+                          </span>
+                          {item.external && (
+                            <span className="contract-sidebar__external-icons" aria-hidden="true">
+                              <ExternalLink
+                                className="contract-sidebar__external-icon"
+                                size={15}
+                                strokeWidth={1.9}
+                              />
+                            </span>
+                          )}
                         </a>
                       </li>
                     )
@@ -109,7 +126,7 @@ export function AccountSidebar<AccountType extends string, MenuKey extends strin
       </nav>
 
       <nav className="contract-sidebar__mobile" aria-label={`${ariaLabel} 모바일 메뉴`}>
-        <div className="contract-sidebar__tabs" role="tablist" aria-label="회계구분">
+        <div className="contract-sidebar__tabs" role="tablist" aria-label={groupSelectorLabel}>
           {groups.map((group) => {
             const isSelected = group.id === mobileGroup.id
             return (
@@ -144,8 +161,22 @@ export function AccountSidebar<AccountType extends string, MenuKey extends strin
                     href={item.path}
                     className={selected ? "is-current" : undefined}
                     aria-current={selected ? "page" : undefined}
+                    aria-label={item.external ? `${item.label} (새 창)` : undefined}
+                    target={item.external ? "_blank" : undefined}
+                    rel={item.external ? "noopener noreferrer" : undefined}
                   >
-                    {item.label}
+                    <span className="contract-sidebar__item-label">
+                      <span>{item.label}</span>
+                    </span>
+                    {item.external && (
+                      <span className="contract-sidebar__external-icons" aria-hidden="true">
+                        <ExternalLink
+                          className="contract-sidebar__external-icon"
+                          size={15}
+                          strokeWidth={1.9}
+                        />
+                      </span>
+                    )}
                   </a>
                 </li>
               )

@@ -24,32 +24,32 @@ const [generalPaymentMenu, specialPaymentMenu] = paymentMenuGroups
 export const globalMenus: GlobalMenu[] = [
   {
     label: "발주·입찰정보",
-    path: "/#services",
+    path: "/procurement/plan",
     columns: 3,
     groups: [
       {
         title: "발주계획",
         items: [
           // TODO: 상세 화면 라우트가 추가되면 기존 홈 섹션 경로를 교체합니다.
-          { label: "조달청발주계획", path: "/#services" },
-          { label: "발주계획", path: "/#services" },
+          { label: "조달청 발주계획", path: "https://www.g2b.go.kr/" },
+          { label: "자체 발주계획", path: "/procurement/plan" },
         ],
       },
       {
-        title: "입찰공고",
+        title: "조달청 입찰공고",
         items: [
           // TODO: 상세 화면 라우트가 추가되면 기존 홈 섹션 경로를 교체합니다.
-          { label: "공사입찰", path: "/#services" },
-          { label: "용역입찰", path: "/#services" },
-          { label: "물품입찰", path: "/#services" },
+          { label: "공사입찰", path: "https://www.g2b.go.kr/" },
+          { label: "용역입찰", path: "https://www.g2b.go.kr/" },
+          { label: "물품입찰", path: "https://www.g2b.go.kr/" },
         ],
       },
       {
-        title: "개찰결과",
+        title: "조달청 개찰결과",
         items: [
-          { label: "공사개찰", path: "/#services" },
-          { label: "용역개찰", path: "/#services" },
-          { label: "물품개찰", path: "/#services" },
+          { label: "공사개찰", path: "https://www.g2b.go.kr/" },
+          { label: "용역개찰", path: "https://www.g2b.go.kr/" },
+          { label: "물품개찰", path: "https://www.g2b.go.kr/" },
         ],
       },
     ],
@@ -92,30 +92,28 @@ export const globalMenus: GlobalMenu[] = [
   },
   {
     label: "관련정보",
-    path: "/#information",
+    path: "/information/laws",
     columns: 1,
     groups: [
       {
         items: [
-          // TODO: 상세 화면 라우트가 추가되면 기존 홈 섹션 경로를 교체합니다.
-          { label: "계약법규", path: "/#information" },
-          { label: "계약서식", path: "/#information" },
-          { label: "관련사이트", path: "/#information" },
+          { label: "계약법규", path: "/information/laws" },
+          { label: "계약서식", path: "/information/forms" },
+          { label: "관련사이트", path: "/information/sites" },
         ],
       },
     ],
   },
   {
     label: "공지사항",
-    path: "/#information",
+    path: "/notice/list",
     columns: 1,
     groups: [
       {
         items: [
-          // TODO: 상세 화면 라우트가 추가되면 기존 홈 섹션 경로를 교체합니다.
-          { label: "알림글", path: "/#information" },
-          { label: "업무안내", path: "/#information" },
-          { label: "오시는길", path: "/#information" },
+          { label: "알림글", path: "/notice/list" },
+          { label: "업무안내", path: "/notice/guide" },
+          { label: "오시는길", path: "/notice/directions" },
         ],
       },
     ],

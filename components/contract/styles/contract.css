@@ -126,6 +126,36 @@
   font-weight: 600;
 }
 
+.contract-sidebar__group li a:has(.contract-sidebar__external-icon),
+.contract-sidebar__mobile-panel li a:has(.contract-sidebar__external-icon) {
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.contract-sidebar__external-icon {
+  flex: 0 0 auto;
+  color: #6d8196;
+}
+
+.contract-sidebar__external-icons {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: 0 0 auto;
+}
+
+.contract-sidebar__item-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+}
+
+.contract-sidebar__group li a:hover .contract-sidebar__external-icon,
+.contract-sidebar__mobile-panel li a:hover .contract-sidebar__external-icon {
+  color: #155fc2;
+}
+
 .contract-sidebar__group li a:hover,
 .contract-sidebar__single:hover {
   color: #155fc2;

@@ -20,7 +20,7 @@ const contentOptions: ContentOption[] = [
   {
     value: "contract",
     label: "계약정보",
-    href: "#contracts",
+    href: "/contract/status",
     moreLabel: "계약정보 전체 목록",
     listLabel: "최근 계약정보 목록",
     itemLabel: "계약 상세보기",
@@ -36,7 +36,7 @@ const contentOptions: ContentOption[] = [
   {
     value: "notice",
     label: "공지사항",
-    href: "#notices",
+    href: "/notice/list",
     moreLabel: "공지사항 전체 목록",
     listLabel: "최근 공지사항 목록",
     itemLabel: "공지사항 상세보기",
@@ -56,6 +56,12 @@ function RecentListItem({ item, itemLabel, contentType }: RecentListItemProps) {
   const date = item.date || "-"
   const isPayment = contentType === "payment"
   const isNotice = contentType === "notice"
+  const itemHref =
+    contentType === "contract"
+      ? "/contract/status"
+      : contentType === "payment"
+        ? "/payment/status"
+        : "/notice/list"
 
   return (
     <li className="min-h-16 border-b border-gray-300 last:border-0 lg:min-h-0 lg:flex-1">
@@ -80,7 +86,7 @@ function RecentListItem({ item, itemLabel, contentType }: RecentListItemProps) {
             {badge}
           </Badge>
         )}
-        <a href="#" className="krds-contract-link min-w-0 text-[18px] font-medium text-text-primary sm:truncate" aria-label={`${title} ${itemLabel}`}>
+        <a href={itemHref} className="krds-contract-link min-w-0 text-[18px] font-medium text-text-primary sm:truncate" aria-label={`${title} ${itemLabel}`}>
           {title}
         </a>
         {!isNotice && (

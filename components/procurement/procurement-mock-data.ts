@@ -1,0 +1,95 @@
+import type {
+  ProcurementPlanFilters,
+  ProcurementPlanRecord,
+} from "@/components/procurement/procurement-types"
+
+export const EMPTY_PROCUREMENT_PLAN_FILTERS: ProcurementPlanFilters = {
+  title: "",
+  author: "",
+  content: "",
+  startDate: "",
+  endDate: "",
+}
+
+export const PROCUREMENT_PLAN_RECORDS: ProcurementPlanRecord[] = [
+  {
+    id: 65,
+    title: "2026년 3분기 가평군 사업발주계획",
+    author: "회계과",
+    content: "2026년 3분기 공사·용역·물품 사업 발주계획입니다.",
+    createdDate: "2026-06-30",
+    attachment: "2026년 3분기 가평군 사업발주계획.xlsx",
+  },
+  {
+    id: 64,
+    title: "2026년 2분기 가평군 사업발주계획",
+    author: "회계과",
+    content: "2026년 2분기 공사·용역·물품 사업 발주계획입니다.",
+    createdDate: "2026-03-30",
+    attachment: "2026년 2분기 가평군 사업발주계획.xlsx",
+  },
+  {
+    id: 63,
+    title: "2026년 1분기 가평군 사업발주계획",
+    author: "회계과",
+    content: "2026년 1분기 공사·용역·물품 사업 발주계획입니다.",
+    createdDate: "2025-12-29",
+    attachment: "2026년 1분기 가평군 사업발주계획.xlsx",
+  },
+  {
+    id: 62,
+    title: "2025년 4분기 가평군 사업발주계획",
+    author: "회계과",
+    content: "2025년 4분기 공사·용역·물품 사업 발주계획입니다.",
+    createdDate: "2025-09-26",
+    attachment: "2025년 4분기 가평군 사업발주계획.xlsx",
+  },
+  {
+    id: 61,
+    title: "3분기 발주계획",
+    author: "회계과",
+    content: "2025년 3분기 사업 발주계획입니다.",
+    createdDate: "2025-06-27",
+    attachment: "2025년 3분기 발주계획(가평군).xls",
+  },
+  {
+    id: 60,
+    title: "2025년 2분기 가평군 사업발주계획",
+    author: "회계과",
+    content: "2025년 2분기 공사·용역·물품 사업 발주계획입니다.",
+    createdDate: "2025-03-28",
+    attachment: "2025년 2분기 가평군 사업발주계획.xlsx",
+  },
+  {
+    id: 59,
+    title: "2025년 1분기 가평군 사업발주계획 게시",
+    author: "회계과",
+    content: "2025년 1분기 사업 발주계획을 게시합니다.",
+    createdDate: "2025-01-03",
+    attachment: "2025년 1분기 가평군 사업발주 계획.xlsx",
+  },
+  {
+    id: 58,
+    title: "2024년 4분기 발주계획",
+    author: "회계과",
+    content: "2024년 4분기 사업 발주계획입니다.",
+    createdDate: "2024-09-27",
+    attachment: "2024년 4분기 가평군 사업발주 계획.xls",
+  },
+  {
+    id: 57,
+    title: "2024년 3분기 발주계획",
+    author: "회계과",
+    content: "2024년 3분기 사업 발주계획입니다.",
+    createdDate: "2024-06-27",
+    attachment: "2024년 3분기 사업발주 계획.xls",
+  },
+  {
+    id: 56,
+    title: "2024년 2분기 사업발주계획",
+    author: "회계과",
+    content: "2024년 2분기 사업 발주계획입니다.",
+    createdDate: "2024-03-29",
+    attachment: "2024년 2분기 사업발주 계획(가평군).xlsx",
+  },
+]
