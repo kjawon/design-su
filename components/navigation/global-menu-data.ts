@@ -92,30 +92,28 @@ export const globalMenus: GlobalMenu[] = [
   },
   {
     label: "관련정보",
-    path: "/#information",
+    path: "/information/laws",
     columns: 1,
     groups: [
       {
         items: [
-          // TODO: 상세 화면 라우트가 추가되면 기존 홈 섹션 경로를 교체합니다.
-          { label: "계약법규", path: "/#information" },
-          { label: "계약서식", path: "/#information" },
-          { label: "관련사이트", path: "/#information" },
+          { label: "계약법규", path: "/information/laws" },
+          { label: "계약서식", path: "/information/forms" },
+          { label: "관련사이트", path: "/information/sites" },
         ],
       },
     ],
   },
   {
     label: "공지사항",
-    path: "/#information",
+    path: "/notice/list",
     columns: 1,
     groups: [
       {
         items: [
-          // TODO: 상세 화면 라우트가 추가되면 기존 홈 섹션 경로를 교체합니다.
-          { label: "알림글", path: "/#information" },
-          { label: "업무안내", path: "/#information" },
-          { label: "오시는길", path: "/#information" },
+          { label: "알림글", path: "/notice/list" },
+          { label: "업무안내", path: "/notice/guide" },
+          { label: "오시는길", path: "/notice/directions" },
         ],
       },
     ],

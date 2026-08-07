@@ -12,6 +12,8 @@ import { Button } from "@/components/ui/button"
 function isCurrentMenu(menu: GlobalMenu, currentPath: string) {
   if (menu.label === "계약정보") return currentPath.startsWith("/contract/")
   if (menu.label === "대금지급") return currentPath.startsWith("/payment/")
+  if (menu.label === "관련정보") return currentPath.startsWith("/information/")
+  if (menu.label === "공지사항") return currentPath.startsWith("/notice/")
 
   const menuPath = menu.path?.split("#")[0].replace(/\/+$/, "") || "/"
   return menuPath !== "/" && currentPath.startsWith(menuPath)

@@ -34,7 +34,7 @@ export const recentInformation: Record<RecentContentType, RecentListItemData[]> 
 }
 
 export const frequentlyUsed = [
-  { title: "계약서식", description: "필요한 계약서식을 간편하게 확인하세요.", icon: FileText },
-  { title: "계약법규", description: "계약 관련 법규를 한눈에 살펴보세요.", icon: Landmark },
-  { title: "관련사이트", description: "유용한 관련 사이트를 모아 안내합니다.", icon: Link2 },
+  { title: "계약서식", description: "필요한 계약서식을 간편하게 확인하세요.", href: "/information/forms", icon: FileText },
+  { title: "계약법규", description: "계약 관련 법규를 한눈에 살펴보세요.", href: "/information/laws", icon: Landmark },
+  { title: "관련사이트", description: "유용한 관련 사이트를 모아 안내합니다.", href: "/information/sites", icon: Link2 },
 ]

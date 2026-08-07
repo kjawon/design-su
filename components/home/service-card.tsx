@@ -75,7 +75,7 @@ export function ServiceCard({ service }: { service: ServiceItem }) {
                 target={item.external ? "_blank" : undefined}
                 rel={item.external ? "noopener noreferrer" : undefined}
               >
-                <span>{item.label}</span>
+                <span className="service-sub-link__label">{item.label}</span>
                 {(item.agencyIcon || item.external || item.showArrow) && (
                   <span className="service-sub-link__icons" aria-hidden="true">
                     {item.agencyIcon && (

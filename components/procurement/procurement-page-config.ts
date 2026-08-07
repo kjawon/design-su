@@ -1,48 +1,50 @@
+import { OWN_PROCUREMENT_PLAN_ENABLED } from "@/lib/feature-flags"
+
 export const G2B_URL = "https://www.g2b.go.kr/"
 
-export type ProcurementGroupKey = "plan" | "bid" | "opening"
-export type ProcurementMenuKey =
-  | "g2b-plan"
-  | "plan"
-  | "construction-bid"
-  | "service-bid"
-  | "goods-bid"
-  | "construction-opening"
-  | "service-opening"
-  | "goods-opening"
+export type G2BServiceId = "plan" | "bid" | "opening"
 
-const externalMenuItem = (key: ProcurementMenuKey, label: string) => ({
-  key,
-  label,
-  path: G2B_URL,
-  external: true as const,
-})
+export type G2BServiceLink = {
+  label: string
+  url: string
+}
 
-export const procurementMenuGroups = [
+export type G2BServiceGroup = {
+  id: G2BServiceId
+  title: string
+  description: string
+  links: readonly G2BServiceLink[]
+}
+
+export const procurementPageConfig = {
+  showOwnProcurementPlan: OWN_PROCUREMENT_PLAN_ENABLED,
+} as const
+
+export const g2bServiceGroups = [
   {
-    id: "plan" as const,
-    label: "발주계획",
-    items: [
-      externalMenuItem("g2b-plan", "조달청 발주계획"),
-      { key: "plan" as const, label: "자체 발주계획", path: "/procurement/plan" },
+    id: "plan",
+    title: "발주계획",
+    description: "기관별 발주 예정 사업 정보를 확인할 수 있습니다.",
+    links: [{ label: "조달청 발주계획", url: G2B_URL }],
+  },
+  {
+    id: "bid",
+    title: "입찰공고",
+    description: "현재 진행 중인 공사·용역·물품 입찰공고를 확인할 수 있습니다.",
+    links: [
+      { label: "공사입찰", url: G2B_URL },
+      { label: "용역입찰", url: G2B_URL },
+      { label: "물품입찰", url: G2B_URL },
     ],
   },
   {
-    id: "bid" as const,
-    label: "조달청 입찰공고",
-    items: [
-      externalMenuItem("construction-bid", "공사입찰"),
-      externalMenuItem("service-bid", "용역입찰"),
-      externalMenuItem("goods-bid", "물품입찰"),
+    id: "opening",
+    title: "개찰결과",
+    description: "공사·용역·물품 입찰의 개찰 및 낙찰 결과를 확인할 수 있습니다.",
+    links: [
+      { label: "공사개찰", url: G2B_URL },
+      { label: "용역개찰", url: G2B_URL },
+      { label: "물품개찰", url: G2B_URL },
     ],
   },
-  {
-    id: "opening" as const,
-    label: "조달청 개찰결과",
-    items: [
-      externalMenuItem("construction-opening", "공사개찰"),
-      externalMenuItem("service-opening", "용역개찰"),
-      externalMenuItem("goods-opening", "물품개찰"),
-    ],
-  },
-] as const
+] as const satisfies readonly G2BServiceGroup[]

@@ -5,8 +5,12 @@ import { getContractPageConfig } from "@/components/contract/contract-page-confi
 import { IntroSection } from "@/components/home/intro-section"
 import { PortalInformation } from "@/components/home/portal-information"
 import { ServiceBoard } from "@/components/home/service-board"
+import { InformationPage } from "@/components/information/information-page"
+import { getInformationPageConfig } from "@/components/information/information-page-config"
 import { Header } from "@/components/navigation/portal-header"
 import { PortalFooter } from "@/components/navigation/portal-footer"
+import { NoticePage } from "@/components/notice/notice-page"
+import { getNoticePageConfig } from "@/components/notice/notice-page-config"
 import { PaymentDetailPage } from "@/components/payment/payment-detail-page"
 import { PaymentPage } from "@/components/payment/payment-page"
 import { getPaymentPageConfig } from "@/components/payment/payment-page-config"
@@ -19,6 +23,8 @@ export function App() {
   const currentPath = window.location.pathname.replace(/\/+$/, "") || "/"
   const contractPageConfig = getContractPageConfig(currentPath)
   const paymentPageConfig = getPaymentPageConfig(currentPath)
+  const informationPageConfig = getInformationPageConfig(currentPath)
+  const noticePageConfig = getNoticePageConfig(currentPath)
   const contractDetailMatch = currentPath.match(/^(.*)\/(\d+)$/)
   const contractDetailConfig = contractDetailMatch
     ? getContractPageConfig(contractDetailMatch[1])
@@ -53,6 +59,8 @@ export function App() {
   }
   if (contractPageConfig) return <ContractPage config={contractPageConfig} />
   if (paymentPageConfig) return <PaymentPage config={paymentPageConfig} />
+  if (informationPageConfig) return <InformationPage config={informationPageConfig} />
+  if (noticePageConfig) return <NoticePage config={noticePageConfig} />
   if (currentPath === "/procurement/plan") return <ProcurementPage />
 
   return (
