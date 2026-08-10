@@ -1,7 +1,7 @@
-import { dailyFinanceRecords, cumulativeFinanceSnapshot } from "@/components/suyeong/suyeong-data"
-import { SuyeongDailyFinanceTicker } from "@/components/suyeong/suyeong-daily-finance-ticker"
+import { cumulativeFinanceSnapshot } from "@/components/suyeong/suyeong-data"
 import { SuyeongFinanceCard } from "@/components/suyeong/suyeong-finance-card"
 import { suyeongLinks } from "@/components/suyeong/suyeong-links"
+import { SuyeongQuickServices } from "@/components/suyeong/suyeong-quick-services"
 import "@/components/suyeong/suyeong-finance-summary.css"
 
 export function SuyeongFinanceSummary() {
@@ -44,7 +44,7 @@ export function SuyeongFinanceSummary() {
         />
       </div>
 
-      <SuyeongDailyFinanceTicker records={dailyFinanceRecords} />
+      <SuyeongQuickServices />
     </div>
   )
 }

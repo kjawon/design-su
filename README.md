@@ -28,10 +28,10 @@ components/suyeong/
 ├─ suyeong-footer.css                  # Footer 전용 스타일
 ├─ suyeong-finance-summary.tsx         # 누적 재정현황 조합
 ├─ suyeong-finance-card.tsx            # 세입·세출 요약 카드
-├─ suyeong-daily-finance-ticker.tsx    # 최근 일별 현황 슬라이드
 ├─ suyeong-finance-summary.css         # 재정현황 전용 스타일
-├─ suyeong-services.tsx                # 주요 서비스 영역 조합
-├─ suyeong-main-services-card.tsx      # 자주 찾는 6개 서비스
+├─ suyeong-quick-services.tsx           # Hero의 자주 찾는 6개 재정 서비스
+├─ suyeong-quick-services.css           # 자주 찾는 서비스 전용 스타일
+├─ suyeong-services.tsx                # 예산·결산 공시 영역 조합
 ├─ suyeong-disclosure-card.tsx         # 예산·결산 공시 공통 카드
 ├─ suyeong-services.css                # 서비스 전용 스타일
 ├─ suyeong-data.ts                     # 화면 검토용 재정 Mock 데이터와 타입
@@ -43,7 +43,7 @@ components/suyeong/
 
 ## 데이터와 링크 수정
 
-- 누적 세입·세출과 최근 일별 현황은 `suyeong-data.ts`의 Mock 데이터에서 관리합니다.
+- 누적 세입·세출 현황은 `suyeong-data.ts`의 Mock 데이터에서 관리합니다.
 - 운영 시스템과 재정공시 링크는 `suyeong-links.ts`에서 한 번에 관리합니다.
 - 실제 API를 연결할 때는 컴포넌트 마크업을 변경하지 않고 `suyeong-data.ts`를 대체하는 데이터 계층을 연결하면 됩니다.
 
