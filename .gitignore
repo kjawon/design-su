@@ -6,3 +6,6 @@ node_modules/
 dist/
 *.tsbuildinfo
 .DS_Store
+
+# Local browser test profiles
+.chrome-*/

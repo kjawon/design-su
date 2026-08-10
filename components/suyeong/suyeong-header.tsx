@@ -1,15 +1,8 @@
 import { Menu, X } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
+import { primaryNavigationItems, suyeongLinks } from "@/components/suyeong/suyeong-links"
 import suyeongIcon from "@/수영구 아이콘.svg"
-
-const SYSTEM_BASE_URL = "http://contract.suyeong.go.kr/revtes"
-
-const navigationItems = [
-  { label: "자금운용현황", href: `${SYSTEM_BASE_URL}/basis/fundsMngList.do` },
-  { label: "세입정보", href: `${SYSTEM_BASE_URL}/basis/revenueList.do` },
-  { label: "세출정보", href: `${SYSTEM_BASE_URL}/basis/budgetExecutionList.do` },
-  { label: "공지사항", href: `${SYSTEM_BASE_URL}/notice/noticeInfoListMenu.do` },
-]
+import "@/components/suyeong/suyeong-header.css"
 
 export function SuyeongHeader() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -35,7 +28,7 @@ export function SuyeongHeader() {
       </a>
       <header className="sy-header">
         <div className="sy-container sy-header__inner">
-          <a className="sy-brand" href="/" aria-label="수영구 세입세출공개시스템 홈">
+          <a className="sy-brand" href={suyeongLinks.home} aria-label="수영구 세입세출공개시스템 홈">
             <span className="sy-brand__municipality" aria-hidden="true">
               <img className="sy-brand__logo" src={suyeongIcon} alt="" />
               <strong>수영구</strong>
@@ -49,7 +42,7 @@ export function SuyeongHeader() {
 
           <nav className="sy-nav" aria-label="주요 메뉴">
             <ul>
-              {navigationItems.map((item) => (
+              {primaryNavigationItems.map((item) => (
                 <li key={item.label}>
                   <a href={item.href}>{item.label}</a>
                 </li>
@@ -77,9 +70,13 @@ export function SuyeongHeader() {
           aria-hidden={!menuOpen}
         >
           <ul className="sy-container">
-            {navigationItems.map((item) => (
+            {primaryNavigationItems.map((item) => (
               <li key={item.label}>
-                <a href={item.href} onClick={() => setMenuOpen(false)}>
+                <a
+                  href={item.href}
+                  tabIndex={menuOpen ? undefined : -1}
+                  onClick={() => setMenuOpen(false)}
+                >
                   {item.label}
                 </a>
               </li>
