@@ -4,9 +4,6 @@ import react from "@vitejs/plugin-react"
 
 export default defineConfig({
   plugins: [react()],
-  server: {
-    allowedHosts: ["dust-footprint-snare.ngrok-free.dev"],
-  },
   resolve: {
     alias: {
       "@": fileURLToPath(new URL(".", import.meta.url)),
