@@ -1,8 +1,8 @@
 import {
+  ArrowRight,
   ChartNoAxesColumnIncreasing,
   CircleDollarSign,
   FileChartColumnIncreasing,
-  ListTree,
   ReceiptText,
   WalletCards,
 } from "lucide-react"
@@ -34,11 +34,6 @@ const mainServices = [
     href: suyeongLinks.expenditure,
     icon: ReceiptText,
   },
-  {
-    label: "사업별 세부설명",
-    href: suyeongLinks.businessDetails,
-    icon: ListTree,
-  },
 ] as const
 
 export function SuyeongMainServicesCard() {
@@ -53,7 +48,10 @@ export function SuyeongMainServicesCard() {
                 <span className="sy-main-services-list__icon" aria-hidden="true">
                   <Icon />
                 </span>
-                <span className="sy-main-services-list__label">{label}</span>
+                <span className="sy-main-services-list__action">
+                  <span className="sy-main-services-list__label">{label}</span>
+                  <ArrowRight aria-hidden="true" />
+                </span>
               </a>
             </li>
           ))}

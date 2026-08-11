@@ -15,7 +15,6 @@ export function SuyeongFinanceProgress({
   value,
 }: SuyeongFinanceProgressProps) {
   const roundedValue = Math.round(value * 10) / 10
-  const boundedValue = Math.min(Math.max(roundedValue, 0), 100)
 
   return (
     <div className="sy-finance-progress" data-tone={tone}>
@@ -27,16 +26,6 @@ export function SuyeongFinanceProgress({
           </strong>
         </span>
         <strong>{roundedValue.toFixed(1)}%</strong>
-      </div>
-      <div
-        className="sy-finance-progress__track"
-        role="progressbar"
-        aria-label={`${benchmarkLabel} 대비`}
-        aria-valuemin={0}
-        aria-valuemax={100}
-        aria-valuenow={roundedValue}
-      >
-        <span style={{ width: `${boundedValue}%` }} />
       </div>
     </div>
   )

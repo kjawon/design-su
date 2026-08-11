@@ -32,13 +32,6 @@
   letter-spacing: -0.05em;
 }
 
-.sy-footer__municipality img {
-  display: block;
-  width: 44px;
-  height: 40px;
-  object-fit: contain;
-}
-
 .sy-footer__divider {
   width: 1px;
   height: 32px;
@@ -49,7 +42,7 @@
   display: flex;
   flex-direction: column;
   color: var(--text-muted);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1.35;
@@ -57,7 +50,7 @@
 
 .sy-footer__service strong {
   color: var(--text-primary);
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 780;
 }
 
@@ -97,7 +90,7 @@
 .sy-footer__copyright {
   margin: 0;
   color: var(--text-muted);
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 0.03em;
   line-height: 1.5;
 }

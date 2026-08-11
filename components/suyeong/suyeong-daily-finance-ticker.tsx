@@ -37,14 +37,14 @@ export function SuyeongDailyFinanceTicker({ records }: SuyeongDailyFinanceTicker
   return (
     <aside
       className={`sy-daily-ticker${isPaused ? " is-paused" : ""}`}
-      aria-label="최근 일별 세입·세출"
+      aria-label="재정현황"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       onFocusCapture={() => setIsPaused(true)}
       onBlurCapture={() => setIsPaused(false)}
     >
       <div className="sy-daily-ticker__label">
-        <span>최근 일별 현황</span>
+        <span>재정현황</span>
       </div>
       <div className="sy-daily-ticker__viewport" aria-live="polite" aria-atomic="true">
         <div

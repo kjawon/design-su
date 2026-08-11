@@ -1,4 +1,3 @@
-import suyeongIcon from "@/수영구 아이콘.svg"
 import "@/components/suyeong/suyeong-footer.css"
 
 export function SuyeongFooter() {
@@ -7,8 +6,7 @@ export function SuyeongFooter() {
       <div className="sy-container sy-footer__inner">
         <div className="sy-footer__brand">
           <span className="sy-footer__municipality">
-            <img src={suyeongIcon} alt="부산광역시 수영구 로고" />
-            <strong aria-hidden="true">수영구</strong>
+            <strong>수영구</strong>
           </span>
           <span className="sy-footer__divider" aria-hidden="true" />
           <span className="sy-footer__service">
