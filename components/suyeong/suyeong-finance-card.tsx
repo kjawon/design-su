@@ -8,7 +8,6 @@ export type FinanceCardTone = "income" | "expense"
 
 interface SuyeongFinanceCardProps {
   actionHref: string
-  actionLabel: string
   detailAmount: number
   detailLabel: string
   heading: string
@@ -20,7 +19,6 @@ interface SuyeongFinanceCardProps {
 
 export function SuyeongFinanceCard({
   actionHref,
-  actionLabel,
   detailAmount,
   detailLabel,
   heading,
@@ -33,8 +31,12 @@ export function SuyeongFinanceCard({
     <div className="sy-finance-column" data-tone={tone}>
       <div className="sy-finance-column__heading">
         <h2 id={headingId}>{heading}</h2>
-        <a className="sy-finance-column__action" href={actionHref}>
-          {actionLabel} <ArrowRight aria-hidden="true" />
+        <a
+          className="sy-finance-column__action"
+          href={actionHref}
+          aria-label={`${heading} 상세보기`}
+        >
+          상세보기 <ArrowRight aria-hidden="true" />
         </a>
       </div>
       <article className="sy-cumulative-card" data-tone={tone} aria-labelledby={headingId}>

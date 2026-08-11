@@ -28,17 +28,8 @@ const mainServices = [
 
 export function SuyeongMainServicesCard() {
   return (
-    <article className="sy-service-card sy-main-services-card">
-      <div className="sy-main-services-card__heading">
-        <span className="sy-main-services-card__icon" aria-hidden="true">
-          <LayoutGrid />
-        </span>
-        <div>
-          <span className="sy-card-eyebrow">빠른 서비스</span>
-          <h3>자주 찾는 재정정보</h3>
-        </div>
-      </div>
-      <nav aria-label="자주 찾는 재정정보">
+    <article className="sy-main-services-card" aria-label="빠른 서비스">
+      <nav aria-label="빠른 서비스">
         <ul className="sy-main-services-list">
           {mainServices.map(({ label, href, icon: Icon }) => (
             <li key={label}>
