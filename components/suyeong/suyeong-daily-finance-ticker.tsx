@@ -1,11 +1,9 @@
-import { ArrowRight, CircleDollarSign } from "lucide-react"
 import { useEffect, useState } from "react"
 import type { DailyFinanceRecord } from "@/components/suyeong/suyeong-data"
 import {
   formatCurrency,
   formatKoreanCurrency,
 } from "@/components/suyeong/suyeong-formatters"
-import { suyeongLinks } from "@/components/suyeong/suyeong-links"
 
 interface SuyeongDailyFinanceTickerProps {
   records: readonly DailyFinanceRecord[]
@@ -46,7 +44,6 @@ export function SuyeongDailyFinanceTicker({ records }: SuyeongDailyFinanceTicker
       onBlurCapture={() => setIsPaused(false)}
     >
       <div className="sy-daily-ticker__label">
-        <CircleDollarSign aria-hidden="true" />
         <span>최근 일별 현황</span>
       </div>
       <div className="sy-daily-ticker__viewport" aria-live="polite" aria-atomic="true">
@@ -63,14 +60,14 @@ export function SuyeongDailyFinanceTicker({ records }: SuyeongDailyFinanceTicker
           <time dateTime={currentRecord.date.replaceAll(".", "-")}>
             {currentRecord.date.slice(5)}
           </time>
-          <span>
+          <span className="sy-daily-ticker__metric" data-tone="income">
             세입
             <strong title={formatCurrency(currentRecord.income)}>
               {formatKoreanCurrency(currentRecord.income)}
             </strong>
           </span>
           <i aria-hidden="true" />
-          <span>
+          <span className="sy-daily-ticker__metric" data-tone="expense">
             세출
             <strong title={formatCurrency(currentRecord.expense)}>
               {formatKoreanCurrency(currentRecord.expense)}
@@ -78,9 +75,6 @@ export function SuyeongDailyFinanceTicker({ records }: SuyeongDailyFinanceTicker
           </span>
         </div>
       </div>
-      <a href={suyeongLinks.funds}>
-        전체보기 <ArrowRight aria-hidden="true" />
-      </a>
     </aside>
   )
 }

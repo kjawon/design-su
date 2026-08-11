@@ -1,21 +1,8 @@
 .sy-page {
-  --sy-color-primary: #246bce;
-  --sy-color-primary-hover: #1d5bb0;
-  --sy-color-text-primary: #15324a;
-  --sy-color-border: #ccdde8;
-  --sy-color-section-blue: #f3f8fc;
-  --sy-radius-lg: 16px;
-  --sy-space-3: 24px;
-  --sy-space-4: 32px;
-  --sy-navy: var(--sy-color-text-primary);
-  --sy-blue: var(--sy-color-primary);
-  --sy-blue-dark: var(--sy-color-primary-hover);
-  --sy-ink: var(--sy-color-text-primary);
-  --sy-line: var(--sy-color-border);
   min-width: 0;
   overflow-x: clip;
-  background: #fff;
-  color: var(--sy-ink);
+  background: var(--content-bg);
+  color: var(--text-primary);
   font-family: "Pretendard Variable", Pretendard, "Noto Sans KR", system-ui, sans-serif;
   font-size: 16px;
   line-height: 1.5;
@@ -38,99 +25,140 @@
 }
 
 .sy-container {
-  width: min(100% - 64px, 1320px);
+  width: min(100% - 64px, 1180px);
   margin-inline: auto;
 }
 
 .sy-finance-summary {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  background: var(--sy-color-section-blue);
-  padding-block: 40px 48px;
+  border-bottom: 1px solid var(--hero-bg-strong);
+  background: linear-gradient(180deg, var(--hero-bg) 0%, var(--hero-bg-strong) 100%);
+  padding-block: 44px 52px;
+}
+
+.sy-hero-layout {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .sy-hero-heading {
   display: flex;
+  width: min(100%, 900px);
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.sy-hero-heading__logo {
+  display: flex;
+  width: 94px;
+  height: 88px;
   align-items: center;
   justify-content: center;
-  gap: 28px;
+  margin-bottom: 16px;
+  border-radius: 999px;
+  background: var(--surface-bg);
+  padding: 7px;
 }
 
-.sy-hero-heading img {
+.sy-hero-heading__logo img {
   display: block;
-  width: 80px;
-  height: 76px;
-  flex: 0 0 auto;
+  width: 76px;
+  height: 72px;
   object-fit: contain;
-}
-
-.sy-hero-heading__text {
-  min-width: 0;
-  text-align: left;
 }
 
 .sy-hero-heading h1 {
   margin: 0;
-  color: #15324a;
-  font-size: clamp(44px, 3.2vw, 48px);
-  font-weight: 800;
-  letter-spacing: -0.05em;
-  line-height: 1.25;
+  color: var(--hero-text-primary);
+  font-size: clamp(52px, 5vw, 60px);
+  font-weight: 860;
+  letter-spacing: -0.06em;
+  line-height: 1.14;
 }
 
 .sy-hero-heading p {
-  max-width: 700px;
-  margin: 10px auto 0;
-  color: #61798c;
-  font-size: 18px;
+  margin: 11px 0 0;
+  color: var(--hero-text-secondary);
+  font-size: 17px;
   font-weight: 500;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.02em;
   line-height: 1.6;
-  text-align: center;
+}
+
+.sy-hero-heading__date {
+  display: block;
+  margin-top: 8px;
+  color: var(--hero-text-muted);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
 .sy-page :focus-visible {
-  outline: 3px solid rgba(36, 107, 206, 0.65);
+  outline: 3px solid var(--focus-ring);
   outline-offset: 3px;
 }
 
-@media (max-width: 860px) {
+.sy-finance-summary :focus-visible {
+  outline-color: var(--hero-focus-ring);
+}
+
+@media (max-width: 900px) {
   .sy-container {
-    width: min(100% - 40px, 1320px);
+    width: min(100% - 40px, 1180px);
+  }
+
+  .sy-finance-summary {
+    padding-block: 40px 46px;
+  }
+
+  .sy-hero-heading h1 {
+    font-size: clamp(45px, 6.2vw, 54px);
   }
 }
 
 @media (max-width: 680px) {
   .sy-container {
-    width: min(100% - 32px, 1320px);
+    width: min(100% - 32px, 1180px);
   }
 
   .sy-finance-summary {
-    padding-block: 40px 48px;
+    padding-block: 32px 38px;
   }
 
-  .sy-hero-heading {
-    flex-direction: column;
-    gap: 16px;
+  .sy-hero-layout {
+    gap: 24px;
   }
 
-  .sy-hero-heading img {
-    width: 68px;
-    height: 64px;
+  .sy-hero-heading__logo {
+    width: 76px;
+    height: 72px;
+    margin-bottom: 13px;
   }
 
-  .sy-hero-heading__text {
-    text-align: center;
+  .sy-hero-heading__logo img {
+    width: 60px;
+    height: 56px;
   }
 
   .sy-hero-heading h1 {
-    font-size: clamp(34px, 9vw, 40px);
+    font-size: clamp(34px, 10vw, 43px);
   }
 
   .sy-hero-heading p {
-    font-size: 16px;
+    margin-top: 9px;
+    font-size: 15px;
     line-height: 1.55;
+  }
+
+  .sy-hero-heading__date {
+    margin-top: 7px;
+    font-size: 12px;
   }
 }
 

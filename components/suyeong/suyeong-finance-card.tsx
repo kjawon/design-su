@@ -3,14 +3,15 @@ import {
   formatCurrency,
   formatKoreanCurrency,
 } from "@/components/suyeong/suyeong-formatters"
+import { SuyeongFinanceProgress } from "@/components/suyeong/suyeong-finance-progress"
 
 export type FinanceCardTone = "income" | "expense"
 
 interface SuyeongFinanceCardProps {
   actionHref: string
   actionLabel: string
-  detailAmount: number
-  detailLabel: string
+  benchmarkAmount: number
+  benchmarkLabel: string
   heading: string
   headingId: string
   tone: FinanceCardTone
@@ -21,14 +22,16 @@ interface SuyeongFinanceCardProps {
 export function SuyeongFinanceCard({
   actionHref,
   actionLabel,
-  detailAmount,
-  detailLabel,
+  benchmarkAmount,
+  benchmarkLabel,
   heading,
   headingId,
   tone,
   totalAmount,
   totalLabel,
 }: SuyeongFinanceCardProps) {
+  const progressValue = (totalAmount / benchmarkAmount) * 100
+
   return (
     <div className="sy-finance-column" data-tone={tone}>
       <div className="sy-finance-column__heading">
@@ -38,16 +41,16 @@ export function SuyeongFinanceCard({
         </a>
       </div>
       <article className="sy-cumulative-card" data-tone={tone} aria-labelledby={headingId}>
-        <span className="sy-cumulative-card__label">{totalLabel}</span>
         <strong className="sy-cumulative-card__amount" title={formatCurrency(totalAmount)}>
           {formatKoreanCurrency(totalAmount)}
         </strong>
-        <div className="sy-cumulative-card__detail">
-          <span>{detailLabel}</span>
-          <strong title={formatCurrency(detailAmount)}>
-            {formatKoreanCurrency(detailAmount)}
-          </strong>
-        </div>
+        <span className="sy-cumulative-card__label">{totalLabel}</span>
+        <SuyeongFinanceProgress
+          benchmarkAmount={benchmarkAmount}
+          benchmarkLabel={benchmarkLabel}
+          tone={tone}
+          value={progressValue}
+        />
       </article>
     </div>
   )

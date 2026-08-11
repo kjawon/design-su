@@ -1,0 +1,93 @@
+.sy-page,
+.sy-page[data-theme="teal"] {
+  --hero-bg: #0b625d;
+  --hero-bg-strong: #084d49;
+  --hero-surface: rgba(255, 255, 255, 0.11);
+  --hero-border: rgba(255, 255, 255, 0.2);
+  --hero-text-primary: #fff;
+  --hero-text-secondary: rgba(255, 255, 255, 0.88);
+  --hero-text-muted: rgba(255, 255, 255, 0.74);
+  --content-bg: #fff;
+  --content-soft: #f7f9f8;
+  --surface-bg: #fff;
+  --surface-border: #dce6e3;
+  --surface-border-strong: #c7d6d2;
+  --text-primary: #172a30;
+  --text-secondary: #5d6f73;
+  --text-muted: #7b8b90;
+  --income-accent: #45d1c1;
+  --income-soft: #e8fbf8;
+  --expense-accent: #f0715b;
+  --expense-soft: #fff1ed;
+  --progress-track: rgba(255, 255, 255, 0.24);
+  --quickmenu-icon-bg: #eaf7f5;
+  --quickmenu-icon-color: #0b625d;
+  --quickmenu-hover-bg: #f1faf8;
+  --quickmenu-hover-text: #0b625d;
+  --quickmenu-shadow: rgba(11, 98, 93, 0.12);
+  --focus-ring: rgba(11, 98, 93, 0.42);
+  --hero-focus-ring: rgba(255, 255, 255, 0.82);
+  --footer-divider: #d7e0de;
+}
+
+.sy-page[data-theme="blue"] {
+  --hero-bg: #0b5fb8;
+  --hero-bg-strong: #094e9b;
+  --hero-surface: rgba(255, 255, 255, 0.1);
+  --hero-border: rgba(255, 255, 255, 0.18);
+  --hero-text-primary: #fff;
+  --hero-text-secondary: rgba(255, 255, 255, 0.86);
+  --hero-text-muted: rgba(255, 255, 255, 0.72);
+  --content-bg: #fff;
+  --content-soft: #f7f9fb;
+  --surface-bg: #fff;
+  --surface-border: #dfe6ed;
+  --surface-border-strong: #c9d4df;
+  --text-primary: #172b3a;
+  --text-secondary: #5e6e7e;
+  --text-muted: #7d8a97;
+  --income-accent: #27c3f3;
+  --income-soft: #e6f8fe;
+  --expense-accent: #ff7a5c;
+  --expense-soft: #fff1ec;
+  --progress-track: rgba(255, 255, 255, 0.22);
+  --quickmenu-icon-bg: #eaf3fd;
+  --quickmenu-icon-color: #0b5fb8;
+  --quickmenu-hover-bg: #f4f8fc;
+  --quickmenu-hover-text: #0b5fb8;
+  --quickmenu-shadow: rgba(11, 95, 184, 0.12);
+  --focus-ring: rgba(11, 95, 184, 0.42);
+  --hero-focus-ring: rgba(255, 255, 255, 0.82);
+  --footer-divider: #d9e0e7;
+}
+
+.sy-page[data-theme="forest"] {
+  --hero-bg: #175c4c;
+  --hero-bg-strong: #11493c;
+  --hero-surface: rgba(255, 255, 255, 0.11);
+  --hero-border: rgba(255, 255, 255, 0.18);
+  --hero-text-primary: #fff;
+  --hero-text-secondary: rgba(255, 255, 255, 0.88);
+  --hero-text-muted: rgba(255, 255, 255, 0.74);
+  --content-bg: #fff;
+  --content-soft: #f7f9f8;
+  --surface-bg: #fff;
+  --surface-border: #dce4df;
+  --surface-border-strong: #c8d4cd;
+  --text-primary: #1a2c2a;
+  --text-secondary: #5f726d;
+  --text-muted: #7a8a86;
+  --income-accent: #39be8a;
+  --income-soft: #eaf8f1;
+  --expense-accent: #e46d51;
+  --expense-soft: #fff0eb;
+  --progress-track: rgba(255, 255, 255, 0.23);
+  --quickmenu-icon-bg: #edf7f2;
+  --quickmenu-icon-color: #175c4c;
+  --quickmenu-hover-bg: #f4faf7;
+  --quickmenu-hover-text: #175c4c;
+  --quickmenu-shadow: rgba(23, 92, 76, 0.12);
+  --focus-ring: rgba(23, 92, 76, 0.42);
+  --hero-focus-ring: rgba(255, 255, 255, 0.82);
+  --footer-divider: #d8dfdb;
+}
