@@ -1,0 +1,80 @@
+.sy-page-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.sy-page-heading p {
+  margin: 0 0 7px;
+  color: #6d8295;
+  font-size: 16px;
+  font-weight: 550;
+  letter-spacing: -0.02em;
+}
+
+.sy-page-heading h1 {
+  margin: 0;
+  color: #172f46;
+  font-size: 36px;
+  font-weight: 850;
+  letter-spacing: -0.045em;
+  line-height: 1.25;
+}
+
+.sy-print-button {
+  display: inline-flex;
+  min-height: 46px;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border: 1px solid #ccdae6;
+  border-radius: 12px;
+  background: #fff;
+  padding: 0 18px;
+  color: #344c62;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: border-color 160ms ease, background 160ms ease, color 160ms ease;
+}
+
+.sy-print-button:hover {
+  border-color: #9bb5ca;
+  background: #f7fafd;
+  color: var(--sy-blue-dark);
+}
+
+.sy-print-button svg {
+  width: 19px;
+  height: 19px;
+}
+
+@media (max-width: 680px) {
+  .sy-page-heading {
+    align-items: center;
+  }
+
+  .sy-page-heading p {
+    display: none;
+  }
+
+  .sy-page-heading h1 {
+    font-size: 30px;
+  }
+
+  .sy-print-button {
+    min-height: 42px;
+    padding-inline: 13px;
+  }
+}
+
+@media print {
+  .sy-print-button {
+    display: none !important;
+  }
+
+  .sy-page-heading p {
+    display: none;
+  }
+}

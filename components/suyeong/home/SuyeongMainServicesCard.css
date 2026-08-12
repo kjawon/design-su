@@ -1,0 +1,105 @@
+.sy-main-services-card {
+  display: flex;
+  min-height: 0;
+  grid-column: 1 / -1;
+  flex-direction: column;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  box-shadow: none;
+}
+
+.sy-main-services-list {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sy-main-services-list a {
+  position: relative;
+  display: flex;
+  min-height: 180px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  border-radius: 12px;
+  padding: 8px 4px;
+  color: #234861;
+  font-size: 23px;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.35;
+  text-align: center;
+  transition: background-color 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+.sy-main-services-list a:hover,
+.sy-main-services-list a:focus-visible {
+  background: rgba(255, 255, 255, 0.58);
+  color: #13558a;
+  transform: translateY(-2px);
+}
+
+.sy-main-services-list__icon {
+  display: flex;
+  width: 92px;
+  height: 92px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d1e0eb;
+  border-radius: 12px;
+  background: #fff;
+  color: #1769aa;
+  box-shadow: 0 4px 12px rgba(29, 67, 96, 0.05);
+  transition: border-color 180ms ease, background-color 180ms ease, color 180ms ease;
+}
+
+.sy-main-services-list a:hover .sy-main-services-list__icon,
+.sy-main-services-list a:focus-visible .sy-main-services-list__icon {
+  border-color: #9fc2db;
+  background: #f8fcff;
+  color: #13558a;
+}
+
+.sy-main-services-list__icon svg {
+  width: 42px;
+  height: 42px;
+  stroke-width: 1.8;
+}
+
+.sy-main-services-list a > svg {
+  display: none;
+}
+
+@media (max-width: 1120px) {
+  .sy-main-services-card {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 680px) {
+  .sy-main-services-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .sy-main-services-list a {
+    min-height: 155px;
+    gap: 14px;
+    font-size: 19px;
+  }
+
+  .sy-main-services-list__icon {
+    width: 80px;
+    height: 80px;
+  }
+
+  .sy-main-services-list__icon svg {
+    width: 36px;
+    height: 36px;
+  }
+}

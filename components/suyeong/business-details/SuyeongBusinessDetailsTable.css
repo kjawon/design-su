@@ -1,0 +1,51 @@
+.sy-business-table {
+  min-width: 1430px;
+}
+
+.sy-business-table__number-col { width: 65px; }
+.sy-business-table__accounting { width: 110px; }
+.sy-business-table__department { width: 120px; }
+.sy-business-table__business { width: 275px; }
+.sy-business-table__purpose { width: 330px; }
+.sy-business-table__budget-col { width: 160px; }
+.sy-business-table__date { width: 120px; }
+.sy-business-table__field { width: 130px; }
+
+.sy-business-table tbody th,
+.sy-business-table tbody td {
+  height: 64px;
+  text-align: left;
+}
+
+.sy-business-table tbody th {
+  color: #1b5fa7;
+  font-weight: 720;
+}
+
+.sy-business-table tbody td:nth-child(1),
+.sy-business-table tbody td:nth-child(7),
+.sy-business-table tbody td:nth-child(8) {
+  text-align: center;
+}
+
+.sy-business-table tbody td:nth-child(6) {
+  text-align: right;
+}
+
+.sy-business-table__number {
+  color: #526c82 !important;
+  font-weight: 700 !important;
+}
+
+.sy-business-table__budget {
+  color: #263f56 !important;
+  font-weight: 720 !important;
+}
+
+.sy-business-table__clamp {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-height: 1.45;
+}

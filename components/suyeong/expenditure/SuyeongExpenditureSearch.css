@@ -1,0 +1,90 @@
+.sy-expenditure-search__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px 26px;
+}
+
+.sy-expenditure-search__period > strong {
+  display: block;
+  align-self: center;
+  margin: 0;
+  color: #2a455e;
+  font-size: 16px;
+  font-weight: 780;
+}
+
+.sy-expenditure-search__period {
+  display: grid;
+  grid-template-columns: 96px minmax(360px, 650px);
+  align-items: end;
+  gap: 18px;
+  margin-top: 22px;
+  border-top: 1px solid #dce6ee;
+  padding-top: 20px;
+}
+
+.sy-expenditure-search__dates {
+  display: grid;
+  grid-template-columns: minmax(150px, 1fr) auto minmax(150px, 1fr);
+  align-items: center;
+  gap: 9px;
+}
+
+.sy-expenditure-search__dates > label {
+  position: relative;
+}
+
+.sy-expenditure-search__dates input {
+  padding-right: 45px;
+}
+
+.sy-expenditure-search__dates svg {
+  position: absolute;
+  top: 15px;
+  right: 14px;
+  width: 19px;
+  height: 19px;
+  color: #365671;
+  pointer-events: none;
+}
+
+.sy-expenditure-search__footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+@media (max-width: 980px) {
+  .sy-expenditure-search__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sy-expenditure-search__period {
+    grid-template-columns: 72px minmax(0, 1fr);
+  }
+
+}
+
+@media (max-width: 680px) {
+  .sy-expenditure-search__grid,
+  .sy-expenditure-search__period,
+  .sy-expenditure-search__dates {
+    grid-template-columns: 1fr;
+  }
+
+  .sy-expenditure-search__period {
+    align-items: stretch;
+  }
+
+  .sy-expenditure-search__period > strong {
+    grid-column: auto;
+  }
+
+  .sy-expenditure-search__dates > span {
+    display: none;
+  }
+
+  .sy-expenditure-search__footer .sy-search-actions {
+    width: 100%;
+  }
+}

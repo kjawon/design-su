@@ -1,0 +1,89 @@
+.sy-notice-search__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 26px;
+}
+
+.sy-notice-search__period {
+  min-width: 0;
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+.sy-notice-search__period legend {
+  margin-bottom: 9px;
+  padding: 0;
+  color: #2a455e;
+  font-size: 16px;
+  font-weight: 780;
+  letter-spacing: -0.025em;
+}
+
+.sy-notice-search__dates {
+  display: grid;
+  grid-template-columns: minmax(170px, 230px) auto minmax(170px, 230px);
+  align-items: center;
+  gap: 9px;
+}
+
+.sy-notice-search__dates > label {
+  position: relative;
+}
+
+.sy-notice-search__dates input {
+  padding-right: 45px;
+}
+
+.sy-notice-search__dates input::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0;
+}
+
+.sy-notice-search__dates svg {
+  position: absolute;
+  top: 15px;
+  right: 14px;
+  width: 19px;
+  height: 19px;
+  color: #365671;
+  pointer-events: none;
+}
+
+.sy-notice-search__footer {
+  align-items: end;
+}
+
+@media (max-width: 980px) {
+  .sy-notice-search__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sy-notice-search__grid > :last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 680px) {
+  .sy-notice-search__grid,
+  .sy-notice-search__dates {
+    grid-template-columns: 1fr;
+  }
+
+  .sy-notice-search__grid > :last-child {
+    grid-column: auto;
+  }
+
+  .sy-notice-search__footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .sy-notice-search__dates > span {
+    display: none;
+  }
+
+  .sy-notice-search__footer .sy-search-actions {
+    width: 100%;
+  }
+}

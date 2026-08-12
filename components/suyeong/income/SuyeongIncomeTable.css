@@ -1,0 +1,18 @@
+.sy-income-table { min-width: 1430px; }
+.sy-income-table__accounting { width: 260px; }
+.sy-income-table__previous { width: 190px; }
+.sy-income-table__revenue { width: 210px; }
+.sy-income-table__refund { width: 180px; }
+.sy-income-table__correction { width: 170px; }
+.sy-income-table__net,
+.sy-income-table__current { width: 210px; }
+
+.sy-income-table tbody th {
+  padding-left: 20px;
+  text-align: left;
+}
+
+.sy-income-table .sy-income-table__total {
+  color: #165fb6;
+  font-weight: 780;
+}

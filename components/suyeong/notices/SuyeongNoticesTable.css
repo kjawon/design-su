@@ -1,0 +1,48 @@
+.sy-notices-table {
+  min-width: 980px;
+}
+
+.sy-notices-table__number { width: 82px; }
+.sy-notices-table__title { width: auto; }
+.sy-notices-table__author { width: 150px; }
+.sy-notices-table__date { width: 150px; }
+.sy-notices-table__attachment { width: 250px; }
+
+.sy-notices-table tbody td,
+.sy-notices-table tbody th {
+  text-align: center;
+}
+
+.sy-notices-table tbody th {
+  overflow: hidden;
+  color: #1265c2;
+  font-weight: 750;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sy-notices-table__file {
+  display: inline-flex;
+  max-width: 100%;
+  align-items: center;
+  gap: 7px;
+  color: #395a74;
+}
+
+.sy-notices-table__file svg {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 auto;
+  color: #637f96;
+}
+
+.sy-notices-table__file span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sy-notices-table__no-file {
+  color: #9aa9b6;
+}

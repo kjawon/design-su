@@ -1,0 +1,160 @@
+.sy-finance-column {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+}
+
+.sy-finance-column__heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+  padding-inline: 2px;
+}
+
+.sy-finance-column__heading h2 {
+  margin: 0;
+  color: #195e9b;
+  font-size: clamp(26px, 1.7vw, 30px);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.3;
+}
+
+.sy-finance-column[data-tone="expense"] .sy-finance-column__heading h2 {
+  color: #a94a32;
+}
+
+.sy-finance-column__action {
+  display: inline-flex;
+  width: max-content;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 7px;
+  color: #195e9b;
+  font-size: 17px;
+  font-weight: 750;
+}
+
+.sy-finance-column[data-tone="expense"] .sy-finance-column__action {
+  color: #a94a32;
+}
+
+.sy-finance-column__action svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 160ms ease;
+}
+
+.sy-finance-column__action:hover svg,
+.sy-finance-column__action:focus-visible svg {
+  transform: translateX(3px);
+}
+
+.sy-cumulative-card {
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  padding: 32px 34px;
+  color: #17324d;
+}
+
+.sy-cumulative-card[data-tone="income"] {
+  border-color: #afcfe9;
+  background: #ddedfc;
+}
+
+.sy-cumulative-card[data-tone="expense"] {
+  border-color: #e7b9aa;
+  background: #f8e2da;
+}
+
+.sy-cumulative-card__label {
+  color: #61798c;
+  font-size: 18px;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.sy-cumulative-card__amount {
+  display: block;
+  margin: 14px 0 0;
+  color: #155b96;
+  font-size: clamp(50px, 3.5vw, 56px);
+  font-variant-numeric: tabular-nums;
+  font-weight: 850;
+  letter-spacing: -0.045em;
+  line-height: 1.16;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.sy-cumulative-card[data-tone="expense"] .sy-cumulative-card__amount {
+  color: #a94a32;
+}
+
+.sy-cumulative-card__detail {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 22px;
+  border-top: 1px solid rgba(21, 91, 150, 0.16);
+  padding-top: 18px;
+}
+
+.sy-cumulative-card[data-tone="expense"] .sy-cumulative-card__detail {
+  border-top-color: rgba(169, 74, 50, 0.16);
+}
+
+.sy-cumulative-card__detail > span {
+  color: #61798c;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.sy-cumulative-card__detail > strong {
+  display: block;
+  color: #17324d;
+  font-size: 22px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  white-space: nowrap;
+}
+
+@media (max-width: 680px) {
+  .sy-finance-column__heading {
+    gap: 12px;
+    margin-bottom: 12px;
+    padding-inline: 1px;
+  }
+
+  .sy-finance-column__heading h2 {
+    font-size: 22px;
+  }
+
+  .sy-finance-column__action {
+    font-size: 15px;
+  }
+
+  .sy-cumulative-card {
+    min-height: 0;
+    padding: 24px;
+  }
+
+  .sy-cumulative-card__amount {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 430px) {
+  .sy-finance-column__heading {
+    flex-wrap: wrap;
+  }
+}

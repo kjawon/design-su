@@ -1,0 +1,31 @@
+.sy-list-main {
+  min-height: 760px;
+  padding-block: 54px 96px;
+  background: #fff;
+}
+
+.sy-list-results {
+  margin-top: 38px;
+}
+
+@media (max-width: 680px) {
+  .sy-list-main {
+    padding-block: 36px 70px;
+  }
+
+  .sy-list-results {
+    margin-top: 30px;
+  }
+
+}
+
+@media print {
+  .sy-list-main {
+    min-height: 0;
+    padding: 0;
+  }
+
+  .sy-list-results {
+    margin-top: 24px;
+  }
+}

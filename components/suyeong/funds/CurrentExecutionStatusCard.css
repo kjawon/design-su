@@ -1,0 +1,116 @@
+.sy-trend-card__body.sy-current-execution-card__body {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.9fr) minmax(210px, 1.1fr);
+  align-items: center;
+  gap: 28px;
+}
+
+.sy-execution-donut {
+  position: relative;
+  width: min(100%, 198px);
+  aspect-ratio: 1;
+  justify-self: center;
+}
+
+.sy-execution-donut svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  transform: rotate(-90deg);
+}
+
+.sy-execution-donut circle {
+  fill: none;
+  stroke-width: 18;
+}
+
+.sy-execution-donut__track {
+  stroke: #e7eef5;
+}
+
+.sy-execution-donut__value {
+  stroke: #246bce;
+  stroke-linecap: round;
+}
+
+.sy-execution-donut__label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.sy-execution-donut__label strong {
+  color: #174f91;
+  font-size: 34px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 850;
+  letter-spacing: -0.045em;
+  line-height: 1.1;
+}
+
+.sy-execution-donut__label span {
+  margin-top: 7px;
+  color: #718699;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.sy-current-execution-card__summary {
+  display: grid;
+  min-width: 0;
+  gap: 0;
+  margin: 0;
+  border-top: 1px solid #e3ebf2;
+}
+
+.sy-current-execution-card__summary > div {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 58px;
+  border-bottom: 1px solid #e3ebf2;
+}
+
+.sy-current-execution-card__summary dt,
+.sy-current-execution-card__summary dd {
+  margin: 0;
+}
+
+.sy-current-execution-card__summary dt {
+  flex: 0 0 auto;
+  color: #6d8294;
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.sy-current-execution-card__summary dd {
+  overflow: hidden;
+  color: #29445c;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 780;
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 680px) {
+  .sy-trend-card__body.sy-current-execution-card__body {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .sy-execution-donut {
+    width: 172px;
+  }
+
+  .sy-execution-donut__label strong {
+    font-size: 30px;
+  }
+}

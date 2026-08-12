@@ -1,0 +1,55 @@
+.sy-business-budget-table {
+  min-width: 1120px;
+  font-size: 14px;
+}
+
+.sy-business-budget-table__number { width: 3%; }
+.sy-business-budget-table__accounting { width: 6%; }
+.sy-business-budget-table__department { width: 6%; }
+.sy-business-budget-table__business { width: 8%; }
+.sy-business-budget-table__type { width: 5%; }
+.sy-business-budget-table__budget { width: 6.5%; }
+.sy-business-budget-table__expense-col,
+.sy-business-budget-table__remaining { width: 6.5%; }
+.sy-business-budget-table__field { width: 7%; }
+
+.sy-business-budget-table thead th {
+  height: 38px;
+  padding: 7px 5px;
+  font-size: 15px;
+  line-height: 1.25;
+}
+
+.sy-business-budget-table thead tr:first-child th {
+  height: 38px;
+}
+
+.sy-business-budget-table thead tr:not(:first-child) th {
+  height: 34px;
+  font-size: 14px;
+}
+
+.sy-business-budget-table tbody th,
+.sy-business-budget-table tbody td {
+  overflow: hidden;
+  height: 48px;
+  padding: 8px 6px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sy-business-budget-table tbody th {
+  overflow: hidden;
+  color: #1662ae;
+  font-weight: 750;
+  text-align: left;
+}
+
+.sy-business-budget-table tbody td:nth-child(1) {
+  text-align: center;
+}
+
+.sy-business-budget-table__expense {
+  color: #165fb6 !important;
+  font-weight: 750 !important;
+}

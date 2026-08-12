@@ -26,6 +26,15 @@ body {
   background: #fff;
 }
 
+.sy-route-loading {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  color: #52697f;
+  font-size: 16px;
+  font-weight: 650;
+}
+
 button,
 input,
 select,

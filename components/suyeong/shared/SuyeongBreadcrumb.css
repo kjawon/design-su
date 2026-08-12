@@ -1,0 +1,49 @@
+.sy-breadcrumb {
+  border-bottom: 1px solid #dce6ef;
+  background: #f6f8fb;
+}
+
+.sy-breadcrumb__inner {
+  display: flex;
+  min-height: 52px;
+  align-items: center;
+  gap: 9px;
+  color: #647a8e;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.sy-breadcrumb__inner a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border-radius: 5px;
+}
+
+.sy-breadcrumb__inner > svg {
+  width: 15px;
+  color: #93a5b5;
+}
+
+.sy-breadcrumb__inner a svg {
+  width: 17px;
+  height: 17px;
+}
+
+.sy-breadcrumb__inner [aria-current="page"] {
+  color: #243e56;
+  font-weight: 750;
+}
+
+@media (max-width: 680px) {
+  .sy-breadcrumb__inner {
+    min-height: 46px;
+    font-size: 14px;
+  }
+}
+
+@media print {
+  .sy-breadcrumb {
+    display: none !important;
+  }
+}

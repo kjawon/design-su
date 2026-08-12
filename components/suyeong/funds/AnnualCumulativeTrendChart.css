@@ -1,0 +1,41 @@
+.sy-cumulative-line {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.2;
+  vector-effect: non-scaling-stroke;
+}
+
+.sy-cumulative-line--income {
+  stroke: #2b70b7;
+}
+
+.sy-cumulative-line--expense {
+  stroke: #7898b2;
+}
+
+.sy-cumulative-point {
+  stroke: #fff;
+  stroke-width: 1.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.sy-cumulative-point--income {
+  fill: #2b70b7;
+}
+
+.sy-cumulative-point--expense {
+  fill: #7898b2;
+}
+
+.sy-annual-trend-card .sy-chart-hit-area {
+  fill: transparent;
+  cursor: crosshair;
+  outline: none;
+}
+
+.sy-annual-trend-card .sy-chart-hit-area:focus {
+  fill: rgba(36, 107, 206, 0.035);
+  stroke: rgba(36, 107, 206, 0.28);
+  stroke-width: 1;
+}

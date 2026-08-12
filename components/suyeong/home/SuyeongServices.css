@@ -1,0 +1,18 @@
+.sy-primary-services-layout {
+  display: grid;
+  width: min(100%, 1400px);
+  margin-inline: auto;
+}
+
+@media (max-width: 1120px) {
+  .sy-primary-services-layout {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .sy-primary-services-layout {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}

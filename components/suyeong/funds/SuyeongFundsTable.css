@@ -1,0 +1,15 @@
+.sy-funds-table { min-width: 1360px; }
+.sy-funds-table__date { width: 145px; }
+.sy-funds-table__budget { width: 210px; }
+.sy-funds-table__period-amount { width: 175px; }
+.sy-funds-table__cumulative-amount { width: 215px; }
+.sy-funds-table__balance-col { width: 225px; }
+
+.sy-funds-table tbody th {
+  text-align: center;
+}
+
+.sy-funds-table .sy-funds-table__balance {
+  color: #165fb6;
+  font-weight: 780;
+}

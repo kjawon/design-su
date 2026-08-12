@@ -1,0 +1,157 @@
+.sy-financial-search__fields {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.65fr) minmax(200px, 0.9fr) minmax(470px, 2.1fr);
+  gap: 26px;
+}
+
+.sy-date-field {
+  position: relative;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.sy-financial-search__fields > .sy-search-control > span {
+  min-height: 40px;
+}
+
+.sy-date-field legend {
+  display: block;
+  min-height: 40px;
+  margin-bottom: 9px;
+  padding: 0;
+  color: #2a455e;
+  font-size: 16px;
+  font-weight: 780;
+  letter-spacing: -0.025em;
+}
+
+.sy-financial-search__period-ranges {
+  position: absolute;
+  z-index: 1;
+  top: -49px;
+  right: 0;
+  width: calc((100% - 35px) / 2);
+  margin: 0;
+}
+
+.sy-financial-search__period-ranges .sy-quick-range {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 7px;
+  width: 100%;
+}
+
+.sy-financial-search__period-ranges .sy-quick-range button {
+  width: 100%;
+  min-width: 0;
+  padding-inline: 4px;
+}
+
+.sy-date-field input:hover,
+.sy-date-field input:focus {
+  border-color: #6e9fd0;
+}
+
+.sy-date-field__inputs {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) 17px minmax(180px, 1fr);
+  align-items: center;
+  gap: 9px;
+}
+
+.sy-date-field__inputs > span {
+  color: #74899b;
+  font-size: 15px;
+  text-align: center;
+}
+
+.sy-date-field__inputs label {
+  position: relative;
+  min-width: 0;
+}
+
+.sy-date-field input {
+  width: 100%;
+  height: 50px;
+  border: 1px solid #c8d8e6;
+  border-radius: 10px;
+  background: #fff;
+  padding: 0 45px 0 15px;
+  color: #405a71;
+  font-size: 15px;
+  outline: none;
+}
+
+.sy-date-field input::-webkit-calendar-picker-indicator {
+  position: absolute;
+  right: 13px;
+  width: 20px;
+  height: 20px;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.sy-date-field label svg {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  width: 18px;
+  height: 18px;
+  color: #24445f;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.sy-financial-search__footer {
+  justify-content: flex-end;
+  margin-top: 24px;
+  padding-top: 22px;
+}
+
+@media (max-width: 1100px) {
+  .sy-financial-search__fields {
+    grid-template-columns: minmax(160px, 0.75fr) minmax(210px, 1fr);
+  }
+
+  .sy-date-field {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 680px) {
+  .sy-financial-search__fields {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .sy-date-field {
+    grid-column: auto;
+  }
+
+  .sy-financial-search__fields > .sy-search-control > span,
+  .sy-date-field legend {
+    min-height: 0;
+  }
+
+  .sy-financial-search__period-ranges {
+    position: static;
+    width: 100%;
+    margin-bottom: 12px;
+  }
+
+  .sy-date-field__inputs {
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+
+  .sy-date-field__inputs > span {
+    height: 10px;
+    line-height: 7px;
+  }
+
+  .sy-financial-search__footer {
+    align-items: stretch;
+  }
+}

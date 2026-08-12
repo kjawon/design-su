@@ -1,0 +1,27 @@
+.sy-budget-execution-table { min-width: 1300px; }
+.sy-budget-execution-table__field { width: 235px; }
+.sy-budget-execution-table__budget { width: 220px; }
+.sy-budget-execution-table__before { width: 250px; }
+.sy-budget-execution-table__during { width: 210px; }
+.sy-budget-execution-table__cumulative { width: 235px; }
+.sy-budget-execution-table__rate-col { width: 150px; }
+
+.sy-budget-execution-table tbody th {
+  padding-left: 20px;
+  text-align: left;
+}
+
+.sy-budget-execution-table tbody tr.is-total {
+  background: #f6f9fc;
+}
+
+.sy-budget-execution-table tbody tr.is-total th,
+.sy-budget-execution-table tbody tr.is-total td {
+  color: #203e58;
+  font-weight: 800;
+}
+
+.sy-budget-execution-table__rate {
+  color: #165fb6 !important;
+  font-weight: 750 !important;
+}

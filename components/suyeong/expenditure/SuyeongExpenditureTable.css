@@ -1,0 +1,40 @@
+.sy-expenditure-table {
+  min-width: 1430px;
+}
+
+.sy-expenditure-table__number { width: 70px; }
+.sy-expenditure-table__accounting { width: 110px; }
+.sy-expenditure-table__department { width: 110px; }
+.sy-expenditure-table__business { width: 280px; }
+.sy-expenditure-table__expense { width: 180px; }
+.sy-expenditure-table__date { width: 125px; }
+.sy-expenditure-table__overview { width: 390px; }
+.sy-expenditure-table__statistic { width: 165px; }
+
+.sy-expenditure-table tbody td,
+.sy-expenditure-table tbody th {
+  text-align: left;
+}
+
+.sy-expenditure-table tbody td:first-child,
+.sy-expenditure-table tbody td:nth-child(6) {
+  text-align: center;
+}
+
+.sy-expenditure-table tbody th,
+.sy-expenditure-table__overview-cell {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sy-expenditure-table tbody th {
+  color: #1265c2;
+  font-weight: 750;
+}
+
+.sy-expenditure-table .sy-expenditure-table__amount {
+  color: #263f56;
+  font-weight: 780;
+  text-align: right;
+}

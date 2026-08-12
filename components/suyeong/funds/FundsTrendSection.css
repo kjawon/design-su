@@ -1,0 +1,260 @@
+.sy-funds-trends {
+  margin-top: 34px;
+}
+
+.sy-funds-trends__heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 16px;
+}
+
+.sy-funds-trends__heading h2 {
+  margin: 0;
+  color: #203c55;
+  font-size: 23px;
+  font-weight: 820;
+  letter-spacing: -0.035em;
+}
+
+.sy-funds-trends__heading p {
+  margin: 5px 0 0;
+  color: #728698;
+  font-size: 15px;
+  font-weight: 550;
+}
+
+.sy-funds-trends__heading > span {
+  color: #64798c;
+  font-size: 14px;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.sy-funds-trends__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  align-items: stretch;
+  gap: 22px;
+}
+
+.sy-trend-card {
+  display: flex;
+  min-width: 0;
+  min-height: 404px;
+  flex-direction: column;
+  border: 1px solid #d8e3ec;
+  border-radius: 14px;
+  background: #fff;
+  padding: 23px 24px 21px;
+}
+
+.sy-trend-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.sy-trend-card__title h3 {
+  margin: 0;
+  color: #243f57;
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+.sy-trend-card__title p {
+  margin: 5px 0 0;
+  color: #7a8d9e;
+  font-size: 14px;
+  font-weight: 550;
+}
+
+.sy-trend-card__body {
+  position: relative;
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+  margin-top: 18px;
+}
+
+.sy-chart-meta {
+  display: flex;
+  min-height: 24px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.sy-chart-legend {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  color: #5f7487;
+  font-size: 13px;
+  font-weight: 650;
+  list-style: none;
+}
+
+.sy-chart-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sy-chart-legend i {
+  display: block;
+  width: 9px;
+  height: 9px;
+  border-radius: 3px;
+}
+
+.sy-chart-legend__income {
+  background: #2b70b7;
+}
+
+.sy-chart-legend__expense {
+  background: #7898b2;
+}
+
+.sy-chart-unit {
+  color: #91a0ad;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.sy-chart-canvas {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  flex: 1;
+  margin-top: 5px;
+}
+
+.sy-chart-canvas svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.sy-chart-grid-line {
+  stroke: #e8eef3;
+  stroke-width: 1;
+}
+
+.sy-chart-axis-label {
+  fill: #8495a4;
+  font-size: 12px;
+  font-weight: 550;
+}
+
+.sy-chart-tooltip {
+  position: absolute;
+  z-index: 3;
+  width: max-content;
+  min-width: 150px;
+  max-width: 210px;
+  border: 1px solid #cbd9e4;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.98);
+  padding: 10px 12px;
+  color: #40576b;
+  font-size: 12px;
+  line-height: 1.45;
+  box-shadow: 0 5px 14px rgba(33, 66, 93, 0.09);
+  pointer-events: none;
+  transform: translate(-50%, calc(-100% - 10px));
+  transition: left 100ms ease, top 100ms ease;
+}
+
+.sy-chart-tooltip.is-below {
+  transform: translate(-50%, 10px);
+}
+
+.sy-chart-tooltip strong {
+  display: block;
+  margin-bottom: 6px;
+  color: #2b455c;
+  font-size: 13px;
+}
+
+.sy-chart-tooltip span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.sy-chart-tooltip span + span {
+  margin-top: 3px;
+}
+
+.sy-chart-tooltip b {
+  color: #203d57;
+  font-variant-numeric: tabular-nums;
+  font-weight: 750;
+}
+
+@media (max-width: 1100px) {
+  .sy-funds-trends__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sy-trend-card {
+    min-height: 390px;
+  }
+}
+
+@media (max-width: 680px) {
+  .sy-funds-trends {
+    margin-top: 28px;
+  }
+
+  .sy-funds-trends__heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .sy-funds-trends__heading h2 {
+    font-size: 21px;
+  }
+
+  .sy-funds-trends__grid {
+    gap: 14px;
+  }
+
+  .sy-trend-card {
+    min-height: 0;
+    padding: 20px 16px 17px;
+  }
+
+  .sy-trend-card__header {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 13px;
+  }
+
+  .sy-trend-card__body {
+    min-height: 0;
+    margin-top: 14px;
+  }
+
+  .sy-chart-tooltip {
+    min-width: 140px;
+    padding: 8px 10px;
+  }
+}
+
+@media print {
+  .sy-trend-card {
+    break-inside: avoid;
+  }
+}

@@ -1,0 +1,101 @@
+.sy-results-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 14px;
+}
+
+.sy-results-toolbar p {
+  margin: 0;
+  color: #4c6275;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.sy-results-toolbar p strong {
+  margin-inline: 3px 1px;
+  color: #1464c3;
+  font-size: 20px;
+  font-weight: 850;
+}
+
+.sy-results-toolbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sy-results-toolbar select {
+  width: 100%;
+  height: 44px;
+  min-width: 132px;
+  border: 1px solid #c8d8e6;
+  border-radius: 10px;
+  background-color: #fff;
+  padding-inline: 13px 35px;
+  color: #364f66;
+  font-size: 14px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.sy-results-toolbar select:hover,
+.sy-results-toolbar select:focus {
+  border-color: #6e9fd0;
+}
+
+.sy-excel-button {
+  display: inline-flex;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 1px solid #b9dec7;
+  border-radius: 10px;
+  background: #f3fbf6;
+  padding-inline: 16px;
+  color: #207b42;
+  font-size: 14px;
+  font-weight: 750;
+  cursor: pointer;
+  transition: background 160ms ease, border-color 160ms ease;
+}
+
+.sy-excel-button:hover {
+  border-color: #7fc296;
+  background: #e8f7ed;
+}
+
+.sy-excel-button svg {
+  width: 17px;
+  height: 17px;
+}
+
+@media (max-width: 680px) {
+  .sy-results-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .sy-results-toolbar__actions {
+    width: 100%;
+  }
+
+  .sy-results-toolbar__actions label,
+  .sy-results-toolbar select,
+  .sy-excel-button {
+    flex: 1 1 0;
+  }
+
+  .sy-results-toolbar select {
+    min-width: 0;
+  }
+}
+
+@media print {
+  .sy-results-toolbar__actions {
+    display: none !important;
+  }
+}
