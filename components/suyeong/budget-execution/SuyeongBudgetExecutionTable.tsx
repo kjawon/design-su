@@ -30,7 +30,7 @@ export function SuyeongBudgetExecutionTable({ records }: SuyeongBudgetExecutionT
           <tr>
             <th scope="col">조회기간전까지</th>
             <th scope="col">조회기간내</th>
-            <th scope="col">누계(B)</th>
+            <th className="sy-budget-execution-table__cumulative-header" scope="col">누계(B)</th>
           </tr>
         </thead>
         <tbody>

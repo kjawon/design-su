@@ -16,8 +16,8 @@ export function SuyeongFundsPage() {
     <SuyeongListPage
       activeItem="자금운용현황"
       current="자금운용현황"
-      description="수영구의 일자별 자금 흐름을 확인하세요"
-      title="자금운용현황"
+      description="현재 시점의 세입·세출 흐름을 확인할 수 있습니다."
+      title="자금운용 추이"
       className="sy-funds-page"
     >
       <FundsTrendSection />

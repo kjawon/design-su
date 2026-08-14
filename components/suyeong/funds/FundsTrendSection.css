@@ -2,36 +2,6 @@
   margin-top: 34px;
 }
 
-.sy-funds-trends__heading {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 24px;
-  margin-bottom: 16px;
-}
-
-.sy-funds-trends__heading h2 {
-  margin: 0;
-  color: #203c55;
-  font-size: 23px;
-  font-weight: 820;
-  letter-spacing: -0.035em;
-}
-
-.sy-funds-trends__heading p {
-  margin: 5px 0 0;
-  color: #728698;
-  font-size: 15px;
-  font-weight: 550;
-}
-
-.sy-funds-trends__heading > span {
-  color: #64798c;
-  font-size: 14px;
-  font-weight: 650;
-  white-space: nowrap;
-}
-
 .sy-funds-trends__grid {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
@@ -214,17 +184,6 @@
 @media (max-width: 680px) {
   .sy-funds-trends {
     margin-top: 28px;
-  }
-
-  .sy-funds-trends__heading {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 14px;
-  }
-
-  .sy-funds-trends__heading h2 {
-    font-size: 21px;
   }
 
   .sy-funds-trends__grid {

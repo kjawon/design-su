@@ -6,10 +6,11 @@ import type {
 
 export const initialBusinessDetailsCriteria: BusinessDetailsSearchCriteria = {
   fiscalYear: "2026",
+  accountingType: "all",
   businessName: "",
   startDate: "2026-01-01",
   endDate: "",
-  selectedFields: [],
+  selectedField: "all",
 }
 
 interface BusinessSeed {

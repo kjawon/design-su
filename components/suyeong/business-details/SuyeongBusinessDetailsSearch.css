@@ -1,19 +1,35 @@
-.sy-business-search__fields {
+.sy-business-search__fields,
+.sy-business-search__advanced {
   display: grid;
-  grid-template-columns: minmax(150px, 0.6fr) minmax(280px, 1.25fr) minmax(420px, 1.7fr);
-  gap: 26px;
+  grid-template-columns:
+    minmax(150px, 0.7fr)
+    minmax(170px, 0.8fr)
+    minmax(440px, 2.5fr);
+  gap: 18px;
 }
 
-.sy-business-period-field,
-.sy-business-fields {
+.sy-business-search__advanced {
+  margin-top: 22px;
+  border-top: 1px solid #dce6ee;
+  padding-top: 20px;
+}
+
+.sy-business-search__advanced > .sy-search-control:first-child {
+  grid-column: 1 / 3;
+}
+
+.sy-business-search__advanced > .sy-business-name-field {
+  grid-column: 3;
+}
+
+.sy-business-period-field {
   min-width: 0;
   margin: 0;
   padding: 0;
   border: 0;
 }
 
-.sy-business-period-field legend,
-.sy-business-fields legend {
+.sy-business-period-field legend {
   display: block;
   margin-bottom: 9px;
   padding: 0;
@@ -81,61 +97,60 @@
   transform: translateY(-50%);
 }
 
-.sy-business-fields {
-  display: grid;
-  grid-template-columns: 88px minmax(0, 1fr);
-  align-items: start;
-  gap: 14px;
-  margin-top: 24px;
-  border-top: 1px solid #dce6ee;
-  padding-top: 22px;
+.sy-business-search__footer {
+  justify-content: space-between;
 }
 
-.sy-business-fields legend {
-  float: left;
-  width: 88px;
-  margin: 3px 0 0;
-}
-
-.sy-business-fields__options {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px 18px;
-}
-
-.sy-business-fields__options label {
+.sy-business-search__advanced-toggle {
   display: inline-flex;
+  height: 40px;
   align-items: center;
   gap: 7px;
-  color: #4a6277;
-  font-size: 14px;
-  font-weight: 620;
+  border: 0;
+  background: transparent;
+  padding: 0 4px;
+  color: #294a65;
+  font-size: 15px;
+  font-weight: 780;
   cursor: pointer;
 }
 
-.sy-business-fields__options input {
-  width: 16px;
-  height: 16px;
-  margin: 0;
-  accent-color: var(--sy-blue);
-  cursor: pointer;
+.sy-business-search__advanced-toggle:hover,
+.sy-business-search__advanced-toggle:focus-visible {
+  color: var(--sy-blue);
 }
 
-.sy-business-search__footer p {
-  margin: 0;
-  color: #8192a1;
-  font-size: 13px;
-  font-weight: 550;
+.sy-business-search__advanced-toggle svg {
+  width: 17px;
+  height: 17px;
 }
 
-@media (max-width: 1120px) {
+.sy-business-search__advanced-toggle .sy-business-search__advanced-chevron {
+  width: 15px;
+  height: 15px;
+  transition: transform 160ms ease;
+}
+
+.sy-business-search__advanced-toggle[aria-expanded="true"] .sy-business-search__advanced-chevron {
+  transform: rotate(180deg);
+}
+
+@media (max-width: 1000px) {
   .sy-business-search__fields {
-    grid-template-columns: minmax(160px, 0.7fr) minmax(260px, 1.3fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .sy-business-period-field {
     grid-column: 1 / -1;
+  }
+
+  .sy-business-search__advanced {
+    grid-template-columns: minmax(180px, 0.8fr) minmax(0, 1.6fr);
+  }
+
+  .sy-business-search__advanced > .sy-search-control:first-child,
+  .sy-business-search__advanced > .sy-business-name-field {
+    grid-column: auto;
   }
 }
 
@@ -143,6 +158,10 @@
   .sy-business-search__fields {
     grid-template-columns: 1fr;
     gap: 18px;
+  }
+
+  .sy-business-search__advanced {
+    grid-template-columns: 1fr;
   }
 
   .sy-business-period-field {
@@ -159,31 +178,12 @@
     line-height: 7px;
   }
 
-  .sy-business-fields {
-    display: block;
-    margin-top: 20px;
-    padding-top: 18px;
-  }
-
-  .sy-business-fields legend {
-    float: none;
-    width: auto;
-    margin: 0 0 12px;
-  }
-
-  .sy-business-fields__options {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px 8px;
-  }
-
   .sy-business-search__footer {
-    align-items: stretch;
-    flex-direction: column;
+    align-items: center;
     gap: 14px;
   }
 
-  .sy-business-search__footer p {
-    line-height: 1.5;
+  .sy-business-search__advanced-toggle {
+    flex: 0 0 auto;
   }
 }

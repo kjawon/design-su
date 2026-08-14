@@ -20,15 +20,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 28px;
-}
-
-.sy-hero-heading img {
-  display: block;
-  width: 96px;
-  height: 91px;
-  flex: 0 0 auto;
-  object-fit: contain;
+  transform: translateY(-40px);
 }
 
 .sy-hero-heading__text {
@@ -84,13 +76,8 @@
   }
 
   .sy-hero-heading {
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .sy-hero-heading img {
-    width: 68px;
-    height: 64px;
+    display: block;
+    transform: none;
   }
 
   .sy-hero-heading__text {

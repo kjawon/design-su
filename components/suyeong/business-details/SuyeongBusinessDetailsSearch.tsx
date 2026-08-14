@@ -1,9 +1,10 @@
-import { CalendarDays } from "lucide-react"
+import { useState } from "react"
+import { CalendarDays, ChevronDown, SlidersHorizontal } from "lucide-react"
 import { SuyeongSearchActions } from "@/components/suyeong/shared"
 import {
+  businessAccountingTypeOptions,
   businessFieldOptions,
   type BusinessDetailsSearchCriteria,
-  type BusinessField,
 } from "./business-details.types"
 import "./SuyeongBusinessDetailsSearch.css"
 
@@ -20,26 +21,7 @@ export function SuyeongBusinessDetailsSearch({
   onReset,
   onSubmit,
 }: SuyeongBusinessDetailsSearchProps) {
-  const allFieldsSelected = criteria.selectedFields.length === businessFieldOptions.length
-
-  const toggleAllFields = () => {
-    onChange({
-      ...criteria,
-      selectedFields: allFieldsSelected
-        ? []
-        : businessFieldOptions.map((option) => option.value),
-    })
-  }
-
-  const toggleField = (field: BusinessField) => {
-    const isSelected = criteria.selectedFields.includes(field)
-    onChange({
-      ...criteria,
-      selectedFields: isSelected
-        ? criteria.selectedFields.filter((selectedField) => selectedField !== field)
-        : [...criteria.selectedFields, field],
-    })
-  }
+  const [isAdvancedOpen, setIsAdvancedOpen] = useState(false)
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -61,14 +43,19 @@ export function SuyeongBusinessDetailsSearch({
           </select>
         </label>
 
-        <label className="sy-business-name-field sy-search-control">
-          <span>세부사업</span>
-          <input
-            type="search"
-            value={criteria.businessName}
-            placeholder="세부사업명을 입력해주세요."
-            onChange={(event) => onChange({ ...criteria, businessName: event.target.value })}
-          />
+        <label className="sy-search-control">
+          <span>회계구분</span>
+          <select
+            value={criteria.accountingType ?? "all"}
+            onChange={(event) => onChange({
+              ...criteria,
+              accountingType: event.target.value as BusinessDetailsSearchCriteria["accountingType"],
+            })}
+          >
+            {businessAccountingTypeOptions.map((option) => (
+              <option key={option.value} value={option.value}>{option.label}</option>
+            ))}
+          </select>
         </label>
 
         <fieldset className="sy-business-period-field">
@@ -99,28 +86,48 @@ export function SuyeongBusinessDetailsSearch({
         </fieldset>
       </div>
 
-      <fieldset className="sy-business-fields">
-        <legend>분야선택</legend>
-        <div className="sy-business-fields__options">
-          <label>
-            <input type="checkbox" checked={allFieldsSelected} onChange={toggleAllFields} />
-            <span>전체</span>
+      {isAdvancedOpen && (
+        <div className="sy-business-search__advanced" id="business-details-advanced-search">
+          <label className="sy-search-control">
+            <span>분야</span>
+            <select
+              value={criteria.selectedField ?? "all"}
+              onChange={(event) => onChange({
+                ...criteria,
+                selectedField: event.target.value as BusinessDetailsSearchCriteria["selectedField"],
+              })}
+            >
+              <option value="all">전체</option>
+              {businessFieldOptions.map((option) => (
+                <option key={option.value} value={option.value}>{option.label}</option>
+              ))}
+            </select>
           </label>
-          {businessFieldOptions.map((option) => (
-            <label key={option.value}>
-              <input
-                type="checkbox"
-                checked={criteria.selectedFields.includes(option.value)}
-                onChange={() => toggleField(option.value)}
-              />
-              <span>{option.label}</span>
-            </label>
-          ))}
+
+          <label className="sy-business-name-field sy-search-control">
+            <span>세부사업</span>
+            <input
+              type="search"
+              value={criteria.businessName}
+              placeholder="세부사업명을 입력해주세요."
+              onChange={(event) => onChange({ ...criteria, businessName: event.target.value })}
+            />
+          </label>
         </div>
-      </fieldset>
+      )}
 
       <div className="sy-business-search__footer sy-search-panel__footer">
-        <p>여러 분야를 선택하여 함께 조회할 수 있습니다.</p>
+        <button
+          className="sy-business-search__advanced-toggle"
+          type="button"
+          aria-expanded={isAdvancedOpen}
+          aria-controls="business-details-advanced-search"
+          onClick={() => setIsAdvancedOpen((isOpen) => !isOpen)}
+        >
+          <SlidersHorizontal aria-hidden="true" />
+          상세검색
+          <ChevronDown aria-hidden="true" className="sy-business-search__advanced-chevron" />
+        </button>
         <SuyeongSearchActions onReset={onReset} />
       </div>
     </form>

@@ -4,6 +4,7 @@ import {
   SuyeongResultsSection,
 } from "@/components/suyeong/shared"
 import { downloadIncomeCsv } from "./income.csv"
+import { IncomeTrendSection } from "./IncomeTrendSection"
 import { SuyeongIncomeTable } from "./SuyeongIncomeTable"
 import { useIncomeInformation } from "./useIncomeInformation"
 
@@ -17,6 +18,7 @@ export function SuyeongIncomePage() {
       description="회계별 세입 현황을 확인하세요"
       title="세입정보"
     >
+      <IncomeTrendSection criteria={income.appliedCriteria} />
       <SuyeongFinancialSearch
         criteria={income.criteria}
         onChange={income.setCriteria}

@@ -16,12 +16,23 @@ export const businessFieldOptions = [
 
 export type BusinessField = (typeof businessFieldOptions)[number]["value"]
 
+export const businessAccountingTypeOptions = [
+  { value: "all", label: "전체" },
+  { value: "general", label: "일반회계" },
+  { value: "special", label: "특별회계" },
+  { value: "fund", label: "기금회계" },
+] as const
+
+export type BusinessAccountingType =
+  (typeof businessAccountingTypeOptions)[number]["value"]
+
 export interface BusinessDetailsSearchCriteria {
   fiscalYear: string
+  accountingType: BusinessAccountingType
   businessName: string
   startDate: string
   endDate: string
-  selectedFields: readonly BusinessField[]
+  selectedField: BusinessField | "all"
 }
 
 export interface BusinessDetailRecord {

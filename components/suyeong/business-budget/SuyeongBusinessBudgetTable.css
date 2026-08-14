@@ -29,6 +29,10 @@
   font-size: 14px;
 }
 
+.sy-business-budget-table thead tr:not(:first-child) th:last-child {
+  border-right: 1px solid #e0e8ef;
+}
+
 .sy-business-budget-table tbody th,
 .sy-business-budget-table tbody td {
   overflow: hidden;

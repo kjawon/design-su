@@ -5,6 +5,10 @@
 .sy-funds-table__cumulative-amount { width: 215px; }
 .sy-funds-table__balance-col { width: 225px; }
 
+.sy-funds-table thead tr:last-child th:last-child {
+  border-right: 1px solid #e0e8ef;
+}
+
 .sy-funds-table tbody th {
   text-align: center;
 }

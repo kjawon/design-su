@@ -1,83 +1,227 @@
 .sy-expenditure-search__grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px 26px;
+  grid-template-columns:
+    minmax(150px, 0.65fr)
+    minmax(200px, 0.9fr)
+    repeat(2, minmax(220px, 1.05fr));
+  gap: 26px;
 }
 
-.sy-expenditure-search__period > strong {
-  display: block;
-  align-self: center;
-  margin: 0;
-  color: #2a455e;
-  font-size: 16px;
-  font-weight: 780;
+.sy-expenditure-search__department {
+  grid-column: auto;
+}
+
+.sy-expenditure-search__statistic {
+  grid-column: auto;
+}
+
+.sy-expenditure-search__business,
+.sy-expenditure-search__overview {
+  grid-column: auto;
 }
 
 .sy-expenditure-search__period {
+  position: relative;
+  grid-column: 3 / -1;
+  min-width: 0;
+}
+
+.sy-expenditure-search__grid > .sy-search-control > span {
+  min-height: 40px;
+}
+
+.sy-expenditure-search__advanced {
   display: grid;
-  grid-template-columns: 96px minmax(360px, 650px);
-  align-items: end;
-  gap: 18px;
+  grid-template-columns:
+    minmax(150px, 0.65fr)
+    minmax(200px, 0.9fr)
+    repeat(2, minmax(220px, 1.05fr));
+  gap: 26px;
   margin-top: 22px;
   border-top: 1px solid #dce6ee;
   padding-top: 20px;
 }
 
+.sy-expenditure-search__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 24px;
+  border-top: 1px solid #dce6ee;
+  padding-top: 22px;
+}
+
+.sy-expenditure-search__footer .sy-search-actions {
+  justify-content: flex-end;
+}
+
+.sy-expenditure-search__period-header {
+  display: flex;
+  min-height: 40px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 9px;
+}
+
+.sy-expenditure-search__period-header > strong {
+  color: #2a455e;
+  font-size: 16px;
+  font-weight: 780;
+  letter-spacing: -0.025em;
+}
+
+.sy-expenditure-search__period-header .sy-quick-range {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 7px;
+  width: calc((100% - 35px) / 2);
+}
+
+.sy-expenditure-search__period-header .sy-quick-range button {
+  width: 100%;
+  min-width: 0;
+  padding-inline: 4px;
+}
+
+.sy-expenditure-search__advanced-toggle {
+  display: inline-flex;
+  height: 40px;
+  align-items: center;
+  gap: 7px;
+  border: 0;
+  background: transparent;
+  padding: 0 4px;
+  color: #294a65;
+  font-size: 15px;
+  font-weight: 780;
+  cursor: pointer;
+}
+
+.sy-expenditure-search__advanced-toggle:hover,
+.sy-expenditure-search__advanced-toggle:focus-visible {
+  color: var(--sy-blue);
+}
+
+.sy-expenditure-search__advanced-toggle svg {
+  width: 17px;
+  height: 17px;
+}
+
+.sy-expenditure-search__advanced-toggle .sy-expenditure-search__advanced-chevron {
+  width: 15px;
+  height: 15px;
+  transition: transform 160ms ease;
+}
+
+.sy-expenditure-search__advanced-toggle[aria-expanded="true"] .sy-expenditure-search__advanced-chevron {
+  transform: rotate(180deg);
+}
+
 .sy-expenditure-search__dates {
   display: grid;
-  grid-template-columns: minmax(150px, 1fr) auto minmax(150px, 1fr);
+  grid-template-columns: minmax(180px, 1fr) 17px minmax(180px, 1fr);
   align-items: center;
   gap: 9px;
 }
 
 .sy-expenditure-search__dates > label {
   position: relative;
+  min-width: 0;
+}
+
+.sy-expenditure-search__dates > span {
+  color: #74899b;
+  font-size: 15px;
+  text-align: center;
 }
 
 .sy-expenditure-search__dates input {
-  padding-right: 45px;
+  width: 100%;
+  height: 50px;
+  border: 1px solid #c8d8e6;
+  border-radius: 10px;
+  background: #fff;
+  padding: 0 45px 0 15px;
+  color: #405a71;
+  font-size: 15px;
+  outline: none;
+}
+
+.sy-expenditure-search__dates input:hover,
+.sy-expenditure-search__dates input:focus {
+  border-color: #6e9fd0;
+}
+
+.sy-expenditure-search__dates input::-webkit-calendar-picker-indicator {
+  position: absolute;
+  right: 13px;
+  width: 20px;
+  height: 20px;
+  opacity: 0;
+  cursor: pointer;
 }
 
 .sy-expenditure-search__dates svg {
   position: absolute;
-  top: 15px;
-  right: 14px;
-  width: 19px;
-  height: 19px;
+  top: 50%;
+  right: 15px;
+  width: 18px;
+  height: 18px;
   color: #365671;
   pointer-events: none;
+  transform: translateY(-50%);
 }
 
-.sy-expenditure-search__footer {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 20px;
-}
-
-@media (max-width: 980px) {
+@media (max-width: 1100px) {
   .sy-expenditure-search__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(160px, 0.75fr) minmax(210px, 1fr);
   }
 
   .sy-expenditure-search__period {
-    grid-template-columns: 72px minmax(0, 1fr);
+    grid-column: 1 / -1;
   }
 
+  .sy-expenditure-search__advanced {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sy-expenditure-search__department,
+  .sy-expenditure-search__statistic,
+  .sy-expenditure-search__business,
+  .sy-expenditure-search__overview {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 760px) {
+  .sy-expenditure-search__department,
+  .sy-expenditure-search__statistic,
+  .sy-expenditure-search__business,
+  .sy-expenditure-search__overview {
+    grid-column: 1 / -1;
+  }
+
+  .sy-expenditure-search__period {
+    grid-column: 1 / -1;
+  }
 }
 
 @media (max-width: 680px) {
   .sy-expenditure-search__grid,
-  .sy-expenditure-search__period,
+  .sy-expenditure-search__advanced,
   .sy-expenditure-search__dates {
     grid-template-columns: 1fr;
   }
 
-  .sy-expenditure-search__period {
-    align-items: stretch;
+  .sy-expenditure-search__year,
+  .sy-expenditure-search__accounting {
+    grid-column: 1;
   }
 
-  .sy-expenditure-search__period > strong {
-    grid-column: auto;
+  .sy-expenditure-search__grid > .sy-search-control > span,
+  .sy-expenditure-search__period-header {
+    min-height: 0;
   }
 
   .sy-expenditure-search__dates > span {
@@ -85,6 +229,20 @@
   }
 
   .sy-expenditure-search__footer .sy-search-actions {
+    flex: 1;
+  }
+
+  .sy-expenditure-search__period-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .sy-expenditure-search__period-header .sy-quick-range {
     width: 100%;
+  }
+
+  .sy-expenditure-search__period-header .sy-quick-range button {
+    flex: 1;
   }
 }

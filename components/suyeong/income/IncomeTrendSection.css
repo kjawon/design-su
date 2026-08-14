@@ -1,0 +1,351 @@
+.sy-income-trends {
+  margin-top: 34px;
+}
+
+.sy-income-trends__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.85fr) minmax(300px, 1fr);
+  align-items: stretch;
+  gap: 18px;
+  margin-top: 0;
+}
+
+.sy-income-trends__graph-card,
+.sy-income-trends__summary-card {
+  min-width: 0;
+  height: 350px;
+  border: 1px solid #d6e2eb;
+  border-radius: 14px;
+  background: #fff;
+}
+
+.sy-income-trends__graph-card {
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  padding: 17px 20px 14px;
+}
+
+.sy-income-trends__summary-card {
+  display: flex;
+  flex-direction: column;
+  padding: 21px 22px 18px;
+}
+
+.sy-income-trends__toolbar {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.sy-income-trends__chart-heading h3 {
+  margin: 0;
+  color: #243f57;
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+.sy-income-trends__chart-heading p {
+  margin: 2px 0 0;
+  color: #7a8d9e;
+  font-size: 14px;
+  font-weight: 550;
+}
+
+.sy-income-trends__context {
+  overflow: hidden;
+  color: #687f92;
+  font-size: 14px;
+  font-weight: 650;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sy-income-trends__panel {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+  margin-top: 12px;
+}
+
+.sy-income-chart {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+}
+
+.sy-income-chart__meta {
+  display: flex;
+  min-height: 20px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.sy-income-chart__meta--end {
+  justify-content: flex-end;
+}
+
+.sy-income-chart__unit {
+  color: #8798a6;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.sy-income-chart__canvas {
+  position: relative;
+  overflow-x: auto;
+  min-width: 0;
+  min-height: 0;
+  flex: 1;
+  margin-top: 2px;
+  border-radius: 6px;
+  outline-offset: 2px;
+}
+
+.sy-income-chart__canvas svg {
+  display: block;
+  width: 100%;
+  min-width: 590px;
+  height: auto;
+  overflow: visible;
+}
+
+.sy-income-chart__grid-line {
+  stroke: #e5edf3;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.sy-income-chart__axis-label {
+  fill: #7e919f;
+  font-size: 14px;
+  font-weight: 570;
+}
+
+.sy-income-chart__bar {
+  fill: #5e91c4;
+  transition: fill 140ms ease;
+}
+
+.sy-income-chart__bar.is-active {
+  fill: #246bce;
+}
+
+.sy-income-chart__tooltip {
+  position: absolute;
+  z-index: 3;
+  width: max-content;
+  min-width: 195px;
+  max-width: 245px;
+  border: 1px solid #c8d8e4;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.98);
+  padding: 9px 11px;
+  color: #40576b;
+  font-size: 13px;
+  line-height: 1.45;
+  box-shadow: 0 4px 12px rgba(33, 66, 93, 0.08);
+  pointer-events: none;
+  transform: translate(-50%, calc(-100% - 8px));
+}
+
+.sy-income-chart__tooltip.is-below {
+  transform: translate(-50%, 8px);
+}
+
+.sy-income-chart__tooltip strong {
+  display: block;
+  margin-bottom: 5px;
+  color: #2b455c;
+  font-size: 14px;
+}
+
+.sy-income-chart__tooltip span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.sy-income-chart__tooltip span + span {
+  margin-top: 3px;
+}
+
+.sy-income-chart__tooltip b {
+  color: #183c5b;
+  font-variant-numeric: tabular-nums;
+  font-weight: 760;
+}
+
+.sy-income-trends__summary-heading {
+  flex: 0 0 auto;
+  border-bottom: 1px solid #e2eaf0;
+  padding-bottom: 14px;
+}
+
+.sy-income-trends__summary-heading h3 {
+  margin: 0;
+  color: #243f57;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+.sy-income-trends__summary-heading p {
+  margin: 4px 0 0;
+  color: #7a8d9e;
+  font-size: 14px;
+  font-weight: 550;
+}
+
+.sy-income-trends__summary {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+  margin: 0;
+}
+
+.sy-income-trends__summary > div {
+  display: grid;
+  grid-template-columns: minmax(86px, 0.8fr) minmax(0, 1.35fr);
+  align-items: center;
+  gap: 12px;
+  min-height: 58px;
+  padding-block: 10px;
+}
+
+.sy-income-trends__summary > div + div {
+  border-top: 1px solid #edf2f6;
+}
+
+.sy-income-trends__summary dt {
+  color: #6f8496;
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.sy-income-trends__summary dd {
+  overflow: hidden;
+  margin: 0;
+  color: #28465f;
+  font-size: 17px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 750;
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sy-income-trends__summary-primary dd {
+  color: #165f9f;
+  font-size: 18px;
+  font-weight: 820;
+  letter-spacing: -0.025em;
+}
+
+.sy-income-trends__empty {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4px;
+  border-radius: 9px;
+  background: #f8fafc;
+  color: #718698;
+  text-align: center;
+}
+
+.sy-income-trends__empty strong {
+  color: #405c73;
+  font-size: 15px;
+}
+
+.sy-income-trends__empty span {
+  font-size: 13px;
+}
+
+@media (max-width: 1100px) {
+  .sy-income-trends__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sy-income-trends__graph-card,
+  .sy-income-trends__summary-card {
+    height: auto;
+    min-height: 340px;
+  }
+
+  .sy-income-trends__summary-card {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 680px) {
+  .sy-income-trends {
+    margin-top: 28px;
+  }
+
+  .sy-income-trends__grid {
+    gap: 14px;
+  }
+
+  .sy-income-trends__graph-card {
+    min-height: 330px;
+    padding: 15px 14px 12px;
+  }
+
+  .sy-income-trends__summary-card {
+    padding: 18px 16px 15px;
+  }
+
+  .sy-income-trends__toolbar {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .sy-income-trends__context {
+    white-space: normal;
+  }
+
+  .sy-income-trends__panel {
+    margin-top: 9px;
+  }
+
+  .sy-income-chart__canvas svg {
+    min-width: 560px;
+  }
+
+  .sy-income-chart__tooltip {
+    min-width: 185px;
+  }
+
+  .sy-income-trends__summary > div {
+    grid-template-columns: minmax(92px, 0.8fr) minmax(0, 1.3fr);
+  }
+}
+
+@media print {
+  .sy-income-trends__grid {
+    grid-template-columns: minmax(0, 1.85fr) minmax(260px, 1fr);
+  }
+
+  .sy-income-trends__graph-card,
+  .sy-income-trends__summary-card {
+    height: 330px;
+    break-inside: avoid;
+  }
+
+}

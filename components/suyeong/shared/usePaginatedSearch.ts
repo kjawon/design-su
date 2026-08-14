@@ -43,6 +43,7 @@ export function usePaginatedSearch<TRecord, TCriteria>({
   }
 
   return {
+    appliedCriteria,
     changePageSize,
     criteria,
     currentPage,

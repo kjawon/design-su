@@ -7,6 +7,10 @@
 .sy-income-table__net,
 .sy-income-table__current { width: 210px; }
 
+.sy-income-table thead tr:last-child th:last-child {
+  border-right: 1px solid #e0e8ef;
+}
+
 .sy-income-table tbody th {
   padding-left: 20px;
   text-align: left;

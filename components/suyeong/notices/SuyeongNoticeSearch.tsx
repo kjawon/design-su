@@ -51,9 +51,6 @@ export function SuyeongNoticeSearch({
             onChange={(event) => onChange({ ...criteria, content: event.target.value })}
           />
         </label>
-      </div>
-
-      <div className="sy-notice-search__footer sy-search-panel__footer">
         <fieldset className="sy-notice-search__period">
           <legend>작성일자</legend>
           <div className="sy-notice-search__dates">
@@ -80,6 +77,9 @@ export function SuyeongNoticeSearch({
             </label>
           </div>
         </fieldset>
+      </div>
+
+      <div className="sy-notice-search__footer sy-search-panel__footer">
         <SuyeongSearchActions onReset={onReset} />
       </div>
     </form>
