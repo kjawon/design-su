@@ -15,7 +15,7 @@ const mainServices = [
   { label: "세입정보", href: suyeongLinks.income, icon: CircleDollarSign },
   { label: "예산집행현황", href: suyeongLinks.budgetExecution, icon: ChartNoAxesColumnIncreasing },
   { label: "사업및예산정보", href: suyeongLinks.businessBudget, icon: FileChartColumnIncreasing },
-  { label: "지출현황", href: suyeongLinks.expenditure, icon: ReceiptText },
+  { label: "세출현황", href: suyeongLinks.expenditure, icon: ReceiptText },
   { label: "사업별세부설명", href: suyeongLinks.businessDetails, icon: LayoutGrid },
 ] as const
 

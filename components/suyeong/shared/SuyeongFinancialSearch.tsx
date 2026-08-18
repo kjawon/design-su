@@ -1,6 +1,7 @@
 import { CalendarDays } from "lucide-react"
-import { formatDateInput } from "@/components/suyeong/utils/date"
+import { getFiscalYearOptions, formatDateInput } from "@/components/suyeong/utils/date"
 import type { FinancialSearchCriteria } from "./financial-search.types"
+import { useDatabaseTime } from "./DatabaseTimeProvider"
 import { SuyeongQuickRangeButtons } from "./SuyeongQuickRangeButtons"
 import { SuyeongSearchActions } from "./SuyeongSearchActions"
 import "./SuyeongFinancialSearch.css"
@@ -38,13 +39,16 @@ export function SuyeongFinancialSearch({
   onReset,
   onSubmit,
 }: SuyeongFinancialSearchProps) {
+  const { currentDate } = useDatabaseTime()
+  const fiscalYearOptions = getFiscalYearOptions(currentDate)
+
   const updateCriteria = <Key extends keyof FinancialSearchCriteria>(
     key: Key,
     value: FinancialSearchCriteria[Key],
   ) => onChange({ ...criteria, [key]: value })
 
   const applyQuickRange = (range: QuickRange) => {
-    const endDate = criteria.endDate || formatDateInput(new Date())
+    const endDate = criteria.endDate || currentDate
     onChange({ ...criteria, endDate, startDate: getQuickStartDate(endDate, range) })
   }
 
@@ -62,9 +66,9 @@ export function SuyeongFinancialSearch({
             value={criteria.fiscalYear}
             onChange={(event) => updateCriteria("fiscalYear", event.target.value)}
           >
-            <option value="2026">2026년</option>
-            <option value="2025">2025년</option>
-            <option value="2024">2024년</option>
+            {fiscalYearOptions.map((year) => (
+              <option key={year} value={year}>{year}년</option>
+            ))}
           </select>
         </label>
 
@@ -104,6 +108,7 @@ export function SuyeongFinancialSearch({
                 type="date"
                 value={criteria.endDate}
                 min={criteria.startDate}
+                max={currentDate}
                 onChange={(event) => updateCriteria("endDate", event.target.value)}
               />
               <CalendarDays aria-hidden="true" />

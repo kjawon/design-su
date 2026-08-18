@@ -29,6 +29,12 @@
   font-size: 14px;
 }
 
+.sy-business-budget-table thead .sy-business-budget-table__replacement-header {
+  overflow: hidden;
+  white-space: normal;
+  word-break: keep-all;
+}
+
 .sy-business-budget-table thead tr:not(:first-child) th:last-child {
   border-right: 1px solid #e0e8ef;
 }

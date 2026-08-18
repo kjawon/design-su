@@ -1,13 +1,15 @@
 .sy-trend-card__body.sy-current-execution-card__body {
   display: grid;
-  grid-template-columns: minmax(180px, 0.9fr) minmax(210px, 1.1fr);
+  grid-template-columns: minmax(180px, 0.85fr) minmax(210px, 1.15fr);
   align-items: center;
-  gap: 28px;
+  align-content: center;
+  gap: 22px;
+  margin-top: 10px;
 }
 
 .sy-execution-donut {
   position: relative;
-  width: min(100%, 198px);
+  width: min(100%, 232px);
   aspect-ratio: 1;
   justify-self: center;
 }
@@ -32,6 +34,12 @@
 .sy-execution-donut__value {
   stroke: #246bce;
   stroke-linecap: round;
+  transition: stroke 140ms ease;
+}
+
+.sy-execution-donut:hover .sy-execution-donut__value,
+.sy-execution-donut:focus-visible .sy-execution-donut__value {
+  stroke: #d44848;
 }
 
 .sy-execution-donut__label {
@@ -45,7 +53,7 @@
 
 .sy-execution-donut__label strong {
   color: #174f91;
-  font-size: 34px;
+  font-size: 38px;
   font-variant-numeric: tabular-nums;
   font-weight: 850;
   letter-spacing: -0.045em;
@@ -53,7 +61,7 @@
 }
 
 .sy-execution-donut__label span {
-  margin-top: 7px;
+  margin-top: 5px;
   color: #718699;
   font-size: 14px;
   font-weight: 700;
@@ -64,7 +72,6 @@
   min-width: 0;
   gap: 0;
   margin: 0;
-  border-top: 1px solid #e3ebf2;
 }
 
 .sy-current-execution-card__summary > div {
@@ -73,8 +80,13 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  min-height: 58px;
-  border-bottom: 1px solid #e3ebf2;
+  min-height: 52px;
+  border-bottom: 1px solid #e8eef3;
+  padding-block: 8px;
+}
+
+.sy-current-execution-card__summary > div:last-child {
+  border-bottom: 0;
 }
 
 .sy-current-execution-card__summary dt,
@@ -103,14 +115,14 @@
 @media (max-width: 680px) {
   .sy-trend-card__body.sy-current-execution-card__body {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 16px;
   }
 
   .sy-execution-donut {
-    width: 172px;
+    width: 196px;
   }
 
   .sy-execution-donut__label strong {
-    font-size: 30px;
+    font-size: 34px;
   }
 }

@@ -1,7 +1,8 @@
-import { usePaginatedSearch } from "@/components/suyeong/shared"
+import { useMemo } from "react"
+import { useDatabaseTime, usePaginatedSearch } from "@/components/suyeong/shared"
 import {
   businessDetailRecords,
-  initialBusinessDetailsCriteria,
+  createInitialBusinessDetailsCriteria,
 } from "./business-details.data"
 import type { BusinessDetailRecord, BusinessDetailsSearchCriteria } from "./business-details.types"
 
@@ -38,10 +39,15 @@ function filterBusinessDetailRecords(
 }
 
 export function useBusinessDetails() {
+  const { currentDate } = useDatabaseTime()
+  const initialCriteria = useMemo(
+    () => createInitialBusinessDetailsCriteria(currentDate),
+    [currentDate],
+  )
+
   return usePaginatedSearch({
     filterRecords: filterBusinessDetailRecords,
-    initialCriteria: initialBusinessDetailsCriteria,
-    initialPageSize: 100,
+    initialCriteria,
     records: businessDetailRecords,
   })
 }

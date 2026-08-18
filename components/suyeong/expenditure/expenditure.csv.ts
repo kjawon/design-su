@@ -13,5 +13,5 @@ export function downloadExpenditureCsv(records: readonly ExpenditureRecord[]) {
     record.overview,
     record.statisticItem,
   ])
-  downloadCsv({ filename: "수영구_지출현황.csv", headers: header, rows })
+  downloadCsv({ filename: "수영구_세출현황.csv", headers: header, rows })
 }

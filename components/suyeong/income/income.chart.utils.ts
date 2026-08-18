@@ -3,6 +3,13 @@ export function formatIncomeAxisAmount(value: number) {
   return `${Math.round(value / 100_000_000).toLocaleString("ko-KR")}억`
 }
 
+export function formatIncomeBarAmount(value: number) {
+  return `${(value / 100_000_000).toLocaleString("ko-KR", {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 1,
+  })}억`
+}
+
 export function formatIncomeDate(value: string) {
   return value.replaceAll("-", ".")
 }

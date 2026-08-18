@@ -1,10 +1,15 @@
 import { suyeongLinks } from "@/components/suyeong/config/links"
+import { useDatabaseTime } from "@/components/suyeong/shared"
 import { cumulativeFinanceSnapshot, dailyFinanceRecords } from "./home.data"
 import { SuyeongFinanceCard } from "./SuyeongFinanceCard"
 import "./SuyeongFinanceSummary.css"
 
 export function SuyeongFinanceSummary() {
-  const summary = cumulativeFinanceSnapshot
+  const { currentDate } = useDatabaseTime()
+  const summary = {
+    ...cumulativeFinanceSnapshot,
+    referenceDate: currentDate.replaceAll("-", "."),
+  }
   const fiscalYear = summary.referenceDate.slice(0, 4)
   const latestDailyFinance = dailyFinanceRecords[0]
   const latestDailyDate = latestDailyFinance.date.slice(5)
@@ -13,7 +18,7 @@ export function SuyeongFinanceSummary() {
     <div className="sy-cumulative-overview">
       <div className="sy-cumulative-overview__grid">
         <SuyeongFinanceCard
-          actionHref={suyeongLinks.funds}
+          actionHref={suyeongLinks.income}
           detailAmount={latestDailyFinance.income}
           detailLabel={`${latestDailyDate} 세입`}
           heading="현재 수영구의 세입"
@@ -23,7 +28,7 @@ export function SuyeongFinanceSummary() {
           totalLabel={`${fiscalYear}년 세입총액`}
         />
         <SuyeongFinanceCard
-          actionHref={suyeongLinks.funds}
+          actionHref={suyeongLinks.expenditure}
           detailAmount={latestDailyFinance.expense}
           detailLabel={`${latestDailyDate} 세출`}
           heading="현재 수영구의 세출"

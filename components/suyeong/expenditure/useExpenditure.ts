@@ -1,5 +1,6 @@
-import { usePaginatedSearch } from "@/components/suyeong/shared"
-import { expenditureRecords, initialExpenditureCriteria } from "./expenditure.data"
+import { useMemo } from "react"
+import { useDatabaseTime, usePaginatedSearch } from "@/components/suyeong/shared"
+import { createInitialExpenditureCriteria, expenditureRecords } from "./expenditure.data"
 import type { ExpenditureRecord, ExpenditureSearchCriteria } from "./expenditure.types"
 
 function filterExpenditureRecords(
@@ -23,9 +24,15 @@ function filterExpenditureRecords(
 }
 
 export function useExpenditure() {
+  const { currentDate } = useDatabaseTime()
+  const initialCriteria = useMemo(
+    () => createInitialExpenditureCriteria(currentDate),
+    [currentDate],
+  )
+
   return usePaginatedSearch({
     filterRecords: filterExpenditureRecords,
-    initialCriteria: initialExpenditureCriteria,
+    initialCriteria,
     records: expenditureRecords,
   })
 }

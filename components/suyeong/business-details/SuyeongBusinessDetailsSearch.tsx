@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { CalendarDays, ChevronDown, SlidersHorizontal } from "lucide-react"
-import { SuyeongSearchActions } from "@/components/suyeong/shared"
+import { SuyeongSearchActions, useDatabaseTime } from "@/components/suyeong/shared"
+import { getFiscalYearOptions } from "@/components/suyeong/utils/date"
 import {
   businessAccountingTypeOptions,
   businessFieldOptions,
@@ -22,6 +23,8 @@ export function SuyeongBusinessDetailsSearch({
   onSubmit,
 }: SuyeongBusinessDetailsSearchProps) {
   const [isAdvancedOpen, setIsAdvancedOpen] = useState(false)
+  const { currentDate } = useDatabaseTime()
+  const fiscalYearOptions = getFiscalYearOptions(currentDate)
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -37,9 +40,9 @@ export function SuyeongBusinessDetailsSearch({
             value={criteria.fiscalYear}
             onChange={(event) => onChange({ ...criteria, fiscalYear: event.target.value })}
           >
-            <option value="2026">2026년</option>
-            <option value="2025">2025년</option>
-            <option value="2024">2024년</option>
+            {fiscalYearOptions.map((year) => (
+              <option key={year} value={year}>{year}년</option>
+            ))}
           </select>
         </label>
 

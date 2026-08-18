@@ -1,5 +1,8 @@
 import { suyeongLinks } from "@/components/suyeong/config/links"
-import { SuyeongListPage, SuyeongResultsSection } from "@/components/suyeong/shared"
+import {
+  SuyeongListPage,
+  SuyeongResultsSection,
+} from "@/components/suyeong/shared"
 import { downloadBusinessBudgetCsv } from "./business-budget.csv"
 import { SuyeongBusinessBudgetSearch } from "./SuyeongBusinessBudgetSearch"
 import { SuyeongBusinessBudgetTable } from "./SuyeongBusinessBudgetTable"

@@ -26,7 +26,7 @@ export function SuyeongBusinessBudgetTable({ records }: SuyeongBusinessBudgetTab
             <th colSpan={8} scope="colgroup">예산현액</th>
             <th rowSpan={3} scope="col">지출액</th><th rowSpan={3} scope="col">집행잔액</th><th rowSpan={3} scope="col">분야</th>
           </tr>
-          <tr><th colSpan={4} scope="colgroup">계</th><th rowSpan={2} scope="col">편성액</th><th rowSpan={2} scope="col">이월액</th><th rowSpan={2} scope="col">예산변경</th><th rowSpan={2} scope="col">수입대체경비</th></tr>
+          <tr><th colSpan={4} scope="colgroup">계</th><th rowSpan={2} scope="col">편성액</th><th rowSpan={2} scope="col">이월액</th><th rowSpan={2} scope="col">예산변경</th><th className="sy-business-budget-table__replacement-header" rowSpan={2} scope="col">수입대체<wbr />경비</th></tr>
           <tr><th scope="col">소계</th><th scope="col">국비</th><th scope="col">도비</th><th scope="col">시군구비</th></tr>
         </thead>
         <tbody>

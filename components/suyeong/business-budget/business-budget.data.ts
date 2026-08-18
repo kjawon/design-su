@@ -1,3 +1,4 @@
+import { getFiscalYear } from "@/components/suyeong/utils/date"
 import type {
   BusinessBudgetRecord,
   BusinessBudgetSearchCriteria,
@@ -5,11 +6,15 @@ import type {
 
 export const businessBudgetDepartments = ["민락동", "광안4동", "광안3동", "광안2동", "남천1동"] as const
 
-export const initialBusinessBudgetCriteria: BusinessBudgetSearchCriteria = {
-  fiscalYear: "2026",
-  accountingType: "all",
-  department: "all",
-  businessName: "",
+export function createInitialBusinessBudgetCriteria(
+  referenceDate: string,
+): BusinessBudgetSearchCriteria {
+  return {
+    fiscalYear: getFiscalYear(referenceDate),
+    accountingType: "all",
+    department: "all",
+    businessName: "",
+  }
 }
 
 const businessNames = [

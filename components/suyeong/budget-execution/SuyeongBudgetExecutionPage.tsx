@@ -5,6 +5,7 @@ import {
   SuyeongResultsSection,
 } from "@/components/suyeong/shared"
 import { downloadBudgetExecutionCsv } from "./budget-execution.csv"
+import { FieldExecutionRateChart } from "./FieldExecutionRateChart"
 import { SuyeongBudgetExecutionTable } from "./SuyeongBudgetExecutionTable"
 import { useBudgetExecution } from "./useBudgetExecution"
 
@@ -19,6 +20,7 @@ export function SuyeongBudgetExecutionPage() {
       parent={{ label: "세출정보", href: suyeongLinks.budgetExecution }}
       title="예산집행현황"
     >
+      <FieldExecutionRateChart records={execution.filteredRecords} />
       <SuyeongFinancialSearch
         criteria={execution.criteria}
         onChange={execution.setCriteria}
@@ -35,8 +37,10 @@ export function SuyeongBudgetExecutionPage() {
         currentPage={execution.currentPage}
         totalPages={execution.totalPages}
         onPageChange={execution.setCurrentPage}
+        showPageSize={false}
+        showPagination={false}
       >
-        <SuyeongBudgetExecutionTable records={execution.visibleRecords} />
+        <SuyeongBudgetExecutionTable records={execution.filteredRecords} />
       </SuyeongResultsSection>
     </SuyeongListPage>
   )

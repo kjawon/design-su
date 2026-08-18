@@ -1,5 +1,9 @@
-import { usePaginatedSearch } from "@/components/suyeong/shared"
-import { businessBudgetRecords, initialBusinessBudgetCriteria } from "./business-budget.data"
+import { useMemo } from "react"
+import { useDatabaseTime, usePaginatedSearch } from "@/components/suyeong/shared"
+import {
+  businessBudgetRecords,
+  createInitialBusinessBudgetCriteria,
+} from "./business-budget.data"
 import type { BusinessBudgetRecord, BusinessBudgetSearchCriteria } from "./business-budget.types"
 
 function filterBusinessBudgetRecords(
@@ -17,9 +21,15 @@ function filterBusinessBudgetRecords(
 }
 
 export function useBusinessBudget() {
+  const { currentDate } = useDatabaseTime()
+  const initialCriteria = useMemo(
+    () => createInitialBusinessBudgetCriteria(currentDate),
+    [currentDate],
+  )
+
   return usePaginatedSearch({
     filterRecords: filterBusinessBudgetRecords,
-    initialCriteria: initialBusinessBudgetCriteria,
+    initialCriteria,
     records: businessBudgetRecords,
   })
 }

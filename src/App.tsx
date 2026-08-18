@@ -1,4 +1,5 @@
 import { lazy, Suspense } from "react"
+import { DatabaseTimeProvider } from "@/components/suyeong/shared"
 
 const pageRoutes = {
   "/funds": lazy(() => import("@/components/suyeong/funds")),
@@ -16,8 +17,10 @@ export function App() {
   const Page = pageRoutes[pathname as keyof typeof pageRoutes] ?? pageRoutes["/"]
 
   return (
-    <Suspense fallback={<div className="sy-route-loading" role="status">페이지를 불러오는 중입니다.</div>}>
-      <Page />
-    </Suspense>
+    <DatabaseTimeProvider>
+      <Suspense fallback={<div className="sy-route-loading" role="status">페이지를 불러오는 중입니다.</div>}>
+        <Page />
+      </Suspense>
+    </DatabaseTimeProvider>
   )
 }

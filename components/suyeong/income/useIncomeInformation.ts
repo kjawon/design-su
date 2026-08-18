@@ -1,5 +1,10 @@
-import { usePaginatedSearch, type FinancialSearchCriteria } from "@/components/suyeong/shared"
-import { incomeSummaryRecords, initialIncomeSearchCriteria } from "./income.data"
+import { useMemo } from "react"
+import {
+  useDatabaseTime,
+  usePaginatedSearch,
+  type FinancialSearchCriteria,
+} from "@/components/suyeong/shared"
+import { createInitialIncomeSearchCriteria, incomeSummaryRecords } from "./income.data"
 import type { IncomeSummaryRecord } from "./income.types"
 
 function filterIncomeRecords(
@@ -14,9 +19,15 @@ function filterIncomeRecords(
 }
 
 export function useIncomeInformation() {
+  const { currentDate } = useDatabaseTime()
+  const initialCriteria = useMemo(
+    () => createInitialIncomeSearchCriteria(currentDate),
+    [currentDate],
+  )
+
   return usePaginatedSearch({
     filterRecords: filterIncomeRecords,
-    initialCriteria: initialIncomeSearchCriteria,
+    initialCriteria,
     records: incomeSummaryRecords,
   })
 }

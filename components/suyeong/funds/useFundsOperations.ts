@@ -1,5 +1,10 @@
-import { usePaginatedSearch, type FinancialSearchCriteria } from "@/components/suyeong/shared"
-import { fundsOperationRecords, initialFundsSearchCriteria } from "./funds.data"
+import { useMemo } from "react"
+import {
+  useDatabaseTime,
+  usePaginatedSearch,
+  type FinancialSearchCriteria,
+} from "@/components/suyeong/shared"
+import { createInitialFundsSearchCriteria, fundsOperationRecords } from "./funds.data"
 import type { FundsOperationRecord } from "./funds.types"
 
 function filterFundsRecords(
@@ -15,9 +20,15 @@ function filterFundsRecords(
 }
 
 export function useFundsOperations() {
+  const { currentDate } = useDatabaseTime()
+  const initialCriteria = useMemo(
+    () => createInitialFundsSearchCriteria(currentDate),
+    [currentDate],
+  )
+
   return usePaginatedSearch({
     filterRecords: filterFundsRecords,
-    initialCriteria: initialFundsSearchCriteria,
+    initialCriteria,
     records: fundsOperationRecords,
   })
 }

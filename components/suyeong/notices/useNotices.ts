@@ -1,5 +1,6 @@
-import { usePaginatedSearch } from "@/components/suyeong/shared"
-import { initialNoticeCriteria, noticeRecords } from "./notices.data"
+import { useMemo } from "react"
+import { useDatabaseTime, usePaginatedSearch } from "@/components/suyeong/shared"
+import { createInitialNoticeCriteria, noticeRecords } from "./notices.data"
 import type { NoticeRecord, NoticeSearchCriteria } from "./notices.types"
 
 function normalize(value: string) {
@@ -25,9 +26,15 @@ function filterNoticeRecords(
 }
 
 export function useNotices() {
+  const { currentDate } = useDatabaseTime()
+  const initialCriteria = useMemo(
+    () => createInitialNoticeCriteria(currentDate),
+    [currentDate],
+  )
+
   return usePaginatedSearch({
     filterRecords: filterNoticeRecords,
-    initialCriteria: initialNoticeCriteria,
+    initialCriteria,
     records: noticeRecords,
   })
 }

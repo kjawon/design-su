@@ -34,8 +34,10 @@ export function SuyeongIncomePage() {
         currentPage={income.currentPage}
         totalPages={income.totalPages}
         onPageChange={income.setCurrentPage}
+        showPageSize={false}
+        showPagination={false}
       >
-        <SuyeongIncomeTable records={income.visibleRecords} />
+        <SuyeongIncomeTable records={income.filteredRecords} />
       </SuyeongResultsSection>
     </SuyeongListPage>
   )

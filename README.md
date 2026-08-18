@@ -211,3 +211,27 @@ feature/
 - [ ] 데스크톱·태블릿·모바일 회귀 테스트
 - [ ] KWCAG 2.2 및 기관 웹 접근성 점검
 - [ ] 개인정보처리방침과 웹 접근성 정책 링크 연결
+
+## DB 서버 기준시각 연결
+
+화면에서 사용하는 현재 기준일, 조회 종료일 초기값, 회계연도는 브라우저 시간이 아니라
+`DatabaseTimeProvider`가 제공하는 DB 서버 기준시각을 사용합니다. DB 연결 전에는
+`.env.example`의 mock 값으로 동일한 응답 계약을 확인할 수 있습니다.
+
+백엔드 연결 시 환경값을 다음과 같이 변경합니다.
+
+```env
+VITE_DATABASE_TIME_SOURCE=api
+VITE_DATABASE_TIME_ENDPOINT=/api/system/database-time
+```
+
+시간 API는 애플리케이션 서버 시간이 아니라 DB의 현재 날짜·시각 함수를 한 번의 쿼리에서
+조회하고, 아래 형식으로 반환해야 합니다. `currentDate`를 별도로 반환하므로 사용자 브라우저의
+시간대 변환으로 기준일이 달라지지 않습니다.
+
+```json
+{
+  "currentDate": "2026-08-11",
+  "currentDateTime": "2026-08-11T14:30:00+09:00"
+}
+```

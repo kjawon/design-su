@@ -1,11 +1,14 @@
 import type { FinancialSearchCriteria } from "@/components/suyeong/shared"
+import { getFiscalYear } from "@/components/suyeong/utils/date"
 import type { BudgetExecutionRecord } from "./budget-execution.types"
 
-export const initialBudgetExecutionCriteria: FinancialSearchCriteria = {
-  fiscalYear: "2026",
-  accountingType: "all",
-  startDate: "2026-08-11",
-  endDate: "2026-08-11",
+export function createInitialBudgetExecutionCriteria(referenceDate: string): FinancialSearchCriteria {
+  return {
+    fiscalYear: getFiscalYear(referenceDate),
+    accountingType: "all",
+    startDate: referenceDate,
+    endDate: referenceDate,
+  }
 }
 
 const budgetExecutionValues = [

@@ -35,6 +35,7 @@ export function usePaginatedSearch<TRecord, TCriteria>({
   const reset = () => {
     setCriteria(initialCriteria)
     setAppliedCriteria(initialCriteria)
+    setPageSize(initialPageSize)
     setCurrentPage(1)
   }
   const changePageSize = (nextPageSize: number) => {

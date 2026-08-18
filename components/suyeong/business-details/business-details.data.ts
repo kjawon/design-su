@@ -1,16 +1,21 @@
+import { getFiscalYear, getFiscalYearStart } from "@/components/suyeong/utils/date"
 import type {
   BusinessDetailRecord,
   BusinessDetailsSearchCriteria,
   BusinessField,
 } from "./business-details.types"
 
-export const initialBusinessDetailsCriteria: BusinessDetailsSearchCriteria = {
-  fiscalYear: "2026",
-  accountingType: "all",
-  businessName: "",
-  startDate: "2026-01-01",
-  endDate: "",
-  selectedField: "all",
+export function createInitialBusinessDetailsCriteria(
+  referenceDate: string,
+): BusinessDetailsSearchCriteria {
+  return {
+    fiscalYear: getFiscalYear(referenceDate),
+    accountingType: "all",
+    businessName: "",
+    startDate: getFiscalYearStart(referenceDate),
+    endDate: referenceDate,
+    selectedField: "all",
+  }
 }
 
 interface BusinessSeed {

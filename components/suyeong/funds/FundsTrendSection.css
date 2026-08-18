@@ -99,14 +99,18 @@
 }
 
 .sy-chart-canvas {
-  position: relative;
   min-width: 0;
   min-height: 0;
   flex: 1;
   margin-top: 5px;
 }
 
-.sy-chart-canvas svg {
+.sy-chart-plot {
+  position: relative;
+  width: 100%;
+}
+
+.sy-chart-plot svg {
   display: block;
   width: 100%;
   height: auto;
@@ -141,10 +145,6 @@
   pointer-events: none;
   transform: translate(-50%, calc(-100% - 10px));
   transition: left 100ms ease, top 100ms ease;
-}
-
-.sy-chart-tooltip.is-below {
-  transform: translate(-50%, 10px);
 }
 
 .sy-chart-tooltip strong {

@@ -1,11 +1,14 @@
 import type { FinancialSearchCriteria } from "@/components/suyeong/shared"
+import { getFiscalYear, shiftDate } from "@/components/suyeong/utils/date"
 import type { FundsOperationRecord } from "./funds.types"
 
-export const initialFundsSearchCriteria: FinancialSearchCriteria = {
-  fiscalYear: "2026",
-  accountingType: "all",
-  startDate: "2026-08-04",
-  endDate: "2026-08-11",
+export function createInitialFundsSearchCriteria(referenceDate: string): FinancialSearchCriteria {
+  return {
+    fiscalYear: getFiscalYear(referenceDate),
+    accountingType: "all",
+    startDate: shiftDate(referenceDate, -7),
+    endDate: referenceDate,
+  }
 }
 
 export const fundsOperationRecords: readonly FundsOperationRecord[] = [

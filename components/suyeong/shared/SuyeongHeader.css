@@ -139,6 +139,16 @@
   color: var(--sy-blue-dark);
 }
 
+.sy-nav > ul > li > a[aria-current="page"] {
+  color: var(--sy-blue-dark);
+  font-weight: 800;
+}
+
+.sy-nav > ul > li > a[aria-current="page"]::after {
+  height: 4px;
+  background: #d33b32;
+}
+
 .sy-nav > ul > li > a:hover::after,
 .sy-nav > ul > li > a:focus-visible::after,
 .sy-nav > ul > li > a[aria-current="page"]::after {

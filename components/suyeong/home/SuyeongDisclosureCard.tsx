@@ -1,4 +1,4 @@
-import { ArrowRight, type LucideIcon } from "lucide-react"
+import { ExternalLink, type LucideIcon } from "lucide-react"
 import "./SuyeongDisclosureCard.css"
 
 interface SuyeongDisclosureCardProps {
@@ -29,8 +29,14 @@ export function SuyeongDisclosureCard({
             <Icon />
           </span>
         </div>
-        <a className="sy-text-link" href={href}>
-          상세보기 <ArrowRight aria-hidden="true" />
+        <a
+          className="sy-text-link"
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${title} 상세보기 (새 탭에서 열림)`}
+        >
+          상세보기 <ExternalLink aria-hidden="true" />
         </a>
       </div>
     </article>

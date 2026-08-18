@@ -1,11 +1,14 @@
+import { getFiscalYearStart } from "@/components/suyeong/utils/date"
 import type { NoticeRecord, NoticeSearchCriteria } from "./notices.types"
 
-export const initialNoticeCriteria: NoticeSearchCriteria = {
-  title: "",
-  author: "",
-  content: "",
-  startDate: "2026-01-01",
-  endDate: "2026-08-12",
+export function createInitialNoticeCriteria(referenceDate: string): NoticeSearchCriteria {
+  return {
+    title: "",
+    author: "",
+    content: "",
+    startDate: getFiscalYearStart(referenceDate),
+    endDate: referenceDate,
+  }
 }
 
 // TODO: 운영 API 연결 후 fixture를 실제 알림글 응답으로 교체합니다.

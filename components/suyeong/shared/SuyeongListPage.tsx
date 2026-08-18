@@ -57,6 +57,8 @@ interface SuyeongResultsSectionProps {
   resultCount: number
   totalPages: number
   pageSizeOptions?: readonly number[]
+  showPageSize?: boolean
+  showPagination?: boolean
   children: ReactNode
 }
 
@@ -70,6 +72,8 @@ export function SuyeongResultsSection({
   pageSize,
   pageSizeOptions,
   resultCount,
+  showPageSize = true,
+  showPagination = true,
   totalPages,
 }: SuyeongResultsSectionProps) {
   return (
@@ -80,13 +84,16 @@ export function SuyeongResultsSection({
         pageSizeOptions={pageSizeOptions}
         onPageSizeChange={onPageSizeChange}
         onDownload={onDownload}
+        showPageSize={showPageSize}
       />
       {children}
-      <SuyeongPagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onChange={onPageChange}
-      />
+      {showPagination && (
+        <SuyeongPagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onChange={onPageChange}
+        />
+      )}
     </section>
   )
 }

@@ -2,6 +2,7 @@ import { useState } from "react"
 import { formatKoreanCurrency } from "@/components/suyeong/utils/currency"
 import {
   formatIncomeAxisAmount,
+  formatIncomeBarAmount,
   formatIncomeMonth,
   getIncomeAxisMax,
 } from "./income.chart.utils"
@@ -12,8 +13,8 @@ interface IncomeMonthlyBarChartProps {
 }
 
 const chartWidth = 1100
-const chartHeight = 250
-const margin = { top: 10, right: 18, bottom: 36, left: 70 }
+const chartHeight = 276
+const margin = { top: 36, right: 12, bottom: 30, left: 64 }
 const plotWidth = chartWidth - margin.left - margin.right
 const plotHeight = chartHeight - margin.top - margin.bottom
 
@@ -32,7 +33,6 @@ export function IncomeMonthlyBarChart({ data }: IncomeMonthlyBarChartProps) {
   const rawTooltipLeft = activeX === null ? 50 : (activeX / chartWidth) * 100
   const tooltipLeft = Math.min(Math.max(rawTooltipLeft, 14), 86)
   const tooltipTop = activeY === null ? 50 : (activeY / chartHeight) * 100
-  const placeTooltipBelow = activeY !== null && activeY < 78
 
   const selectBarFromMouse = (event: React.MouseEvent<SVGSVGElement>) => {
     const bounds = event.currentTarget.getBoundingClientRect()
@@ -52,10 +52,6 @@ export function IncomeMonthlyBarChart({ data }: IncomeMonthlyBarChartProps) {
 
   return (
     <div className="sy-income-chart">
-      <div className="sy-income-chart__meta sy-income-chart__meta--end">
-        <span className="sy-income-chart__unit">단위: 억원</span>
-      </div>
-
       <div
         className="sy-income-chart__canvas"
         tabIndex={0}
@@ -64,13 +60,14 @@ export function IncomeMonthlyBarChart({ data }: IncomeMonthlyBarChartProps) {
         onBlur={() => setActiveIndex(null)}
         onKeyDown={handleKeyDown}
       >
-        <svg
-          viewBox={`0 0 ${chartWidth} ${chartHeight}`}
-          role="img"
-          aria-label="조회 기간의 월별 실제 세입 막대 그래프"
-          onMouseMove={selectBarFromMouse}
-          onMouseLeave={() => setActiveIndex(null)}
-        >
+        <div className="sy-income-chart__plot">
+          <svg
+            viewBox={`0 0 ${chartWidth} ${chartHeight}`}
+            role="img"
+            aria-label="조회 기간의 월별 실제 세입 막대 그래프"
+            onMouseMove={selectBarFromMouse}
+            onMouseLeave={() => setActiveIndex(null)}
+          >
           {axisTicks.map((tick) => {
             const y = getY(tick)
             return (
@@ -109,6 +106,14 @@ export function IncomeMonthlyBarChart({ data }: IncomeMonthlyBarChartProps) {
                   rx="5"
                 />
                 <text
+                  className="sy-income-chart__value-label"
+                  x={x}
+                  y={Math.max(y - 9, 18)}
+                  textAnchor="middle"
+                >
+                  {formatIncomeBarAmount(item.amount)}
+                </text>
+                <text
                   className="sy-income-chart__axis-label"
                   x={x}
                   y={chartHeight - 16}
@@ -119,18 +124,19 @@ export function IncomeMonthlyBarChart({ data }: IncomeMonthlyBarChartProps) {
               </g>
             )
           })}
-        </svg>
+          </svg>
 
-        {activeRecord && (
-          <div
-            className={`sy-income-chart__tooltip${placeTooltipBelow ? " is-below" : ""}`}
-            style={{ left: `${tooltipLeft}%`, top: `${tooltipTop}%` }}
-            role="status"
-          >
-            <strong>{activeRecord.month.replace("-", "년 ")}월</strong>
-            <span>월별 세입 <b>{formatKoreanCurrency(activeRecord.amount)}</b></span>
-          </div>
-        )}
+          {activeRecord && (
+            <div
+              className="sy-income-chart__tooltip"
+              style={{ left: `${tooltipLeft}%`, top: `${tooltipTop}%` }}
+              role="status"
+            >
+              <strong>{activeRecord.month.replace("-", "년 ")}월</strong>
+              <span>월별 세입 <b>{formatKoreanCurrency(activeRecord.amount)}</b></span>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )

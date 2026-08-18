@@ -9,7 +9,7 @@ interface SuyeongExpenditureTableProps {
 
 export function SuyeongExpenditureTable({ records }: SuyeongExpenditureTableProps) {
   return (
-    <div className="sy-data-table-wrap" role="region" aria-label="지출현황 표" tabIndex={0}>
+    <div className="sy-data-table-wrap" role="region" aria-label="세출현황 표" tabIndex={0}>
       <table className="sy-data-table sy-expenditure-table">
         <colgroup>
           <col className="sy-expenditure-table__number" />

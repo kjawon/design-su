@@ -1,7 +1,11 @@
 import { useState } from "react"
 import { CalendarDays, ChevronDown, SlidersHorizontal } from "lucide-react"
-import { SuyeongQuickRangeButtons, SuyeongSearchActions } from "@/components/suyeong/shared"
-import { formatDateInput } from "@/components/suyeong/utils/date"
+import {
+  SuyeongQuickRangeButtons,
+  SuyeongSearchActions,
+  useDatabaseTime,
+} from "@/components/suyeong/shared"
+import { formatDateInput, getFiscalYearOptions } from "@/components/suyeong/utils/date"
 import { expenditureDepartments, expenditureStatisticItems } from "./expenditure.data"
 import type { ExpenditureSearchCriteria } from "./expenditure.types"
 import "./SuyeongExpenditureSearch.css"
@@ -22,15 +26,18 @@ const quickRanges = [
 
 export function SuyeongExpenditureSearch({ criteria, onChange, onReset, onSubmit }: Props) {
   const [isAdvancedOpen, setIsAdvancedOpen] = useState(false)
+  const { currentDate } = useDatabaseTime()
+  const fiscalYearOptions = getFiscalYearOptions(currentDate)
 
   const applyRange = (range: (typeof quickRanges)[number]["value"]) => {
-    const end = new Date(`${criteria.endDate}T00:00:00`)
+    const endDate = criteria.endDate || currentDate
+    const end = new Date(`${endDate}T00:00:00`)
     if (range === "yearly") {
       end.setFullYear(end.getFullYear() - 1)
     } else {
       end.setDate(end.getDate() - range)
     }
-    onChange({ ...criteria, startDate: formatDateInput(end) })
+    onChange({ ...criteria, endDate, startDate: formatDateInput(end) })
   }
 
   const submit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -47,8 +54,9 @@ export function SuyeongExpenditureSearch({ criteria, onChange, onReset, onSubmit
             value={criteria.fiscalYear}
             onChange={(event) => onChange({ ...criteria, fiscalYear: event.target.value })}
           >
-            <option value="2026">2026년</option>
-            <option value="2025">2025년</option>
+            {fiscalYearOptions.map((year) => (
+              <option key={year} value={year}>{year}년</option>
+            ))}
           </select>
         </label>
 
@@ -91,6 +99,7 @@ export function SuyeongExpenditureSearch({ criteria, onChange, onReset, onSubmit
                 type="date"
                 value={criteria.endDate}
                 min={criteria.startDate}
+                max={currentDate}
                 onChange={(event) => onChange({ ...criteria, endDate: event.target.value })}
               />
               <CalendarDays aria-hidden="true" />

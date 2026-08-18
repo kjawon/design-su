@@ -1,3 +1,4 @@
+import { useDatabaseTime } from "@/components/suyeong/shared"
 import { AnnualCumulativeTrendChart } from "./AnnualCumulativeTrendChart"
 import { CurrentExecutionStatusCard } from "./CurrentExecutionStatusCard"
 import { latestFundsOperationRecord } from "./funds.data"
@@ -5,10 +6,11 @@ import { currentFundsTrendSnapshot } from "./funds.trends.data"
 import "./FundsTrendSection.css"
 
 export function FundsTrendSection() {
+  const { currentDate } = useDatabaseTime()
   const trendSnapshot = currentFundsTrendSnapshot
   const currentStatus = latestFundsOperationRecord
-  const currentYear = Number(currentStatus.date.slice(0, 4))
-  const latestDataMonth = Number(currentStatus.date.slice(5, 7))
+  const currentYear = Number(currentDate.slice(0, 4))
+  const latestDataMonth = Number(currentDate.slice(5, 7))
   const availableMonthlyData = trendSnapshot.monthlyCumulative.filter(
     (record) => record.month <= latestDataMonth,
   )
@@ -23,7 +25,7 @@ export function FundsTrendSection() {
         <CurrentExecutionStatusCard
           budgetAmount={currentStatus.budget}
           cumulativeExpense={currentStatus.cumulativeExpense}
-          referenceDate={currentStatus.date}
+          referenceDate={currentDate}
         />
       </div>
     </section>

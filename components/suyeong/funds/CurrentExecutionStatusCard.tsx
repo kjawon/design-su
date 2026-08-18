@@ -41,15 +41,16 @@ export function CurrentExecutionStatusCard({
         <div
           className="sy-execution-donut"
           role="img"
+          tabIndex={0}
           aria-label={`현재 예산 집행률 ${displayRate}퍼센트`}
         >
           <svg viewBox="0 0 200 200" aria-hidden="true" focusable="false">
-            <circle className="sy-execution-donut__track" cx="100" cy="100" r="78" />
+            <circle className="sy-execution-donut__track" cx="100" cy="100" r="82" />
             <circle
               className="sy-execution-donut__value"
               cx="100"
               cy="100"
-              r="78"
+              r="82"
               pathLength="100"
               strokeDasharray={`${visualRate} ${100 - visualRate}`}
             />

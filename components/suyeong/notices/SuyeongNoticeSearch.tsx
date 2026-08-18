@@ -1,5 +1,5 @@
 import { CalendarDays } from "lucide-react"
-import { SuyeongSearchActions } from "@/components/suyeong/shared"
+import { SuyeongSearchActions, useDatabaseTime } from "@/components/suyeong/shared"
 import type { NoticeSearchCriteria } from "./notices.types"
 import "./SuyeongNoticeSearch.css"
 
@@ -16,6 +16,8 @@ export function SuyeongNoticeSearch({
   onReset,
   onSubmit,
 }: SuyeongNoticeSearchProps) {
+  const { currentDate } = useDatabaseTime()
+
   const submit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     onSubmit()
@@ -71,6 +73,7 @@ export function SuyeongNoticeSearch({
                 type="date"
                 value={criteria.endDate}
                 min={criteria.startDate || undefined}
+                max={currentDate}
                 onChange={(event) => onChange({ ...criteria, endDate: event.target.value })}
               />
               <CalendarDays aria-hidden="true" />

@@ -1,11 +1,14 @@
 import type { FinancialSearchCriteria } from "@/components/suyeong/shared"
+import { getFiscalYear, getFiscalYearStart } from "@/components/suyeong/utils/date"
 import type { IncomeSummaryRecord } from "./income.types"
 
-export const initialIncomeSearchCriteria: FinancialSearchCriteria = {
-  fiscalYear: "2026",
-  accountingType: "all",
-  startDate: "2026-01-01",
-  endDate: "2026-08-11",
+export function createInitialIncomeSearchCriteria(referenceDate: string): FinancialSearchCriteria {
+  return {
+    fiscalYear: getFiscalYear(referenceDate),
+    accountingType: "all",
+    startDate: getFiscalYearStart(referenceDate),
+    endDate: referenceDate,
+  }
 }
 
 // TODO: 세입정보 API 연결 시 조회 조건에 따른 응답으로 교체합니다.

@@ -1,7 +1,12 @@
-import { usePaginatedSearch, type FinancialSearchCriteria } from "@/components/suyeong/shared"
+import { useMemo } from "react"
+import {
+  useDatabaseTime,
+  usePaginatedSearch,
+  type FinancialSearchCriteria,
+} from "@/components/suyeong/shared"
 import {
   budgetExecutionRecords,
-  initialBudgetExecutionCriteria,
+  createInitialBudgetExecutionCriteria,
 } from "./budget-execution.data"
 import type { BudgetExecutionRecord } from "./budget-execution.types"
 
@@ -13,10 +18,15 @@ function filterBudgetExecutionRecords(
 }
 
 export function useBudgetExecution() {
+  const { currentDate } = useDatabaseTime()
+  const initialCriteria = useMemo(
+    () => createInitialBudgetExecutionCriteria(currentDate),
+    [currentDate],
+  )
+
   return usePaginatedSearch({
     filterRecords: filterBudgetExecutionRecords,
-    initialCriteria: initialBudgetExecutionCriteria,
-    initialPageSize: 50,
+    initialCriteria,
     records: budgetExecutionRecords,
   })
 }

@@ -13,8 +13,8 @@ interface AnnualCumulativeTrendChartProps {
 }
 
 const chartWidth = 760
-const chartHeight = 270
-const margin = { top: 17, right: 18, bottom: 42, left: 66 }
+const chartHeight = 341
+const margin = { top: 40, right: 18, bottom: 42, left: 66 }
 const plotWidth = chartWidth - margin.left - margin.right
 const plotHeight = chartHeight - margin.top - margin.bottom
 
@@ -43,7 +43,6 @@ export function AnnualCumulativeTrendChart({ fiscalYear, data }: AnnualCumulativ
     activeIndex === null
       ? margin.top
       : Math.min(incomePoints[activeIndex].y, expensePoints[activeIndex].y)
-  const placeTooltipBelow = activeAnchorY < 92
   const tooltipTop = (activeAnchorY / chartHeight) * 100
 
   return (
@@ -65,7 +64,8 @@ export function AnnualCumulativeTrendChart({ fiscalYear, data }: AnnualCumulativ
         </div>
 
         <div className="sy-chart-canvas" onMouseLeave={() => setActiveIndex(null)}>
-          <svg viewBox={`0 0 ${chartWidth} ${chartHeight}`} role="img" aria-label={`${fiscalYear}년 월별 세입 및 세출 누계 선 그래프`}>
+          <div className="sy-chart-plot">
+            <svg viewBox={`0 0 ${chartWidth} ${chartHeight}`} role="img" aria-label={`${fiscalYear}년 월별 세입 및 세출 누계 선 그래프`}>
             {axisTicks.map((tick) => {
               const y = getY(tick)
               return (
@@ -90,8 +90,8 @@ export function AnnualCumulativeTrendChart({ fiscalYear, data }: AnnualCumulativ
 
               return (
                 <g key={item.month}>
-                  <circle className="sy-cumulative-point sy-cumulative-point--income" cx={x} cy={incomeY} r={activeIndex === index ? 4 : 3} />
-                  <circle className="sy-cumulative-point sy-cumulative-point--expense" cx={x} cy={expenseY} r={activeIndex === index ? 4 : 3} />
+                  <circle className={`sy-cumulative-point sy-cumulative-point--income${activeIndex === index ? " is-active" : ""}`} cx={x} cy={incomeY} r={activeIndex === index ? 5 : 3} />
+                  <circle className={`sy-cumulative-point sy-cumulative-point--expense${activeIndex === index ? " is-active" : ""}`} cx={x} cy={expenseY} r={activeIndex === index ? 5 : 3} />
                   <text className="sy-chart-axis-label" x={x} y={chartHeight - 16} textAnchor="middle">
                     {item.month}월
                   </text>
@@ -111,19 +111,20 @@ export function AnnualCumulativeTrendChart({ fiscalYear, data }: AnnualCumulativ
                 </g>
               )
             })}
-          </svg>
+            </svg>
 
-          {activeRecord && (
-            <div
-              className={`sy-chart-tooltip${placeTooltipBelow ? " is-below" : ""}`}
-              style={{ left: `${tooltipLeft}%`, top: `${tooltipTop}%` }}
-              role="status"
-            >
-              <strong>{fiscalYear}년 {activeRecord.month}월</strong>
-              <span>세입 누계 <b>{formatExactWon(activeRecord.cumulativeIncome)}</b></span>
-              <span>세출 누계 <b>{formatExactWon(activeRecord.cumulativeExpense)}</b></span>
-            </div>
-          )}
+            {activeRecord && (
+              <div
+                className="sy-chart-tooltip"
+                style={{ left: `${tooltipLeft}%`, top: `${tooltipTop}%` }}
+                role="status"
+              >
+                <strong>{fiscalYear}년 {activeRecord.month}월</strong>
+                <span>세입 누계 <b>{formatExactWon(activeRecord.cumulativeIncome)}</b></span>
+                <span>세출 누계 <b>{formatExactWon(activeRecord.cumulativeExpense)}</b></span>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </article>
