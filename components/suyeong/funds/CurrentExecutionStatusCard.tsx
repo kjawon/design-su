@@ -1,13 +1,11 @@
-import {
-  formatDisplayDate,
-  formatExactWon,
-  formatHundredMillionWon,
-} from "./chart.utils"
+import { formatKoreanCurrency } from "@/components/suyeong/utils/currency"
+import { formatDisplayDate, formatExactWon } from "./chart.utils"
 import "./CurrentExecutionStatusCard.css"
 
 interface CurrentExecutionStatusCardProps {
   budgetAmount: number
   cumulativeExpense: number
+  currentMonthExpense: number
   referenceDate: string
 }
 
@@ -19,6 +17,7 @@ function calculateExecutionRate(budgetAmount: number, cumulativeExpense: number)
 export function CurrentExecutionStatusCard({
   budgetAmount,
   cumulativeExpense,
+  currentMonthExpense,
   referenceDate,
 }: CurrentExecutionStatusCardProps) {
   const executionRate = calculateExecutionRate(budgetAmount, cumulativeExpense)
@@ -33,7 +32,7 @@ export function CurrentExecutionStatusCard({
       <div className="sy-trend-card__header">
         <div className="sy-trend-card__title">
           <h3>현재 예산 집행 현황</h3>
-          <p>예산현액 대비 누계 지출 기준</p>
+          <p>예산현액 대비 세출 누계 기준</p>
         </div>
       </div>
 
@@ -61,20 +60,31 @@ export function CurrentExecutionStatusCard({
           </div>
         </div>
 
-        <dl className="sy-current-execution-card__summary">
-          <div title={formatExactWon(budgetAmount)}>
-            <dt>예산현액</dt>
-            <dd>{formatHundredMillionWon(budgetAmount)}</dd>
-          </div>
-          <div title={formatExactWon(cumulativeExpense)}>
-            <dt>누계 지출</dt>
-            <dd>{formatHundredMillionWon(cumulativeExpense)}</dd>
-          </div>
-          <div>
-            <dt>기준일</dt>
-            <dd>{formatDisplayDate(referenceDate)}</dd>
-          </div>
-        </dl>
+        <div className="sy-current-execution-card__info">
+          <time
+            className="sy-current-execution-card__reference-date"
+            dateTime={referenceDate}
+          >
+            기준일 {formatDisplayDate(referenceDate)}
+          </time>
+          <dl className="sy-current-execution-card__summary">
+            <div
+              className="sy-current-execution-card__summary-primary"
+              title={formatExactWon(budgetAmount)}
+            >
+              <dt>예산현액</dt>
+              <dd>{formatKoreanCurrency(budgetAmount)}</dd>
+            </div>
+            <div title={formatExactWon(cumulativeExpense)}>
+              <dt>세출 누계</dt>
+              <dd>{formatKoreanCurrency(cumulativeExpense)}</dd>
+            </div>
+            <div title={formatExactWon(currentMonthExpense)}>
+              <dt>당월 세출</dt>
+              <dd>{formatKoreanCurrency(currentMonthExpense)}</dd>
+            </div>
+          </dl>
+        </div>
       </div>
     </article>
   )

@@ -7,6 +7,7 @@ import { downloadIncomeCsv } from "./income.csv"
 import { IncomeTrendSection } from "./IncomeTrendSection"
 import { SuyeongIncomeTable } from "./SuyeongIncomeTable"
 import { useIncomeInformation } from "./useIncomeInformation"
+import "./SuyeongIncomePage.css"
 
 export function SuyeongIncomePage() {
   const income = useIncomeInformation()
@@ -19,12 +20,18 @@ export function SuyeongIncomePage() {
       title="세입정보"
     >
       <IncomeTrendSection criteria={income.appliedCriteria} />
-      <SuyeongFinancialSearch
-        criteria={income.criteria}
-        onChange={income.setCriteria}
-        onReset={income.reset}
-        onSubmit={income.search}
-      />
+      <section className="sy-income-detail-search" aria-labelledby="income-detail-search-title">
+        <div className="sy-income-detail-search__heading">
+          <h2 id="income-detail-search-title">상세내역 조회</h2>
+          <p>회계연도와 기간별 세입 현황을 조회하세요.</p>
+        </div>
+        <SuyeongFinancialSearch
+          criteria={income.criteria}
+          onChange={income.setCriteria}
+          onReset={income.reset}
+          onSubmit={income.search}
+        />
+      </section>
       <SuyeongResultsSection
         ariaLabel="세입정보 조회 결과"
         resultCount={income.filteredRecords.length}

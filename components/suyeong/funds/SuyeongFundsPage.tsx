@@ -22,7 +22,10 @@ export function SuyeongFundsPage() {
     >
       <FundsTrendSection />
       <section className="sy-funds-detail" aria-labelledby="funds-detail-title">
-        <h2 id="funds-detail-title">상세내역 조회</h2>
+        <div className="sy-funds-detail__heading">
+          <h2 id="funds-detail-title">상세내역 조회</h2>
+          <p>회계연도와 기간별 자금운용 현황을 조회하세요.</p>
+        </div>
         <SuyeongFinancialSearch
           criteria={funds.criteria}
           onChange={funds.setCriteria}

@@ -1,35 +1,30 @@
-.sy-cumulative-line {
+.sy-monthly-expense-bar {
+  fill: #8fb3d9;
+  transition: fill 140ms ease;
+}
+
+.sy-monthly-expense-bar.is-active {
+  fill: #d44848;
+}
+
+.sy-execution-rate-line {
   fill: none;
+  stroke: #2f6fcd;
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 2.2;
   vector-effect: non-scaling-stroke;
 }
 
-.sy-cumulative-line--income {
-  stroke: #2b70b7;
-}
-
-.sy-cumulative-line--expense {
-  stroke: #7898b2;
-}
-
-.sy-cumulative-point {
+.sy-execution-rate-point {
+  fill: #2f6fcd;
   stroke: #fff;
   stroke-width: 1.5;
   vector-effect: non-scaling-stroke;
   transition: fill 140ms ease;
 }
 
-.sy-cumulative-point--income {
-  fill: #2b70b7;
-}
-
-.sy-cumulative-point--expense {
-  fill: #7898b2;
-}
-
-.sy-cumulative-point.is-active {
+.sy-execution-rate-point.is-active {
   fill: #d44848;
   filter: drop-shadow(0 1px 2px rgba(151, 32, 32, 0.28));
 }

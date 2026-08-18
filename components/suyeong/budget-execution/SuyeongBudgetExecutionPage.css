@@ -1,12 +1,12 @@
-.sy-funds-detail {
-  margin-top: 44px;
+.sy-budget-execution-detail {
+  margin-top: 40px;
 }
 
-.sy-funds-detail__heading {
+.sy-budget-execution-detail__heading {
   margin-bottom: 16px;
 }
 
-.sy-funds-detail__heading h2 {
+.sy-budget-execution-detail__heading h2 {
   margin: 0;
   color: #243f57;
   font-size: 22px;
@@ -15,7 +15,7 @@
   line-height: 1.4;
 }
 
-.sy-funds-detail__heading p {
+.sy-budget-execution-detail__heading p {
   margin: 4px 0 0;
   color: #6d8295;
   font-size: 14px;
@@ -23,26 +23,26 @@
   letter-spacing: -0.02em;
 }
 
-.sy-funds-detail .sy-search-panel {
+.sy-budget-execution-detail .sy-search-panel {
   margin-top: 0;
 }
 
 @media (max-width: 680px) {
-  .sy-funds-detail {
-    margin-top: 38px;
+  .sy-budget-execution-detail {
+    margin-top: 32px;
   }
 
-  .sy-funds-detail__heading {
+  .sy-budget-execution-detail__heading {
     margin-bottom: 14px;
   }
 
-  .sy-funds-detail__heading h2 {
+  .sy-budget-execution-detail__heading h2 {
     font-size: 20px;
   }
 }
 
 @media print {
-  .sy-funds-detail__heading {
+  .sy-budget-execution-detail__heading {
     display: none;
   }
 }

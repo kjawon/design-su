@@ -8,6 +8,7 @@ import { downloadBudgetExecutionCsv } from "./budget-execution.csv"
 import { FieldExecutionRateChart } from "./FieldExecutionRateChart"
 import { SuyeongBudgetExecutionTable } from "./SuyeongBudgetExecutionTable"
 import { useBudgetExecution } from "./useBudgetExecution"
+import "./SuyeongBudgetExecutionPage.css"
 
 export function SuyeongBudgetExecutionPage() {
   const execution = useBudgetExecution()
@@ -21,12 +22,21 @@ export function SuyeongBudgetExecutionPage() {
       title="예산집행현황"
     >
       <FieldExecutionRateChart records={execution.filteredRecords} />
-      <SuyeongFinancialSearch
-        criteria={execution.criteria}
-        onChange={execution.setCriteria}
-        onReset={execution.reset}
-        onSubmit={execution.search}
-      />
+      <section
+        className="sy-budget-execution-detail"
+        aria-labelledby="budget-execution-detail-title"
+      >
+        <div className="sy-budget-execution-detail__heading">
+          <h2 id="budget-execution-detail-title">상세내역 조회</h2>
+          <p>회계연도와 기간별 예산 집행 현황을 조회하세요.</p>
+        </div>
+        <SuyeongFinancialSearch
+          criteria={execution.criteria}
+          onChange={execution.setCriteria}
+          onReset={execution.reset}
+          onSubmit={execution.search}
+        />
+      </section>
       <SuyeongResultsSection
         ariaLabel="예산집행현황 조회 결과"
         resultCount={execution.filteredRecords.length}

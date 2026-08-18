@@ -74,6 +74,21 @@
   margin: 0;
 }
 
+.sy-current-execution-card__info {
+  min-width: 0;
+}
+
+.sy-current-execution-card__reference-date {
+  display: block;
+  margin-bottom: 2px;
+  color: #8798a6;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  text-align: right;
+  white-space: nowrap;
+}
+
 .sy-current-execution-card__summary > div {
   display: flex;
   min-width: 0;
@@ -110,6 +125,13 @@
   text-align: right;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.sy-current-execution-card__summary-primary dd {
+  color: #165f9f;
+  font-size: 18px;
+  font-weight: 820;
+  letter-spacing: -0.025em;
 }
 
 @media (max-width: 680px) {

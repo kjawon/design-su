@@ -66,8 +66,8 @@
   margin: 0;
   padding: 0;
   color: #5f7487;
-  font-size: 13px;
-  font-weight: 650;
+  font-size: 14px;
+  font-weight: 700;
   list-style: none;
 }
 
@@ -79,17 +79,17 @@
 
 .sy-chart-legend i {
   display: block;
-  width: 9px;
-  height: 9px;
+  width: 11px;
+  height: 11px;
   border-radius: 3px;
 }
 
-.sy-chart-legend__income {
-  background: #2b70b7;
+.sy-chart-legend__monthly-expense {
+  background: #8fb3d9;
 }
 
-.sy-chart-legend__expense {
-  background: #7898b2;
+.sy-chart-legend__execution-rate {
+  background: #2f6fcd;
 }
 
 .sy-chart-unit {
