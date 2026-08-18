@@ -14,8 +14,6 @@ export const suyeongLinks = {
 } as const
 
 export const primaryNavigationItems = [
-  { label: "자금운용현황", href: suyeongLinks.funds },
-  { label: "세입정보", href: suyeongLinks.income },
   {
     label: "세출정보",
     href: suyeongLinks.budgetExecution,
@@ -26,5 +24,7 @@ export const primaryNavigationItems = [
       { label: "사업별세부설명", href: suyeongLinks.businessDetails },
     ],
   },
+  { label: "세입정보", href: suyeongLinks.income },
+  { label: "자금운용현황", href: suyeongLinks.funds },
   { label: "공지사항", href: suyeongLinks.notices },
 ] as const

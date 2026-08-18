@@ -6,8 +6,6 @@ export type FinanceCardTone = "income" | "expense"
 
 interface SuyeongFinanceCardProps {
   actionHref: string
-  detailAmount: number
-  detailLabel: string
   heading: string
   headingId: string
   tone: FinanceCardTone
@@ -17,8 +15,6 @@ interface SuyeongFinanceCardProps {
 
 export function SuyeongFinanceCard({
   actionHref,
-  detailAmount,
-  detailLabel,
   heading,
   headingId,
   tone,
@@ -29,18 +25,23 @@ export function SuyeongFinanceCard({
     <div className="sy-finance-column" data-tone={tone}>
       <div className="sy-finance-column__heading">
         <h2 id={headingId}>{heading}</h2>
-        <a className="sy-finance-column__action" href={actionHref} aria-label={`${heading} 상세보기`}>
-          상세보기 <ArrowRight aria-hidden="true" />
-        </a>
       </div>
       <article className="sy-cumulative-card" data-tone={tone} aria-labelledby={headingId}>
         <span className="sy-cumulative-card__label">{totalLabel}</span>
         <strong className="sy-cumulative-card__amount" title={formatCurrency(totalAmount)}>
           {formatKoreanCurrency(totalAmount)}
         </strong>
-        <div className="sy-cumulative-card__detail">
-          <span>{detailLabel}</span>
-          <strong title={formatCurrency(detailAmount)}>{formatKoreanCurrency(detailAmount)}</strong>
+        <div className="sy-cumulative-card__footer">
+          <a
+            className="sy-cumulative-card__action"
+            href={actionHref}
+            aria-label={`${heading} 상세보기`}
+          >
+            상세보기
+            <span className="sy-cumulative-card__action-icon" aria-hidden="true">
+              <ArrowRight strokeWidth={2.8} />
+            </span>
+          </a>
         </div>
       </article>
     </div>
