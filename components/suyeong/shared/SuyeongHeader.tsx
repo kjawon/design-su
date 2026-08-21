@@ -1,7 +1,6 @@
 import { Menu, X } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 import { primaryNavigationItems, suyeongLinks } from "@/components/suyeong/config/links"
-import csitIcon from "@/씨에스정보기술-icon.png"
 import "@/components/suyeong/shared/SuyeongHeader.css"
 
 interface SuyeongHeaderProps {
@@ -33,9 +32,13 @@ export function SuyeongHeader({ activeItem }: SuyeongHeaderProps) {
       </a>
       <header className="sy-header">
         <div className="sy-container sy-header__inner">
-          <a className="sy-brand" href={suyeongLinks.home} aria-label="00 세입세출공개시스템 홈">
-            <span className="sy-brand__municipality" aria-hidden="true">
-              <img className="sy-brand__logo" src={csitIcon} alt="" />
+          <a
+            className="sy-brand"
+            href={suyeongLinks.home}
+            aria-label="쏠텍주식회사 세입세출공개시스템 홈"
+          >
+            <span className="sy-brand__company" aria-hidden="true">
+              <span className="sy-brand__company-highlight">쏠텍</span>주식회사
             </span>
             <span className="sy-brand__divider" aria-hidden="true" />
             <span className="sy-brand__service">

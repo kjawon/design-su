@@ -44,18 +44,19 @@
   border-radius: 8px;
 }
 
-.sy-brand__municipality {
+.sy-brand__company {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-  color: #2f3d4b;
+  color: var(--sy-navy);
+  font-size: 28px;
+  font-weight: 850;
+  letter-spacing: -0.055em;
+  line-height: 1;
+  white-space: nowrap;
 }
 
-.sy-brand__logo {
-  display: block;
-  width: 220px;
-  height: 53px;
-  object-fit: contain;
+.sy-brand__company-highlight {
+  color: var(--sy-blue);
 }
 
 .sy-brand__divider {
@@ -329,9 +330,8 @@
     gap: 10px;
   }
 
-  .sy-brand__logo {
-    width: 172px;
-    height: 41px;
+  .sy-brand__company {
+    font-size: 22px;
   }
 
   .sy-brand__divider {
