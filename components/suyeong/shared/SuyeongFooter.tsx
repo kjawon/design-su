@@ -1,4 +1,3 @@
-import csitIcon from "@/씨에스정보기술-icon.png"
 import "@/components/suyeong/shared/SuyeongFooter.css"
 
 export function SuyeongFooter() {
@@ -6,8 +5,8 @@ export function SuyeongFooter() {
     <footer className="sy-footer" aria-label="사이트 정보">
       <div className="sy-container sy-footer__inner">
         <div className="sy-footer__brand">
-          <span className="sy-footer__municipality">
-            <img src={csitIcon} alt="씨에스정보기술(주) 로고" />
+          <span className="sy-footer__company">
+            <span className="sy-footer__company-highlight">쏠텍</span>주식회사
           </span>
           <span className="sy-footer__divider" aria-hidden="true" />
           <span className="sy-footer__service">
@@ -22,7 +21,7 @@ export function SuyeongFooter() {
             <span>대표전화 000-0000-0000</span>
           </div>
           <p className="sy-footer__copyright">
-            COPYRIGHT © CS INFORMATION TECHNOLOGY. ALL RIGHTS RESERVED.
+            COPYRIGHT © 쏠텍주식회사. ALL RIGHTS RESERVED.
           </p>
         </div>
       </div>

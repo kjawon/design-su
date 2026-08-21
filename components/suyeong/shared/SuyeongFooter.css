@@ -19,19 +19,19 @@
   gap: 18px;
 }
 
-.sy-footer__municipality {
+.sy-footer__company {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
   color: #fff;
+  font-size: 28px;
+  font-weight: 850;
+  letter-spacing: -0.055em;
+  line-height: 1;
+  white-space: nowrap;
 }
 
-.sy-footer__municipality img {
-  display: block;
-  width: 248px;
-  height: auto;
-  border-radius: 6px;
-  object-fit: contain;
+.sy-footer__company-highlight {
+  color: #72baff;
 }
 
 .sy-footer__divider {
