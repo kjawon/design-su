@@ -17,7 +17,7 @@ export function SuyeongFinanceSummary() {
       <div className="sy-cumulative-overview__grid">
         <SuyeongFinanceCard
           actionHref={suyeongLinks.income}
-          heading="현재 수영구의 세입"
+          heading="현재 우리 지역의 세입"
           headingId="income-summary-title"
           tone="income"
           totalAmount={summary.income}
@@ -25,7 +25,7 @@ export function SuyeongFinanceSummary() {
         />
         <SuyeongFinanceCard
           actionHref={suyeongLinks.budgetExecution}
-          heading="현재 수영구의 세출"
+          heading="현재 우리 지역의 세출"
           headingId="expense-summary-title"
           tone="expense"
           totalAmount={summary.expense}

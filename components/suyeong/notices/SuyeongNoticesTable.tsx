@@ -11,7 +11,7 @@ export function SuyeongNoticesTable({ records }: SuyeongNoticesTableProps) {
   return (
     <div className="sy-data-table-wrap" role="region" aria-label="알림글 표" tabIndex={0}>
       <table className="sy-data-table sy-notices-table">
-        <caption className="sy-visually-hidden">수영구 운영정보공개시스템 알림글 목록</caption>
+        <caption className="sy-visually-hidden">00 운영정보공개시스템 알림글 목록</caption>
         <colgroup>
           <col className="sy-notices-table__number" />
           <col className="sy-notices-table__title" />

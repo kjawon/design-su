@@ -32,7 +32,7 @@ const businessSeeds: readonly BusinessSeed[] = [
   {
     department: "관광스포츠과",
     businessName: "해양레포츠(SUP) 활성화 지원",
-    purpose: "해양레포츠 저변확대 및 광안리해수욕장의 SUP 특화 관광 기반 조성",
+    purpose: "해양레포츠 저변확대 및 00해수욕장의 SUP 특화 관광 기반 조성",
     totalBudget: 3_033_640_000,
     endDate: "2030-12-31",
     field: "cultureTourism",
@@ -50,7 +50,7 @@ const businessSeeds: readonly BusinessSeed[] = [
   {
     department: "관광스포츠과",
     businessName: "전국 해양스포츠 SUP대회 지원(보조사업)",
-    purpose: "천혜의 해양 관광 자원인 광안리 해변을 활용한 전국 규모 대회 개최",
+    purpose: "천혜의 해양 관광 자원인 00 해변을 활용한 전국 규모 대회 개최",
     totalBudget: 40_000_000,
     endDate: "2026-12-31",
     field: "cultureTourism",
@@ -67,8 +67,8 @@ const businessSeeds: readonly BusinessSeed[] = [
   },
   {
     department: "관광스포츠과",
-    businessName: "광안리 해양레포츠센터 관리",
-    purpose: "광안리해양레포츠센터의 안정적인 운영 및 관리",
+    businessName: "00 해양레포츠센터 관리",
+    purpose: "00 해양레포츠센터의 안정적인 운영 및 관리",
     totalBudget: 109_049_000,
     endDate: "2030-12-31",
     field: "cultureTourism",
@@ -76,8 +76,8 @@ const businessSeeds: readonly BusinessSeed[] = [
   },
   {
     department: "관광스포츠과",
-    businessName: "광안리 레이저쇼",
-    purpose: "상설 드론쇼에 이은 상설 레이저쇼 도입으로 광안리 야간관광 활성화",
+    businessName: "00 레이저쇼",
+    purpose: "상설 드론쇼에 이은 상설 레이저쇼 도입으로 00 야간관광 활성화",
     totalBudget: 10_112_981_000,
     endDate: "2030-12-31",
     field: "cultureTourism",

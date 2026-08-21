@@ -15,7 +15,7 @@ export function SuyeongHome() {
             <div className="sy-container">
               <div className="sy-hero-heading">
                 <div className="sy-hero-heading__text">
-                  <h1 id="finance-summary-title">수영구 재정정보를 한눈에 확인하세요</h1>
+                  <h1 id="finance-summary-title">00 재정정보를 한눈에 확인하세요</h1>
                   <p>세입·세출과 주요 재정정보를 한곳에서 빠르게 확인할 수 있습니다.</p>
                 </div>
               </div>

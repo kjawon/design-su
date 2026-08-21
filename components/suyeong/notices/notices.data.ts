@@ -15,7 +15,7 @@ export function createInitialNoticeCriteria(referenceDate: string): NoticeSearch
 export const noticeRecords: readonly NoticeRecord[] = [
   {
     number: 17,
-    title: "수영구 세입·세출예산 운영정보공개시스템 이용 안내",
+    title: "00 세입·세출예산 운영정보공개시스템 이용 안내",
     author: "관리자",
     createdDate: "2026-08-11",
     content: "자금운용, 세입 및 세출정보 조회 방법을 안내합니다.",
@@ -133,7 +133,7 @@ export const noticeRecords: readonly NoticeRecord[] = [
   },
   {
     number: 1,
-    title: "수영구 세입·세출예산 운영정보공개시스템 개편 안내",
+    title: "00 세입·세출예산 운영정보공개시스템 개편 안내",
     author: "관리자",
     createdDate: "2026-01-05",
     content: "더 편리한 정보 조회를 위해 공개시스템 화면을 개편했습니다.",

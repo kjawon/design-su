@@ -15,7 +15,7 @@ export function SuyeongBusinessDetailsPage() {
     <SuyeongListPage
       activeItem="세출정보"
       current="사업별세부설명"
-      description="수영구의 사업별 예산과 추진 내용을 확인하세요"
+      description="00의 사업별 예산과 추진 내용을 확인하세요"
       parent={{ label: "세출정보", href: suyeongLinks.budgetExecution }}
       title="사업별세부설명"
     >

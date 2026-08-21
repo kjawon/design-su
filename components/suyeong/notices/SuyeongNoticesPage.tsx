@@ -12,7 +12,7 @@ export function SuyeongNoticesPage() {
     <SuyeongListPage
       activeItem="공지사항"
       current="알림글"
-      description="수영구 세입·세출예산 운영정보공개시스템의 주요 소식을 확인하세요"
+      description="00 세입·세출예산 운영정보공개시스템의 주요 소식을 확인하세요"
       parent={{ label: "공지사항", href: suyeongLinks.notices }}
       title="알림글"
     >

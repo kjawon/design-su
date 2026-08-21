@@ -1,4 +1,4 @@
-import suyeongIcon from "@/수영구 아이콘.svg"
+import csitIcon from "@/씨에스정보기술-icon.png"
 import "@/components/suyeong/shared/SuyeongFooter.css"
 
 export function SuyeongFooter() {
@@ -7,8 +7,7 @@ export function SuyeongFooter() {
       <div className="sy-container sy-footer__inner">
         <div className="sy-footer__brand">
           <span className="sy-footer__municipality">
-            <img src={suyeongIcon} alt="부산광역시 수영구 로고" />
-            <strong aria-hidden="true">수영구</strong>
+            <img src={csitIcon} alt="씨에스정보기술(주) 로고" />
           </span>
           <span className="sy-footer__divider" aria-hidden="true" />
           <span className="sy-footer__service">
@@ -18,12 +17,12 @@ export function SuyeongFooter() {
         </div>
         <div className="sy-footer__information">
           <div className="sy-footer__contact">
-            <address>(48305) 부산광역시 수영구 남천동로 100(남천동)</address>
+            <address>(00000) 00광역시 00구 00로 00</address>
             <span aria-hidden="true">|</span>
-            <a href="tel:051-622-4251">대표전화 051-622-4251</a>
+            <span>대표전화 000-0000-0000</span>
           </div>
           <p className="sy-footer__copyright">
-            COPYRIGHT © SUYEONG-GU. ALL RIGHTS RESERVED.
+            COPYRIGHT © CS INFORMATION TECHNOLOGY. ALL RIGHTS RESERVED.
           </p>
         </div>
       </div>

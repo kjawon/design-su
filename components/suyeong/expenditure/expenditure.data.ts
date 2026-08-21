@@ -1,7 +1,7 @@
 import { getFiscalYear } from "@/components/suyeong/utils/date"
 import type { ExpenditureRecord, ExpenditureSearchCriteria } from "./expenditure.types"
 
-export const expenditureDepartments = ["민락동", "광안4동", "광안3동", "광안2동", "남천1동"] as const
+export const expenditureDepartments = ["00동", "00동 1", "00동 2", "00동 3", "00동 4"] as const
 export const expenditureStatisticItems = ["사무관리비", "공공운영비", "재료비", "기관운영업무추진비", "정원가산업무추진비"] as const
 
 export function createInitialExpenditureCriteria(referenceDate: string): ExpenditureSearchCriteria {
