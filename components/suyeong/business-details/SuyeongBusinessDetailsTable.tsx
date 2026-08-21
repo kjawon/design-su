@@ -5,9 +5,13 @@ import "./SuyeongBusinessDetailsTable.css"
 
 interface SuyeongBusinessDetailsTableProps {
   records: readonly BusinessDetailRecord[]
+  onSelect: (record: BusinessDetailRecord) => void
 }
 
-export function SuyeongBusinessDetailsTable({ records }: SuyeongBusinessDetailsTableProps) {
+export function SuyeongBusinessDetailsTable({
+  records,
+  onSelect,
+}: SuyeongBusinessDetailsTableProps) {
   return (
     <div className="sy-data-table-wrap" role="region" aria-label="사업별 세부설명 표" tabIndex={0}>
       <table className="sy-data-table sy-business-table">
@@ -46,9 +50,16 @@ export function SuyeongBusinessDetailsTable({ records }: SuyeongBusinessDetailsT
                 <td>{record.accountingType}</td>
                 <td>{record.department}</td>
                 <th scope="row">
-                  <span className="sy-business-table__clamp" title={record.businessName}>
-                    {record.businessName}
-                  </span>
+                  <button
+                    className="sy-business-table__detail-link"
+                    type="button"
+                    aria-label={`${record.businessName} 상세정보 보기`}
+                    onClick={() => onSelect(record)}
+                  >
+                    <span className="sy-business-table__clamp" title={record.businessName}>
+                      {record.businessName}
+                    </span>
+                  </button>
                 </th>
                 <td>
                   <span className="sy-business-table__clamp" title={record.purpose}>
